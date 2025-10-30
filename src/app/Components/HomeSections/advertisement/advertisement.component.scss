@@ -1,0 +1,32 @@
+.hero-carousel {
+    position: relative;
+    width: 100%;
+
+    margin: auto;
+    max-width: 1950px;
+}
+
+.img-cover {
+    width: 85%;
+    border-radius: 20px;
+    margin: auto;
+    overflow: hidden;
+    max-height: 45vh;
+    // box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+
+
+@media (max-width:768px) {
+    .img-cover {
+        width: 100%;
+
+        min-height: 20vh;
+        // box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    img {
+        object-fit: cover;
+
+    }
+}

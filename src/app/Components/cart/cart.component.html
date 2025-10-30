@@ -1,0 +1,117 @@
+<div class="parent d-md-block d-none" *ngIf="cart?.cartItems as items">
+    <h1 *ngIf="items.length > 0" class="text-center main-color">
+        your cart ({{ items.length }} items)
+    </h1>
+
+    <div class="cart-header" *ngIf="items.length > 0">
+        <p class="mb-0">cart.item</p>
+        <p class="mb-0"></p>
+        <p class="mb-0">cart.price</p>
+        <p class="mb-0">cart.quantity</p>
+        <p class="mb-0">cart.total</p>
+    </div>
+
+    <div class="cart-items-wrapper color" *ngIf="items.length > 0">
+        <div class="cart-item" *ngFor="let item of items; trackBy: trackById">
+            <img class="product-img w-100" [src]="item.imagePath" alt="product" />
+            <div>
+                <h3 class="product-name  w-100">{{ item.name }}</h3>
+            </div>
+
+            <p class="mb-0">{{ item.price }} <span>{{ item.currency }}</span></p>
+
+            <div class="quantity-control">
+                <button (click)="updateQuantity(item, item.quantity - 1)"><span>-</span></button>
+                <span class="d-flex align-items-center mt-md-3">{{ item.quantity }}</span>
+                <button (click)="updateQuantity(item, item.quantity + 1)"><span>+</span></button>
+            </div>
+
+            <div class="d-flex align-items-center">
+                <p class="mb-0">{{ item.totalPrice }} <span>{{ item.currency }}</span></p>
+                <span class="remove-btn second-bg-color mx-3" (click)="deleteItem(item.id)">
+                    <i class="fa-solid fa-xmark mb-0 text-white"></i>
+                </span>
+            </div>
+        </div>
+    </div>
+
+    <div class="ms-auto checkout p-2" *ngIf="items.length > 0">
+        <div class="d-flex justify-content-between align-items-center border-bottom py-3">
+            <span class="fs-2 total">cart.subtotal:</span>
+            <span class="fs-2 total">
+                {{ getSubtotal() }}
+                <span>{{ items[0]?.currency }}</span>
+            </span>
+        </div>
+
+        <button (click)="goToCheckout()" class="btn my-3 checkout-btn main-outline-btn total fs-4">
+            checkout
+        </button>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+<div class="cart-page d-md-none d-block" *ngIf="cart?.cartItems as items">
+    <h1 *ngIf="items.length > 0" class="text-center main-color">
+        yourcart ({{ items.length }} cart.itemcounter)
+    </h1>
+
+    <div class="wl-list" *ngIf="items.length > 0">
+        <div class="row justify-content-between mb-3 border rounded shadow-sm py-1"
+            *ngFor="let item of items; let i = index; trackBy: trackById">
+            <div class="col-3">
+                <img class="thumb w-100" [src]="item.imagePath" alt="product" />
+            </div>
+
+            <div class=" col-6 p-0">
+                <div class="px-2">
+                    <p class="m-0 p-0">{{ item.name }}</p>
+                    <p class="mb-0">{{ item.totalPrice }} <span>{{ item.currency }}</span></p>
+                </div>
+
+                <div class="d-flex justify-content-between align-items-center pb-0 w-50">
+                    <button class="btn pb-0" (click)="updateQuantity(item, item.quantity - 1)"><span>-</span></button>
+                    <span class="d-flex align-items-center justify-content-center mt-md-3 pb-0 fs-5">{{ item.quantity
+                        }}</span>
+                    <button class="btn pb-0" (click)="updateQuantity(item, item.quantity + 1)"><span>+</span></button>
+                </div>
+            </div>
+
+            <div class="col-actions col-3 text-start d-flex flex-column justify-content-between px-1">
+                <button class="x-remove-sm btn" [class.ms-auto]="!isRtl" [class.me-auto]="isRtl" aria-label="remove"
+                    (click)="deleteItem(item.id)">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+
+
+            </div>
+        </div>
+    </div>
+
+    <div class="ms-auto w-100 p-2" *ngIf="items.length > 0">
+        <div class="d-flex justify-content-between align-items-center border-bottom py-3">
+            <span class="fs-2 total">cart.subtotal:</span>
+            <span class="fs-2 total">
+                {{ getSubtotal() }}
+                <span>{{ items[0]?.currency }}</span>
+            </span>
+        </div>
+
+        <button (click)="goToCheckout()" class="btn my-2 checkout-btn main-outline-btn total fs-5">
+            checkout
+        </button>
+    </div>
+</div>
+
+<!-- حالة السلة الفاضية -->
+<div *ngIf="!(cart?.cartItems?.length) || cart?.cartItems?.length === 0" class="cart-empty text-center mt-0 mb-5">
+    <h2 class="">cart.slogan</h2>
+    <button class="btn main-outline-btn fs-4" (click)="goToProducts()"><span>Explore Products</span></button>
+</div>

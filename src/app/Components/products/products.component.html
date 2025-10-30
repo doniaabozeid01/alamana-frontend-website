@@ -1,0 +1,93 @@
+<div class="parent">
+
+
+
+    <div class="category-filter bg-secondary text-black py-3 p-0 m-0">
+        <!-- <div class="cf-bg"></div> -->
+
+        <h2 class="cf-title text-white">تصفّح حسب الفئة</h2>
+
+        <div class="chips  pb-5" dir="rtl">
+            <button class="chip" *ngFor="let c of categories; trackBy: trackById" [class.active]="c.id === selectedId"
+                (click)="selectCategory(c)" type="button">
+                {{ c.label }}
+            </button>
+        </div>
+
+    </div>
+
+
+
+
+    <div class="py-5 products">
+
+        <div class="row container justify-content-start align-items-center  m-auto">
+            <div class="col-md-3 mb-4 " *ngFor="let product of products">
+
+                <div class="category-card m-2 shadow text-center p-0 ">
+
+
+                        <div class="moved-content">
+                            <div class="position-relative">
+
+                                <owl-carousel-o *ngIf="categories?.length" #catCarousel [options]="catOptions"
+                                    >
+
+                                    <ng-template carouselSlide *ngFor="let cat of categories; trackBy: trackById">
+                                        <div  >
+                                            <img [src]="product.image"  />
+                                        </div>
+
+                                    </ng-template>
+                                </owl-carousel-o>
+
+                                <div class="out-btn">
+                                    <i class="fa-solid fa-plus"></i>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="w-100 fixed-content m-0 ">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <p class="text-black">{{product.weight}} {{product.weightData}}</p>
+                                <p class="main-color fs-4 second-color text-center">
+                                    <!-- {{ (languageService.languageChanged$ | async) === 'ar' ? cat.name_ar : cat.name }} -->
+                                    {{product.name}}
+                                </p>
+
+                            </div>
+
+
+                            <div class="d-flex justify-content-between align-items-center text-black">
+                                <p class="second-color text-center">
+                                    <!-- {{ (languageService.languageChanged$ | async) === 'ar' ? cat.name_ar : cat.name }} -->
+                                    {{product.oldPrice}} {{product.currency}}
+                                </p>
+
+                                <p> {{product.newPrice}} {{product.currency}}
+                                </p>
+                            </div>
+
+
+                            <div>
+                                <p class="text-dark fs-small text-end">بلاتينيوم فيكس لاصق بلاط احترافي عالي الجودة،
+                                    مناسب للاستخدام الداخلي والخارجي، يتميز
+                                    بقوة التصاق ممتازة ومقاومة للرطوبة والحرارة، لضمان تثبيت مثالي وطويل الأمد.</p>
+                            </div>
+
+                        </div>
+
+
+
+
+                </div>
+
+            </div>
+        </div>
+
+
+    </div>
+
+
+</div>

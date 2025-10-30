@@ -1,0 +1,60 @@
+<div class="categoriesSwiperCustom  my-5 px-5">
+    <h1 class="text-end second-color m-5">مقترحه لك</h1>
+
+    <button class="nav-btn prev-btn" (click)="catCarousel.prev()"><i class="fa-solid fa-arrow-left"></i></button>
+    <button class="nav-btn next-btn" (click)="catCarousel.next()"><i class="fa-solid fa-arrow-right"></i></button>
+
+    <owl-carousel-o *ngIf="categories?.length" #catCarousel [options]="catOptions" (drag)="dragging = true"
+        (dragged)="dragging = false">
+
+        <ng-template carouselSlide *ngFor="let cat of categories; trackBy: trackById">
+            <div class="category-card text-center p-0 m-4 " (pointerdown)="onPtrDown($event)"
+                (pointermove)="onPtrMove($event)" (pointerup)="onPtrUp()" (pointercancel)="onPtrCancel()"
+                (pointerleave)="onPtrCancel()" (click)="onCardClick(cat.id, $event)">
+
+
+                <div class="">
+                    <div class="moved-content ">
+                        <div class="position-relative">
+                            <img [src]="cat.image" [alt]="cat.name" class="" />
+
+                            <div class="out-btn">
+                                <i class="fa-solid fa-plus"></i>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="w-100 fixed-content m-0 ">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <p class="cat-name second-color text-center">
+                                <!-- {{ (languageService.languageChanged$ | async) === 'ar' ? cat.name_ar : cat.name }} -->
+                                {{cat.name}}
+                            </p>
+
+                            <p>{{cat.weight}} {{cat.weightData}}</p>
+                        </div>
+
+
+                        <div class="d-flex justify-content-between align-items-center">
+                            <p class="cat-name second-color text-center">
+                                <!-- {{ (languageService.languageChanged$ | async) === 'ar' ? cat.name_ar : cat.name }} -->
+                                {{cat.oldPrice}} {{cat.currency}}
+                            </p>
+
+                            <p> {{cat.newPrice}} {{cat.currency}}
+                            </p>
+                        </div>
+                    </div>
+
+                </div>
+
+                
+            </div>
+
+        </ng-template>
+    </owl-carousel-o>
+
+
+
+</div>

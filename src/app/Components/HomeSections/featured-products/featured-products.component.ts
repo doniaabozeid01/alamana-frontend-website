@@ -1,0 +1,147 @@
+import { Component, ViewChild } from '@angular/core';
+import { Router } from '@angular/router';
+import { CarouselComponent, OwlOptions } from 'ngx-owl-carousel-o';
+
+@Component({
+  selector: 'app-featured-products',
+  templateUrl: './featured-products.component.html',
+  styleUrls: ['./featured-products.component.scss']
+})
+export class FeaturedProductsComponent {
+
+  isRtl = document.documentElement.dir === 'rtl';
+
+  catOptions: OwlOptions = {
+    loop: false,
+    dots: false,
+    mouseDrag: true,
+    touchDrag: true,
+    nav: false,                 // بنستخدم أزرار خارجية
+    rtl: true,
+    responsive: {
+      0: { items: 1, margin: 8 },   // موبايل: عنصر واحد
+      700: { items: 2, margin: 10 },   // موبايل: عنصر واحد
+      1200: { items: 4, margin: 16 }   // شاشات كبيرة: 4 عناصر
+    }
+  };
+
+  trackById = (_: number, cat: any) => cat.id;
+
+
+  categories: any;
+  constructor(
+    // private api: ApiService,
+    private router: Router,
+    // public languageService: LanguageService,
+
+
+  ) { }
+
+
+  goToProducts(id: number) {
+    this.router.navigate(['products', id]);
+  }
+
+
+  ngOnInit() {
+    // this.api.getAllCategories(this.api.drinks).subscribe({
+    //   next:(res)=>{
+    //     console.log(res);
+    //     this.categories = res;
+
+    //   },
+    //   error:(err)=>{
+    //     console.log(err);
+
+    //   }
+    // })
+
+
+    this.categories = [
+      {
+        name: 'الأعلى مبيعًا',
+        image: '../../../../assets/categories/163a155bf17de65badc9fee60d656b8133014228.jpg',
+        slogan: 'منتجات أثبتت كفاءتها في كل مشروع'
+      },
+      {
+        name: 'الأعلى مبيعًا',
+        image: '../../../../assets/categories/163a155bf17de65badc9fee60d656b8133014228.jpg',
+        slogan: 'منتجات أثبتت كفاءتها في كل مشروع'
+      },
+      {
+        name: 'الأعلى مبيعًا',
+        image: '../../../../assets/categories/163a155bf17de65badc9fee60d656b8133014228.jpg',
+        slogan: 'منتجات أثبتت كفاءتها في كل مشروع'
+      },
+      {
+        name: 'الأعلى مبيعًا',
+        image: '../../../../assets/categories/163a155bf17de65badc9fee60d656b8133014228.jpg',
+        slogan: 'منتجات أثبتت كفاءتها في كل مشروع'
+      },
+
+      {
+        name: 'الأعلى مبيعًا',
+        image: '../../../../assets/categories/163a155bf17de65badc9fee60d656b8133014228.jpg',
+        slogan: 'منتجات أثبتت كفاءتها في كل مشروع'
+      },
+      {
+        name: 'الأعلى مبيعًا',
+        image: '../../../../assets/categories/163a155bf17de65badc9fee60d656b8133014228.jpg',
+        slogan: 'منتجات أثبتت كفاءتها في كل مشروع'
+      }
+    ];
+
+
+
+  }
+  @ViewChild('catCarousel', { static: false }) catCarousel!: CarouselComponent;
+
+
+
+  private ptrMoved = false;
+
+
+
+
+
+
+
+  dragging = false;
+
+  private ptrStart?: { x: number; y: number };
+  private moved = false;
+  private readonly DRAG_THRESHOLD = 10; // px
+
+  onPtrDown(e: PointerEvent) {
+    this.ptrStart = { x: e.clientX, y: e.clientY };
+    this.moved = false;
+  }
+
+  onPtrMove(e: PointerEvent) {
+    if (!this.ptrStart) return;
+    const dx = Math.abs(e.clientX - this.ptrStart.x);
+    const dy = Math.abs(e.clientY - this.ptrStart.y);
+    if (dx > this.DRAG_THRESHOLD || dy > this.DRAG_THRESHOLD) this.moved = true;
+  }
+
+  onPtrUp() {
+    // بس بنفضّي الحالة
+    this.ptrStart = undefined;
+  }
+
+  onPtrCancel() {
+    this.ptrStart = undefined;
+    this.moved = false;
+  }
+
+  onCardClick(id: number, e: MouseEvent) {
+    // لو كان فيه سحب (من owl) أو تحرّك فوق العتبة → امنع الكليك
+    if (this.dragging || this.moved) {
+      e.preventDefault();
+      e.stopPropagation();
+      return;
+    }
+    this.goToProducts(id);
+  }
+
+}

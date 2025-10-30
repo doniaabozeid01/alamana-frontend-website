@@ -1,0 +1,69 @@
+.w-10 {
+    width: 5%;
+}
+
+
+
+@media (max-width:768px){
+    .w-10 {
+    width: 20%;
+}
+
+}
+.auth {
+    background-color: #1E75B7;
+    padding: 10px 30px;
+    color: white;
+    position: relative;
+}
+
+.auth::after,
+.auth::before {
+    content: '';
+    position: absolute;
+    width: 20px;
+    height: 35px;
+    border: 2px solid black;
+}
+
+
+.auth::before {
+    top: -5px;
+    right: -5px;
+    border-left: none;
+    border-bottom: none;
+}
+
+
+
+.auth::after {
+    bottom: -5px;
+    left: -5px;
+    border-right: none;
+    border-top: none;
+}
+
+
+
+.fa-cart-shopping {
+    font-size: 25px;
+}
+
+
+.nav-link{
+    font-size: 20px;
+    margin: 0 20px;
+}
+
+
+
+.nav-max-width{
+    width: 1800px;
+    padding: 5px 0;
+}
+
+
+/* أهم تعديل لتبديل الاتجاه */
+.navbar .container-fluid {
+  flex-direction: row-reverse;
+}

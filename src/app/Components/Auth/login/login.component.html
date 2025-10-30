@@ -1,0 +1,64 @@
+<div class="auth-bg">
+    <img src="../../../../assets/e6da5ba3bbf0d2618e5ae6f63d348b8752b2cdef.png" class="w-15" alt="">
+
+    <div class="card login-card">
+        <h2 class="text-center fw-bolder mb-4">تسجيل الدخول</h2>
+
+
+        <!-- Success / Info (مثلاً: لازم تأكيد الإيميل) -->
+        <!-- <div *ngIf="successMessage" class="alert alert-success text-center">
+            {{ successMessage }}
+        </div> -->
+
+        <!-- Error -->
+        <!-- <div *ngIf="errorMessage" class="alert alert-danger text-center">
+            {{ errorMessage }}
+        </div> -->
+
+        <form [formGroup]="loginForm" (ngSubmit)="login()">
+            <div class="mb-3">
+                <label class="form-label fw-normal ">البريد الالكتروني</label>
+                <input type="email" class="form-control " formControlName="email" placeholder="example@email.com" />
+                <!-- <div *ngIf="loginForm.get('email')?.touched && loginForm.get('email')?.invalid"
+                    class="text-danger small">
+                    Invalid email address
+                </div> -->
+            </div>
+
+            <div class="mb-1">
+                <label class="form-label fw-normal">كلمه السر</label>
+                <input type="password" class="form-control" formControlName="password" placeholder="********" />
+                <!-- <div *ngIf="loginForm.get('password')?.touched && loginForm.get('password')?.invalid"
+                    class="text-danger small">
+                    Password is required
+                </div> -->
+            </div>
+
+            <!-- <button type="submit" class="btn btn-coffee" [disabled]="loginForm.invalid || loading">
+        <span class="text-white fw-normal">
+          <ng-container *ngIf="!loading; else loadingTpl">{{ 'auth.login' | translate }}</ng-container>
+        </span>
+      </button> -->
+
+
+            <button type="submit" class="btn btn-coffee">
+                <span class="text-white fw-normal">
+                    تسجيل الدخول </span>
+            </button>
+
+
+            <ng-template #loadingTpl>Logging ...</ng-template>
+
+            <div class="text-center mt-3">
+                <a routerLink="/auth/forgetpassword" class="link-light">هل نسيت كلمه السر ؟</a>
+            </div>
+
+            <div class="text-center mt-3">
+                <span class="mx-1">ليس لديك حساب ؟</span>
+                <a routerLink="/auth/register" class="fw-bold link-light">
+                    <span>انشاء حساب</span>
+                </a>
+            </div>
+        </form>
+    </div>
+</div>

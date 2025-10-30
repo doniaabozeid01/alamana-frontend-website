@@ -1,0 +1,103 @@
+:root {
+  --blue: #1E75B7;
+  --blue-600: #165f97;
+  --card: #fff;
+  --shadow: 0 12px 30px rgba(0,0,0,.08);
+  --radius: 22px;
+}
+
+.promos {
+  max-width: 980px;
+  margin: 16px auto 48px;
+  padding: 0 12px;
+  display: grid;
+  gap: 28px;
+//   background-color: #525252;
+}
+
+.promo-card {
+  display: grid;
+  gap: 12px;
+  border-radius: 22px;
+
+  background-color: white;
+  
+}
+
+/* ===== Banner ===== */
+.banner {
+  position: relative;
+  height: 250px;
+  background: var(--blue);
+  border-radius: 22px;
+  box-shadow: var(--shadow);
+  overflow: hidden;
+}
+
+.banner-bg {
+  position: absolute; inset: 0;
+  width: 100%; height: 100%;
+  object-fit: cover;
+//   filter: saturate(.9) brightness(.95);
+}
+
+.banner-overlay {
+  position: absolute; inset: 0;
+  background:
+    radial-gradient(700px 220px at 85% 30%, rgba(255,255,255,.08), transparent 60%),
+    linear-gradient(135deg, rgba(255,255,255,.06), rgba(0,0,0,.1)),
+    linear-gradient(0deg, rgba(30,117,183,.85), rgba(30,117,183,.85)); /* طبقة زرقاء */
+}
+
+.banner-content {
+  position: relative;
+  height: 100%;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+  padding: 12px 24px;
+  gap: 12px;
+}
+
+
+
+.percent { font-size: 36px; font-weight: 900; line-height: 1; }
+.off     { font-size: 16px; font-weight: 800; letter-spacing: .5px; }
+
+/* ===== Description box ===== */
+.desc {
+  background: var(--card);
+  border-radius: 0 0 var(--radius) var(--radius);
+  box-shadow: var(--shadow);
+  padding: 12px 18px 16px;
+}
+
+.title {
+  margin: 0 0 6px;
+  font-weight: 800;
+  font-size: 18px;
+  text-align: center;
+  color: #1f2937;
+}
+
+.text {
+  margin: 0;
+  text-align: center;
+  color: #374151;
+  font-weight: 600;
+  font-size: 15px;
+
+  /* قص لحد سطرين مع نقاط */
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 768px){
+  .banner { height: 190px; }
+  .product-img { height: 130px; }
+  .discount-tag { transform: rotate(-4deg); min-width: 130px; }
+}

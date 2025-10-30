@@ -1,0 +1,117 @@
+/* تمركز الأسهم خارجية */
+.slider-arrow {
+    position: absolute;
+    top: 60%;
+    transform: translateY(-50%);
+    z-index: 5;
+    width: 30px;
+    height: 30px;
+    border: 0;
+    border-radius: 9999px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: white;
+    color: #000000;
+    box-shadow: 0 0 25px rgba(0, 0, 0, 0.2);
+
+}
+
+.slider-arrow.left {
+    left: 8px;
+}
+
+.slider-arrow.right {
+    right: 8px;
+}
+
+/* الدوتس في أسفل الكاروسيل ومتمركزة */
+:host ::ng-deep .categories-carousel .owl-theme .owl-dots {
+    position: absolute;
+    left: 50%;
+    bottom: 8px;
+    transform: translateX(-50%);
+}
+
+
+
+
+/* الدائرة نفسها */
+.category-card {
+    position: relative;
+    background: #D9D9D9;
+    // border-radius: 8px;
+    aspect-ratio: 1 / 1;
+    /* يضمن دايرة تمام */
+    width: clamp(100px, 22vw, 300px);
+    /* مقاس مرن: من 160 لـ 320 حسب الشاشة */
+    margin: 0 auto;
+    /* توسيط داخل العمود/السلايد */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+
+.card-body{
+    background-color: #1E75B7;
+    color: white;
+}
+
+
+/* الصورة جوا الدائرة */
+.category-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* العنوان تحت الدائرة */
+.category-title {
+    margin-top: 12px;
+    font-weight: 700;
+    text-align: center;
+}
+
+/* لو بتستخدمي Swiper أو سلايدر مشابه */
+.swiper-slide {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+
+
+
+
+
+
+.categoriesSwiperCustom {
+    max-width: 1600px;
+    margin: auto;
+}
+
+
+@media (max-width:768px) {
+    .category-card img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+    }
+
+    .category-card {
+        cursor: pointer;
+        width: clamp(100px, 100vw, 280px);
+
+    }
+
+}
+
+
+.owl-item {
+    margin: 0 70px !important;
+}

@@ -1,0 +1,319 @@
+:root {
+    --blue: #1E75B7;
+    /* الأزرق الأساسي */
+    --blue-700: #155a8c;
+    --chip: #8d8f93;
+    /* رمادي للـchips غير المفعّلة */
+    --text: #111827;
+    --bg: #f5f7fb;
+}
+
+
+
+.chips {
+    max-width: 900px;
+    margin: auto;
+}
+
+/* الحاوية العامة */
+.category-filter {
+    position: relative;
+    padding: 28px 16px 22px;
+    //   border-radius: 16px;
+    overflow: hidden;
+    background: #fff;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, .05);
+    margin: 12px 0 18px;
+}
+
+/* خلفية مزخرفة خفيفة */
+.category-filter .cf-bg {
+    position: absolute;
+    inset: 0;
+    background:
+        radial-gradient(1200px 260px at 80% 20%, rgba(30, 117, 183, .08), transparent 60%),
+        radial-gradient(900px 220px at 15% 85%, rgba(21, 90, 140, .065), transparent 60%),
+        linear-gradient(135deg, #eef3f8 0%, #f8fbff 60%, #eef3f8 100%);
+    pointer-events: none;
+}
+
+/* العنوان */
+.cf-title {
+    position: relative;
+    text-align: center;
+    font-weight: 800;
+    color: var(--text);
+    font-size: clamp(20px, 2.4vw, 28px);
+    margin: 0 0 18px;
+}
+
+/* صف الـchips */
+.chips {
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px 24px;
+    align-items: center;
+    justify-content: center;
+    padding: 6px 4px 2px;
+}
+
+/* chip */
+.chip {
+    appearance: none;
+    border: 0;
+    border-radius: 12px;
+    padding: 10px 28px;
+    font-weight: 800;
+    letter-spacing: .2px;
+    background: var(--chip);
+    color: #fff;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, .12);
+    transition: transform .06s ease, filter .2s ease, background .2s ease;
+    cursor: pointer;
+    white-space: nowrap;
+    font-size: clamp(14px, 1.6vw, 18px);
+}
+
+.chip:hover {
+    filter: brightness(.97);
+}
+
+.chip:active {
+    transform: translateY(1px)
+}
+
+.chip:focus-visible {
+    outline: 3px solid rgba(30, 117, 183, .3);
+    outline-offset: 2px;
+}
+
+/* chip المفعّلة */
+.chip.active {
+    background: var(--blue);
+    box-shadow: 0 10px 20px rgba(30, 117, 183, .25);
+}
+
+.chip.active:hover {
+    background: var(--blue-700);
+}
+
+/* مسافات ريسبونسف */
+@media (max-width: 768px) {
+    .chips {
+        gap: 12px 16px;
+    }
+
+    .chip {
+        padding: 9px 22px;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// ---------------------------------------------------------------------------  //
+
+
+/* تمركز الأسهم خارجية */
+.slider-arrow {
+    position: absolute;
+    top: 60%;
+    transform: translateY(-50%);
+    z-index: 5;
+    width: 30px;
+    height: 30px;
+    border: 0;
+    border-radius: 9999px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: white;
+    color: #000000;
+    box-shadow: 0 0 25px rgba(0, 0, 0, 0.2);
+
+}
+
+.slider-arrow.left {
+    left: 8px;
+}
+
+.slider-arrow.right {
+    right: 8px;
+}
+
+/* الدوتس في أسفل الكاروسيل ومتمركزة */
+
+.categoriesSwiperCustom {
+    max-width: 1600px;
+    margin: auto;
+}
+
+/* الدائرة نفسها */
+.category-card {
+    // position: relative;
+    //   background: linear-gradient(to bottom, #ffffff 0% 55%, #1A649C 55% 100%);
+    background-color: white;
+    color: #000000;
+    border-radius: 20px;
+    aspect-ratio: 1 / 1;
+    /* يضمن دايرة تمام */
+    // width: clamp(100px, 22vw, 300px);
+    /* مقاس مرن: من 160 لـ 320 حسب الشاشة */
+    margin: 0 auto;
+    /* توسيط داخل العمود/السلايد */
+    display: flex;
+    flex-direction: column;
+    align-items: end;
+    justify-content: center;
+    // overflow: hidden;
+
+
+    // min-height: 300px;
+}
+
+.fs-small {
+  padding-top: 5px;
+  font-size: 12px;
+  
+  /* السطرين فقط مع النقاط */
+  display: -webkit-box;
+  -webkit-line-clamp: 2;     /* عدد السطور */
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+
+
+
+.moved-content {
+    width: 100%;
+    margin: auto;
+    // position: absolute;
+    // top: -40%;
+    object-fit: cover;
+    // z-index: 99999;
+    padding-top: 20px;
+    position: sticky;
+    // overflow: hidden;
+
+
+    img {
+        margin: auto;
+        width: 40%!important;
+    }
+}
+
+
+
+
+
+.fixed-content {
+
+    color: white;
+    padding: 20px;
+    border-radius: 8px;
+    font-size: 18px;
+
+}
+
+
+.out-btn {
+    position: absolute;
+    bottom: 30px;
+    right: 60px;
+    width: 40px;
+    height: 40px;
+    z-index: 999999;
+    background-color: #1E75B7;
+    color: white;
+    border: 2px solid white;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+p {
+    padding: 0;
+    margin: 0;
+}
+
+
+/* الصورة جوا الدائرة */
+.category-card img {
+    width: 100%;
+    // height: 100%;
+    // object-fit: cover;
+    // display: block;
+}
+
+/* العنوان تحت الدائرة */
+.category-title {
+    margin-top: 12px;
+    font-weight: 700;
+    text-align: center;
+}
+
+/* لو بتستخدمي Swiper أو سلايدر مشابه */
+.swiper-slide {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+
+
+
+.categoriesSwiperCustom {
+    max-width: 1600px;
+    margin: auto;
+}
+
+
+@media (max-width:768px) {
+    .category-card img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+    }
+
+    .category-card {
+        cursor: pointer;
+        width: clamp(100px, 100vw, 280px);
+
+    }
+
+}
+
+
+.owl-item {
+    margin: 0 70px !important;
+}
+
+
+
+
+
+// .parent {
+//     height: 100vh;
+//     overflow: hidden;
+// }
+
+
+// .products{
+//     overflow: scroll;
+// }

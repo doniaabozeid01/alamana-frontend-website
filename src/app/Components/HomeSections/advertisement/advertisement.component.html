@@ -1,0 +1,9 @@
+<div class="hero-carousel px-2">
+  <owl-carousel-o *ngIf="advertisements?.length" [options]="customOptions">
+    <ng-template carouselSlide *ngFor="let item of advertisements; trackBy: trackById">
+      <div class="img-cover">
+        <img [src]="item.image" [alt]="item.title" class="h-100 w-100" loading="lazy" />
+      </div>
+    </ng-template>
+  </owl-carousel-o>
+</div>

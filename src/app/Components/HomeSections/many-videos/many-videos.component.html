@@ -1,0 +1,76 @@
+<!-- <h2>فئات</h2> -->
+
+<div class="categoriesSwiperCustom my-5 position-relative ">
+
+
+
+    <owl-carousel-o *ngIf="categories?.length" #catCarousel [options]="catOptions">
+        <ng-template carouselSlide *ngFor="let cat of categories; trackBy: trackById">
+
+
+            <div class="video-wrapper position-relative" #wrap (click)="toggleVideo(videoEl)">
+                <video #videoEl src="assets/one-video/alamana-test.mp4" muted loop playsinline
+                    class="video w-100 h-100 object-fit-cover rounded-3" (loadedmetadata)="onLoaded(videoEl)"
+                    (timeupdate)="onTimeUpdate(videoEl)" (progress)="onProgress(videoEl)">
+                </video>
+
+                <!-- زر تشغيل وسط الفيديو -->
+                <button class="play-btn" *ngIf="!isPlayingEl(videoEl)"
+                    (click)="$event.stopPropagation(); toggleVideo(videoEl)">
+                    <i class="fa-solid fa-play"></i>
+                </button>
+
+                <!-- شريط التحكم -->
+                <div class="controls" (click)="$event.stopPropagation()">
+                    <!-- Play/Pause -->
+                    <button class="ctrl-btn" (click)="toggleVideo(videoEl)">
+                        <i class="fa-solid" [ngClass]="isPlayingEl(videoEl) ? 'fa-pause' : 'fa-play'"></i>
+                    </button>
+
+                    <!-- Progress -->
+                    <div class="progress-wrap" (click)="seekByClick($event, videoEl)">
+                        <div class="progress-bg"></div>
+                        <div class="progress-buffered" [style.width.%]="getBuffered(videoEl)"></div>
+                        <div class="progress-filled" [style.width.%]="getProgress(videoEl)"></div>
+                    </div>
+
+                    <!-- Time -->
+                    <span class="time">{{ formatTime(state(videoEl)?.currentTime) }} / {{
+                        formatTime(state(videoEl)?.duration) }}</span>
+
+                    <!-- Volume / Mute -->
+                    <button class="ctrl-btn" (click)="toggleMute(videoEl)">
+                        <i class="fa-solid"
+                            [ngClass]="(state(videoEl)?.muted ? 'fa-volume-xmark' : 'fa-volume-high')"></i>
+                    </button>
+                    <input class="vol-range" type="range" min="0" max="1" step="0.01"
+                        [value]="state(videoEl)?.volume ?? 1" (input)="changeVolume(videoEl, $event)">
+
+                    <!-- Fullscreen -->
+                    <button class="ctrl-btn" (click)="toggleFullscreen(wrap)">
+                        <i class="fa-solid fa-expand"></i>
+                    </button>
+                </div>
+            </div>
+
+
+
+
+
+        </ng-template>
+    </owl-carousel-o>
+
+
+
+
+
+
+
+    <!-- arrows خارجية -->
+    <!-- <button class="slider-arrow left" (click)="catCarousel.prev()">
+    <i class="bi bi-chevron-left"></i>
+  </button>
+  <button class="slider-arrow right" (click)="catCarousel.next()">
+    <i class="bi bi-chevron-right"></i>
+  </button> -->
+</div>

@@ -1,0 +1,26 @@
+<section class="promos" dir="rtl">
+  <div class="promo-card shadow" *ngFor="let p of promos; trackBy: trackById">
+    <!-- البانر -->
+    <div class="banner">
+      <img class="banner-bg" [src]="p.product" alt="" />
+      <!-- <div class="banner-overlay"></div> -->
+
+      <div class="banner-content">
+        <!-- صورة المنتجات -->
+        <!-- <img class="product-img" [src]="p.product" [alt]="p.title" /> -->
+
+        <!-- تاج الخصم -->
+        <!-- <div class="discount-tag">
+          <div class="percent">{{ p.discount }}%</div>
+          <div class="off">OFF</div>
+        </div> -->
+      </div>
+    </div>
+
+    <!-- صندوق الوصف -->
+    <div class="desc">
+      <p class="title">{{ p.title }}</p>
+      <p class="text">{{ p.text }}</p>
+    </div>
+  </div>
+</section>

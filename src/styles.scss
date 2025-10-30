@@ -1,1 +1,27 @@
 /* You can add global styles to this file, and also import other style files */
+
+
+.main-outline-btn {
+    border: 1px solid #1E75B7;
+    color: #1E75B7!important;
+    background-color: white;
+
+    &:hover {
+        color: #fff!important;
+        background-color: #1E75B7;
+    }
+}
+
+
+
+
+
+
+.main-color {
+  color: #1E75B7;
+}
+
+
+.second-bg-color{
+    background-color: #DCF08B;
+}
