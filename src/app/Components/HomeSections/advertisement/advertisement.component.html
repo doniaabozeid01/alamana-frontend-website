@@ -1,4 +1,5 @@
 <div class="hero-carousel px-2">
+  
   <owl-carousel-o *ngIf="advertisements?.length" [options]="customOptions">
     <ng-template carouselSlide *ngFor="let item of advertisements; trackBy: trackById">
       <div class="img-cover">
@@ -6,4 +7,5 @@
       </div>
     </ng-template>
   </owl-carousel-o>
+
 </div>

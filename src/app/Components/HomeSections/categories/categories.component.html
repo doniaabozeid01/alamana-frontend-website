@@ -1,18 +1,19 @@
 <!-- <h2>فئات</h2> -->
 
 <div class="categoriesSwiperCustom my-5 position-relative  px-5">
-  <h1 class="text-end second-color m-5">فئات</h1>
-  <!-- <p class="px-1 mb-5 text-center m-auto fs-5 text-secondary">
-    {{ 'home.categoriesSlogan' | translate }}
-  </p> -->
 
 
+  <div class="text-center second-color m-5">
+    <h1>فئات</h1>
+    <h5>اختار اللي يناسبك... كل فئة ليها حكاية!</h5>
+  </div>
 
+    
 
   <owl-carousel-o *ngIf="categories?.length" #catCarousel [options]="catOptions" (drag)="dragging = true"
     (dragged)="dragging = false">
 
-    <ng-template carouselSlide *ngFor="let cat of categories; trackBy: trackById" >
+    <ng-template carouselSlide *ngFor="let cat of categories; trackBy: trackById">
       <div class="category-card text-center d-flex  justify-content-center align-items-center  flex-column p-0 mb-0"
         (pointerdown)="onPtrDown($event)" (pointermove)="onPtrMove($event)" (pointerup)="onPtrUp()"
         (pointercancel)="onPtrCancel()" (pointerleave)="onPtrCancel()" (click)="onCardClick(cat.id, $event)">
@@ -24,9 +25,6 @@
       </p>
     </ng-template>
   </owl-carousel-o>
-
-
-
 
 
 

@@ -26,7 +26,7 @@ export class ManyVideosComponent {
     touchDrag: true,
     nav: false,
     rtl: true,
-    stagePadding: 100,
+    // stagePadding: 30 ,
     responsive: {
       0: { items: 1, margin: 8 },
       700: { items: 2, margin: 10 },
@@ -152,4 +152,6 @@ export class ManyVideosComponent {
     if (this.dragging || this.moved) { e.preventDefault(); e.stopPropagation(); return; }
     this.goToProducts(id);
   }
+
+  
 }

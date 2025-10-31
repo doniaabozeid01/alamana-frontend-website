@@ -1,12 +1,8 @@
-<!-- <h2>فئات</h2> -->
-
-<div class="categoriesSwiperCustom my-5 position-relative ">
-
+<div class=" categoriesSwiperCustom my-5 position-relative ">
 
 
     <owl-carousel-o *ngIf="categories?.length" #catCarousel [options]="catOptions">
         <ng-template carouselSlide *ngFor="let cat of categories; trackBy: trackById">
-
 
             <div class="video-wrapper position-relative" #wrap (click)="toggleVideo(videoEl)">
                 <video #videoEl src="assets/one-video/alamana-test.mp4" muted loop playsinline
@@ -15,7 +11,7 @@
                 </video>
 
                 <!-- زر تشغيل وسط الفيديو -->
-                <button class="play-btn" *ngIf="!isPlayingEl(videoEl)"
+                <button class="play-btn " *ngIf="!isPlayingEl(videoEl)"
                     (click)="$event.stopPropagation(); toggleVideo(videoEl)">
                     <i class="fa-solid fa-play"></i>
                 </button>
@@ -53,24 +49,8 @@
                 </div>
             </div>
 
-
-
-
-
         </ng-template>
     </owl-carousel-o>
 
 
-
-
-
-
-
-    <!-- arrows خارجية -->
-    <!-- <button class="slider-arrow left" (click)="catCarousel.prev()">
-    <i class="bi bi-chevron-left"></i>
-  </button>
-  <button class="slider-arrow right" (click)="catCarousel.next()">
-    <i class="bi bi-chevron-right"></i>
-  </button> -->
 </div>
