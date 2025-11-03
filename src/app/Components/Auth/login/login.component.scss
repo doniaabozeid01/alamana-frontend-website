@@ -11,17 +11,17 @@
 }
 
 .login-card {
-    border: 2px solid #158ECD;
+    // border: 2px solid #158ECD;
     border-radius: 20px;
     padding: 40px 30px;
     background-color: white !important;
-    color: #158ECD;
+    // color: #158ECD;
     width: 40%;
 }
 
 h3.text-center {
     font-weight: bold;
-    color: #158ECD;
+    // color: #158ECD;
     font-size: 60px;
 }
 
@@ -30,7 +30,7 @@ input.form-control {
     border: 1px solid #158ECD;
     border-radius: 10px;
     box-shadow: none !important;
-    caret-color: #158ECD;
+    // caret-color: #158ECD;
     transition: background-color 0s;
 }
 
@@ -42,31 +42,31 @@ input:-webkit-autofill {
 }
 
 .form-label {
-    color: #158ECD;
+    // color: #158ECD;
     font-weight: 600;
-    font-size: 40px;
-}
-
-.btn-coffee {
-    background-color: #158ECD;
-    color: white;
-    font-weight: bold;
-    border: none;
-    border-radius: 10px;
-    padding: 10px 0;
-    transition: 0.3s ease;
-    width: 35%;
-    justify-content: center;
-    display: block;
-    margin: 0 auto;
     font-size: 25px;
-    margin-top: 20px;
 }
 
-.btn-coffee:hover {
-    background-color: #08657f;
-    color: white;
-}
+// .btn-coffee {
+//     background-color: #158ECD;
+//     color: white;
+//     font-weight: bold;
+//     border: none;
+//     border-radius: 10px;
+//     padding: 10px 0;
+//     transition: 0.3s ease;
+//     width: 35%;
+//     justify-content: center;
+//     display: block;
+//     margin: 0 auto;
+//     font-size: 25px;
+//     margin-top: 20px;
+// }
+
+// .btn-coffee:hover {
+//     background-color: #08657f;
+//     color: white;
+// }
 
 .btn-outline-coffee {
     background-color: transparent;

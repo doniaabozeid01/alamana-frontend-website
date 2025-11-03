@@ -1,0 +1,201 @@
+<div class="parent">
+    <div class="container py-3">
+        <h2 class="fw-bold second-color">Delivery Information</h2>
+
+        <div class="row gy-4">
+
+            <!-- Address Form -->
+            <div class="col-md-8 rounded p-4">
+                <form [formGroup]="orderForm" (ngSubmit)="submitOrder()">
+                    <div class="mb-3">
+                        <label class="form-label d-flex align-items-center gap-1 ">
+                            full Name <span class="text-danger fs-4">*</span>
+                            <span
+                                *ngIf="(orderForm.get('fullName')?.touched || submitted) && orderForm.get('fullName')?.hasError('required')"
+                                class="text-danger"></span>
+                            <span
+                                *ngIf="(orderForm.get('fullName')?.touched || submitted) && orderForm.get('fullName')?.hasError('required')"
+                                class="text-danger" style="font-size: 15px;">
+                                required
+                            </span>
+                        </label>
+
+                        <input type="text" formControlName="fullName" class="form-control" />
+                    </div>
+
+
+                    <div class="mb-3 ">
+                        <label class="form-label"> phone <span
+                                class="text-danger fs-4">*</span>
+                            <span
+                                *ngIf="(orderForm.get('phone')?.touched || submitted) && orderForm.get('phone')?.hasError('required')"
+                                class="text-danger"></span>
+                            <span
+                                *ngIf="(orderForm.get('phone')?.touched || submitted) && orderForm.get('phone')?.hasError('required')"
+                                class="text-danger" style="font-size: 15px;">
+                                required
+                            </span>
+                        </label>
+                        <input type="text" formControlName="phone" class="form-control" />
+                    </div>
+
+                    <div class="mb-3 ">
+                        <label class="form-label">country<span
+                                class="text-danger fs-4 mx-2">*</span>
+                            <span
+                                *ngIf="(orderForm.get('countryId')?.touched || submitted) && orderForm.get('countryId')?.hasError('required')"
+                                class="text-danger"></span>
+                            <span
+                                *ngIf="(orderForm.get('countryId')?.touched || submitted) && orderForm.get('countryId')?.hasError('required')"
+                                class="text-danger" style="font-size: 15px;">
+                                required
+                            </span>
+                        </label>
+                        <select class="form-control" formControlName="countryId">
+                            <option [ngValue]="null">selectCountry</option>
+                            <option *ngFor="let c of countries" [ngValue]="c.id"> {{c.country_name }}</option>
+                        </select>
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label">
+                            governorate <span class="text-danger fs-4 mx-1">*</span>
+                            <span
+                                *ngIf="(orderForm.get('governorateId')?.touched || submitted) && orderForm.get('governorateId')?.hasError('required')"
+                                class="text-danger"></span>
+                            <span
+                                *ngIf="(orderForm.get('governorateId')?.touched || submitted) && orderForm.get('governorateId')?.hasError('required')"
+                                class="text-danger" style="font-size: 15px;">
+                                required
+                            </span>
+                        </label>
+
+                        <select class="form-control" formControlName="governorateId">
+                            <option [ngValue]="null">select Governorate</option>
+                            <option *ngFor="let g of governorates" [ngValue]="g.id">
+                                {{ g.governorate_name }}
+                            </option>
+                        </select>
+                    </div>
+
+
+
+                    <div class="mb-3 ">
+                        <label class="form-label"> city <span
+                                class="text-danger fs-4 mx-1">*</span>
+                            <span
+                                *ngIf="(orderForm.get('cityId')?.touched || submitted) && orderForm.get('cityId')?.hasError('required')"
+                                class="text-danger"></span>
+                            <span
+                                *ngIf="(orderForm.get('cityId')?.touched || submitted) && orderForm.get('cityId')?.hasError('required')"
+                                class="text-danger" style="font-size: 15px;">
+                                required
+                            </span></label>
+                        <select class="form-control" formControlName="cityId">
+                            <option [ngValue]="null">select City </option>
+                            <option *ngFor="let c of cities" [ngValue]="c.id">{{ c.city_name }}</option>
+                        </select>
+                    </div>
+
+                    <div class="mb-3 ">
+                        <label class="form-label"> district <span
+                                class="text-danger fs-4 mx-1">*</span><span
+                                *ngIf="(orderForm.get('districtId')?.touched || submitted) && orderForm.get('districtId')?.hasError('required')"
+                                class="text-danger"></span>
+                            <span
+                                *ngIf="(orderForm.get('districtId')?.touched || submitted) && orderForm.get('districtId')?.hasError('required')"
+                                class="text-danger" style="font-size: 15px;">
+                            required
+                            </span> </label>
+                        <select class="form-control" formControlName="districtId">
+                            <option [ngValue]="null">select District</option>
+                            <option *ngFor="let d of districts" [ngValue]="d.id">{{ d.district_name }}</option>
+                        </select>
+                    </div>
+
+
+
+
+                    <div class="mb-3 ">
+                        <label class="form-label">street</label>
+                        <input type="text" formControlName="street" class="form-control" />
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6 mb-3 ">
+                            <label class="form-label"> building Number
+
+                            </label>
+                            <input type="text" formControlName="buildingNumber" class="form-control" />
+                        </div>
+                        <div class="col-md-3 mb-3 ">
+                            <label class="form-label">floor
+                            </label>
+                            <input type="text" formControlName="floor" class="form-control" />
+                        </div>
+                        <div class="col-md-3 mb-3 ">
+                            <label class="form-label">apartment</label>
+                            <input type="text" formControlName="apartment" class="form-control" />
+                        </div>
+                    </div>
+
+                    <div class="mb-3 ">
+                        <label class="form-label">nearest landmark
+                        </label>
+                        <input type="text" formControlName="landmark" class="form-control" />
+                    </div>
+
+                    <div class="mb-3 ">
+                        <label class="form-label">payment Method<span
+                                class="text-danger fs-4 mx-1">*</span><span
+                                *ngIf="(orderForm.get('paymentMethodId')?.touched || submitted) && orderForm.get('paymentMethodId')?.hasError('required')"
+                                class="text-danger"></span>
+                            <span
+                                *ngIf="(orderForm.get('paymentMethodId')?.touched || submitted) && orderForm.get('paymentMethodId')?.hasError('required')"
+                                class="text-danger" style="font-size: 15px;">
+                               required
+                            </span> </label>
+                        <select class="form-control" formControlName="paymentMethodId">
+                            <option [ngValue]="method.id" *ngFor="let method of paymentMethods">{{ method.name }}</option>
+                        </select>
+                    </div>
+
+  
+                    <button type="submit"
+                        class="btn main-outline-btn w-100 fs-4 fw-bold d-flex justify-content-center align-items-center"
+                        [disabled]="loading">
+                        <span class="mb-0 fw-normal ">confirm Order</span>
+                        <span class="spinner-border spinner-border-sm mx-2 second-color" role="status" *ngIf="loading"></span>
+                    </button>
+
+
+
+                </form>
+            </div>
+
+            <!-- Order Summary -->
+            <div class="col-md-4">
+                <div class="order-summary p-4 bg-light-green rounded-4 ">
+                    <h5 class="fw-bold mb-4 text-center second-color fs-2">Order Summary</h5>
+
+                    <div class="d-flex flex-column gap-3 dataToReview">
+                        <div class="border-bottom pb-2" *ngFor="let item of cartItems">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <span class="">{{ item.name }}</span>
+                                <span class="">{{item.totalPrice}} <span>{{ item.currency }}</span> </span>
+                            </div>
+                            <div class=" "> Quantity : {{item.quantity}}</div>
+                        </div>
+                    </div>
+
+                    <div class="d-flex justify-content-between fw-bold fs-5 mt-3">
+                        <span class="fs-3">Total Amount</span>
+                        <span class="fs-3">{{totalamount}} <span>{{ cartItems[0]?.currency }}</span> </span>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+</div>

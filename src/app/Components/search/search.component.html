@@ -1,28 +1,12 @@
 <div class="parent">
 
-
-
-    <div class="category-filter bg-secondary text-black py-3 p-0 m-0">
-        <!-- <div class="cf-bg"></div> -->
-
-        <h2 class="cf-title text-white">تصفّح حسب الفئة</h2>
-
-        <div class="chips  pb-5" dir="rtl">
-            <button class="chip" *ngFor="let c of categories; trackBy: trackById" [class.active]="c.id === selectedId"
-                (click)="selectCategory(c)" type="button">
-                {{ c.label }}
-            </button>
-        </div>
-
-    </div>
-
-
-
+    <input type="text" class="form-control m-auto w-50 mt-4 text-end"   [(ngModel)]="searchTerm"
+  (input)="filterProducts()" placeholder=". . . ابحث عن المنتجات">
 
     <div class="py-5 products">
 
         <div class="row container justify-content-start align-items-center  m-auto">
-            <div class="col-md-3 mb-4 " *ngFor="let product of products">
+            <div class="col-md-3 mb-4 " *ngFor="let product of filteredProducts">
 
                 <div class="category-card m-2 shadow text-center p-0 " routerLink="/product-details">
 
@@ -30,12 +14,12 @@
                         <div class="moved-content">
                             <div class="position-relative">
 
-                                <owl-carousel-o *ngIf="categories?.length" #catCarousel [options]="catOptions"
+                                <owl-carousel-o  #catCarousel [options]="catOptions"
                                     >
 
-                                    <ng-template carouselSlide *ngFor="let cat of categories; trackBy: trackById">
+                                    <ng-template carouselSlide *ngFor="let img of product.images; trackBy: trackById">
                                         <div  >
-                                            <img [src]="product.image"  />
+                                            <img [src]="img"  />
                                         </div>
 
                                     </ng-template>

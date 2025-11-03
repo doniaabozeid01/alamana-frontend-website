@@ -3,25 +3,46 @@
 
 .main-outline-btn {
     border: 1px solid #1E75B7;
-    color: #1E75B7!important;
+    color: #1E75B7 !important;
     background-color: white;
 
     &:hover {
-        color: #fff!important;
+        color: #fff !important;
         background-color: #1E75B7;
     }
 }
 
 
 
+.main-btn {
+    color: #fff !important;
+    background-color: #1E75B7;
+    font-size: 20px;
+    padding: 10px 30px;
+    transition: all 0.3s;
+
+    &:hover {
 
 
 
-.main-color {
-  color: #1E75B7;
+        border: 1px solid #1E75B7;
+        color: #1E75B7 !important;
+        background-color: white;
+    }
 }
 
 
-.second-bg-color{
+.main-color {
+    color: #1E75B7;
+}
+
+
+.main-bg-color {
+    background-color: #1E75B7;
+}
+
+
+
+.second-bg-color {
     background-color: #DCF08B;
 }

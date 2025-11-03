@@ -1,8 +1,8 @@
-<div class="auth-bg">
-    <img src="../../../../assets/e6da5ba3bbf0d2618e5ae6f63d348b8752b2cdef.png" class="w-15" alt="">
+<div class="auth-bg main-bg-color">
 
-    <div class="card login-card">
-        <h2 class="text-center fw-bolder mb-4">تسجيل الدخول</h2>
+    <div class="card login-card shadow-lg main-color">
+        <img src="../../../../assets/e6da5ba3bbf0d2618e5ae6f63d348b8752b2cdef.png" class="w-25 m-auto my-3" alt="">
+        <!-- <h2 class="text-center fw-bolder my-3">تسجيل الدخول</h2> -->
 
 
         <!-- Success / Info (مثلاً: لازم تأكيد الإيميل) -->
@@ -15,9 +15,9 @@
             {{ errorMessage }}
         </div> -->
 
-        <form [formGroup]="loginForm" (ngSubmit)="login()">
+        <form [formGroup]="loginForm" (ngSubmit)="login()" class="text-center">
             <div class="mb-3">
-                <label class="form-label fw-normal ">البريد الالكتروني</label>
+                <label class="form-label fw-normal d-flex justify-content-end">البريد الالكتروني</label>
                 <input type="email" class="form-control " formControlName="email" placeholder="example@email.com" />
                 <!-- <div *ngIf="loginForm.get('email')?.touched && loginForm.get('email')?.invalid"
                     class="text-danger small">
@@ -26,7 +26,7 @@
             </div>
 
             <div class="mb-1">
-                <label class="form-label fw-normal">كلمه السر</label>
+                <label class="form-label fw-normal d-flex justify-content-end">كلمه السر</label>
                 <input type="password" class="form-control" formControlName="password" placeholder="********" />
                 <!-- <div *ngIf="loginForm.get('password')?.touched && loginForm.get('password')?.invalid"
                     class="text-danger small">
@@ -41,8 +41,8 @@
       </button> -->
 
 
-            <button type="submit" class="btn btn-coffee">
-                <span class="text-white fw-normal">
+            <button type="submit" class="btn main-btn m-auto  mt-4">
+                <span class="fw-normal">
                     تسجيل الدخول </span>
             </button>
 

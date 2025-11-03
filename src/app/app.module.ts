@@ -23,6 +23,10 @@ import { CartComponent } from './Components/cart/cart.component';
 import { ProductsComponent } from './Components/products/products.component';
 import { OffersComponent } from './Components/offers/offers.component';
 import { FooterComponent } from './Components/footer/footer.component';
+import { PaymentsComponent } from './Components/payments/payments.component';
+import { PreviousOrderComponent } from './Components/previous-order/previous-order.component';
+import { SearchComponent } from './Components/search/search.component';
+import { ProductDetailsComponent } from './Components/product-details/product-details.component';
 
 @NgModule({
   declarations: [
@@ -43,7 +47,11 @@ import { FooterComponent } from './Components/footer/footer.component';
     CartComponent,
     ProductsComponent,
     OffersComponent,
-    FooterComponent
+    FooterComponent,
+    PaymentsComponent,
+    PreviousOrderComponent,
+    SearchComponent,
+    ProductDetailsComponent
   ],
   imports: [
     BrowserModule,

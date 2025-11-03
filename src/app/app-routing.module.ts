@@ -7,6 +7,10 @@ import { HomeComponent } from './Components/home/home.component';
 import { CartComponent } from './Components/cart/cart.component';
 import { ProductsComponent } from './Components/products/products.component';
 import { OffersComponent } from './Components/offers/offers.component';
+import { PaymentsComponent } from './Components/payments/payments.component';
+import { PreviousOrderComponent } from './Components/previous-order/previous-order.component';
+import { SearchComponent } from './Components/search/search.component';
+import { ProductDetailsComponent } from './Components/product-details/product-details.component';
 
 const routes: Routes = [
   // {path:'login',component:LoginComponent}
@@ -33,6 +37,10 @@ const routes: Routes = [
       { path: 'cart', component: CartComponent },
       { path: 'products', component: ProductsComponent },
       { path: 'offers', component: OffersComponent },
+      { path: 'payment', component: PaymentsComponent },
+      { path: 'previousorder', component: PreviousOrderComponent },
+      { path: 'search', component: SearchComponent },
+      { path: 'product-details', component: ProductDetailsComponent },
       // { path: 'advertise', component: AdvertiseCarouselComponent },
       // { path: 'main-categories', component: MainCategoriesComponent },
       // { path: 'rawMaterial-categories', component: RawMaterialCategoriesComponent },

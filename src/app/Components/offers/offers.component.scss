@@ -1,10 +1,4 @@
-:root {
-  --blue: #1E75B7;
-  --blue-600: #165f97;
-  --card: #fff;
-  --shadow: 0 12px 30px rgba(0,0,0,.08);
-  --radius: 22px;
-}
+
 
 .promos {
   max-width: 980px;
@@ -19,9 +13,7 @@
   display: grid;
   gap: 12px;
   border-radius: 22px;
-
   background-color: white;
-  
 }
 
 /* ===== Banner ===== */
@@ -41,34 +33,13 @@
 //   filter: saturate(.9) brightness(.95);
 }
 
-.banner-overlay {
-  position: absolute; inset: 0;
-  background:
-    radial-gradient(700px 220px at 85% 30%, rgba(255,255,255,.08), transparent 60%),
-    linear-gradient(135deg, rgba(255,255,255,.06), rgba(0,0,0,.1)),
-    linear-gradient(0deg, rgba(30,117,183,.85), rgba(30,117,183,.85)); /* طبقة زرقاء */
-}
-
-.banner-content {
-  position: relative;
-  height: 100%;
-  display: grid;
-  grid-template-columns: 1fr auto;
-  align-items: center;
-  padding: 12px 24px;
-  gap: 12px;
-}
-
-
 
 .percent { font-size: 36px; font-weight: 900; line-height: 1; }
 .off     { font-size: 16px; font-weight: 800; letter-spacing: .5px; }
 
 /* ===== Description box ===== */
 .desc {
-  background: var(--card);
-  border-radius: 0 0 var(--radius) var(--radius);
-  box-shadow: var(--shadow);
+  // box-shadow: var(--shadow
   padding: 12px 18px 16px;
 }
 
@@ -95,9 +66,9 @@
   text-overflow: ellipsis;
 }
 
-/* ===== Responsive ===== */
-@media (max-width: 768px){
-  .banner { height: 190px; }
-  .product-img { height: 130px; }
-  .discount-tag { transform: rotate(-4deg); min-width: 130px; }
-}
+// /* ===== Responsive ===== */
+// @media (max-width: 768px){
+//   .banner { height: 190px; }
+//   .product-img { height: 130px; }
+//   .discount-tag { transform: rotate(-4deg); min-width: 130px; }
+// }

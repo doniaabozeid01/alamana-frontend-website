@@ -150,7 +150,7 @@ ngOnInit(): void {
   /** تنقل لصفحة الدفع */
   goToCheckout(): void {
     // عدلي المسار حسب مشروعك
-    this.router.navigate(['/checkout']);
+    this.router.navigate(['/payment']);
   }
 
   /** تنقل لصفحة المنتجات */

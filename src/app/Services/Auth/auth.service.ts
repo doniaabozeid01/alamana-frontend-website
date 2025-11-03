@@ -10,10 +10,10 @@ export class AuthService {
   baseUrl: string = "https://localhost:7046/api/";
 
 
-  constructor(private httpClient: HttpClient) { 
+  constructor(private httpClient: HttpClient) {
 
   }
-  
+
   register(userData: any): Observable<any> {
     return this.httpClient.post(`${this.baseUrl}Account/userRegister`, userData);
 
@@ -22,4 +22,13 @@ export class AuthService {
   login(userData: any): Observable<any> {
     return this.httpClient.post(`${this.baseUrl}Account/login`, userData);
   }
+
+
+
+  getUserId(): Observable<any> {
+    return this.httpClient.get(`${this.baseUrl}Account/getUserId`);
+  }
+
+
+
 }
