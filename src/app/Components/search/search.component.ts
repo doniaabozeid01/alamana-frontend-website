@@ -1,5 +1,6 @@
 import { Component, ViewChild } from '@angular/core';
 import { CarouselComponent, OwlOptions } from 'ngx-owl-carousel-o';
+import { ApiService } from 'src/app/Services/api.service';
 
 @Component({
   selector: 'app-search',
@@ -22,53 +23,27 @@ export class SearchComponent {
     items: 1
   };
 
+  products:any;
 
 
-  products = [
-    {
-      name: 'بلاتينيوم فيكس',
-      images: [
-        '../../../../assets/random/16b1ca52598339b72e97aa96657cdf8e434815e5.png',
-        '../../../../assets/random/16b1ca52598339b72e97aa96657cdf8e434815e5.png',
-        '../../../../assets/random/16b1ca52598339b72e97aa96657cdf8e434815e5.png',
-        '../../../../assets/random/16b1ca52598339b72e97aa96657cdf8e434815e5.png',
-      ],
-      newPrice: 100,
-      oldPrice: 120,
-      currency: 'دينار',
-      weight: 20,
-      weightData: 'كيلو'
-    },
-    {
-      name: ' انفكس',
-      images: [
-        '../../../../assets/random/16b1ca52598339b72e97aa96657cdf8e434815e5.png',
-        '../../../../assets/random/16b1ca52598339b72e97aa96657cdf8e434815e5.png',
-        '../../../../assets/random/16b1ca52598339b72e97aa96657cdf8e434815e5.png',
-        '../../../../assets/random/16b1ca52598339b72e97aa96657cdf8e434815e5.png',
-      ], newPrice: 100,
-      oldPrice: 120,
-      currency: 'دينار',
-      weight: 20,
-      weightData: 'كيلو'
-    },
-    {
-      name: 'بسكو نايت',
-      images: [
-        '../../../../assets/random/16b1ca52598339b72e97aa96657cdf8e434815e5.png',
-        '../../../../assets/random/16b1ca52598339b72e97aa96657cdf8e434815e5.png',
-        '../../../../assets/random/16b1ca52598339b72e97aa96657cdf8e434815e5.png',
-        '../../../../assets/random/16b1ca52598339b72e97aa96657cdf8e434815e5.png',
-      ], newPrice: 100,
-      oldPrice: 120,
-      currency: 'دينار',
-      weight: 20,
-      weightData: 'كيلو'
-    }
 
-  ];
+  constructor(private api: ApiService) {
 
-  filteredProducts = [...this.products]; // نسخة لعرضها في الواجهة
+  }
+
+  ngOnInit() {
+    this.api.GetAllProducts().subscribe({
+      next: (response) => {
+        console.log(response);
+        this.products = response;
+
+      }
+    })
+  }
+
+
+
+  // filteredProducts = [...this.products]; 
 
   selectedId = 1;
 
@@ -85,11 +60,11 @@ export class SearchComponent {
   filterProducts() {
     const term = this.searchTerm.trim().toLowerCase();
     if (term === '') {
-      this.filteredProducts = [...this.products];
+      // this.filteredProducts = [...this.products];
     } else {
-      this.filteredProducts = this.products.filter(p =>
-        p.name.toLowerCase().includes(term)
-      );
+      // this.filteredProducts = this.products.filter(p =>
+        // p.name.toLowerCase().includes(term)
+      // );
     }
   }
 

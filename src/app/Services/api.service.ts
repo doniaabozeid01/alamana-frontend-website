@@ -21,56 +21,68 @@ export class ApiService {
 
 
 
+  GetCategoryWithProductsById(id: number): Observable<any> {
+    return this.httpClient.get(`${this.baseUrl}Categories/GetCategoryWithProductsById/${id}`);
+  }
 
-  CreateOrder(data: any): Observable<any> {
-    return this.httpClient.post(`${this.baseUrl}Orders/CreateOrder`, data);
+
+  GetAllProducts(): Observable<any> {
+    return this.httpClient.get(`${this.baseUrl}Product/GetAllProducts`);
+
   }
 
 
 
-  GetAllPaymentMethods(): Observable<any> {
-    return this.httpClient.get(`${this.baseUrl}PaymentMethods/GetAllPaymentMethods`);
-  }
-
-  GetAllCountries(): Observable<any> {
-    return this.httpClient.get(`${this.baseUrl}Location/GetAllCountries`);
-  }
-
-
-  GetGovernoratesByCountryId(CountryId: number): Observable<any> {
-    return this.httpClient.get(`${this.baseUrl}Location/GetGovernoratesByCountryId/${CountryId}`);
-  }
-
-
-  GetCitiesByGovernorateId(GovernorateId: number): Observable<any> {
-    return this.httpClient.get(`${this.baseUrl}Location/GetCitiesByGovernorateId/${GovernorateId}`);
-  }
-  GetDistrictsByCityId(cityId: number): Observable<any> {
-    return this.httpClient.get(`${this.baseUrl}Location/GetDistrictsByCityId/${cityId}`);
-  }
-
-
-  GetCartByUserId(userId: string): Observable<any> {
-    return this.httpClient.get(`${this.baseUrl}Cart/GetCartByUserId/${userId}`);
-  }
-
-
-  GetOrCreateCart(userId: string): Observable<any> {
-    return this.httpClient.get(`${this.baseUrl}Cart/GetOrCreateCart/${userId}`);
-  }
+CreateOrder(data: any): Observable < any > {
+  return this.httpClient.post(`${this.baseUrl}Orders/CreateOrder`, data);
+}
 
 
 
+GetAllPaymentMethods(): Observable < any > {
+  return this.httpClient.get(`${this.baseUrl}PaymentMethods/GetAllPaymentMethods`);
+}
 
-  GetOrdersByUserId(userId: string): Observable<any> {
-    return this.httpClient.get(`${this.baseUrl}Cart/GetOrCreateCart/${userId}`);
-  }
+GetAllCountries(): Observable < any > {
+  return this.httpClient.get(`${this.baseUrl}Location/GetAllCountries`);
+}
 
 
-  AddCartItem(data: any): Observable<any> {
-    return this.httpClient.post(`${this.baseUrl}CartItems/CartItems/AddCartItem`,data);
+GetGovernoratesByCountryId(CountryId: number): Observable < any > {
+  return this.httpClient.get(`${this.baseUrl}Location/GetGovernoratesByCountryId/${CountryId}`);
+}
 
-  }
+
+GetCitiesByGovernorateId(GovernorateId: number): Observable < any > {
+  return this.httpClient.get(`${this.baseUrl}Location/GetCitiesByGovernorateId/${GovernorateId}`);
+}
+GetDistrictsByCityId(cityId: number): Observable < any > {
+  return this.httpClient.get(`${this.baseUrl}Location/GetDistrictsByCityId/${cityId}`);
+}
+
+
+GetCartByUserId(userId: string): Observable < any > {
+  return this.httpClient.get(`${this.baseUrl}Cart/GetCartByUserId/${userId}`);
+}
+
+
+GetOrCreateCart(userId: string): Observable < any > {
+  return this.httpClient.get(`${this.baseUrl}Cart/GetOrCreateCart/${userId}`);
+}
+
+
+
+
+GetOrdersByUserId(userId: string): Observable < any > {
+  return this.httpClient.get(`${this.baseUrl}Cart/GetOrCreateCart/${userId}`);
+}
+
+
+AddCartItem(data: any): Observable < any > {
+  return this.httpClient.post(`${this.baseUrl}CartItems/CartItems/AddCartItem`, data);
+}
+
+
 
 
 

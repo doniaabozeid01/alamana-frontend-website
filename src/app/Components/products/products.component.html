@@ -9,8 +9,8 @@
 
         <div class="chips  pb-5" dir="rtl">
             <button class="chip" *ngFor="let c of categories; trackBy: trackById" [class.active]="c.id === selectedId"
-                (click)="selectCategory(c)" type="button">
-                {{ c.label }}
+                (click)="selectCategory(c.id)" type="button">
+                {{ c.name }}
             </button>
         </div>
 
@@ -27,56 +27,55 @@
                 <div class="category-card m-2 shadow text-center p-0 " routerLink="/product-details">
 
 
-                        <div class="moved-content">
-                            <div class="position-relative">
+                    <div class="moved-content">
+                        <div class="position-relative">
 
-                                <owl-carousel-o *ngIf="categories?.length" #catCarousel [options]="catOptions"
-                                    >
+                            <owl-carousel-o *ngIf="product.galleryUrls.length" #catCarousel [options]="catOptions">
 
-                                    <ng-template carouselSlide *ngFor="let cat of categories; trackBy: trackById">
-                                        <div  >
-                                            <img [src]="product.image"  />
-                                        </div>
+                                <ng-template carouselSlide *ngFor="let url of product.galleryUrls; trackBy: trackById">
+                                    <div>
+                                        <img [src]="url" />
+                                    </div>
 
-                                    </ng-template>
-                                </owl-carousel-o>
+                                </ng-template>
+                            </owl-carousel-o>
 
-                                <div class="out-btn main-bg-color">
-                                    <i class="fa-solid fa-plus"></i>
-                                </div>
+                            <div class="out-btn main-bg-color">
+                                <i class="fa-solid fa-plus"></i>
                             </div>
+                        </div>
+                    </div>
+
+
+                    <div class="w-100 fixed-content m-0 ">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <p class="text-black">{{product.weight}} {{product.weightData}}</p>
+                            <p class="main-color fs-4 second-color text-center">
+                                <!-- {{ (languageService.languageChanged$ | async) === 'ar' ? cat.name_ar : cat.name }} -->
+                                {{product.name}}
+                            </p>
+
                         </div>
 
 
-                        <div class="w-100 fixed-content m-0 ">
-                            <div class="d-flex justify-content-between align-items-center">
-                                <p class="text-black">{{product.weight}} {{product.weightData}}</p>
-                                <p class="main-color fs-4 second-color text-center">
-                                    <!-- {{ (languageService.languageChanged$ | async) === 'ar' ? cat.name_ar : cat.name }} -->
-                                    {{product.name}}
-                                </p>
+                        <div class="d-flex justify-content-between align-items-center text-black">
+                            <p class="second-color text-center">
+                                <!-- {{ (languageService.languageChanged$ | async) === 'ar' ? cat.name_ar : cat.name }} -->
+                                {{product.oldPrice}} {{product.currency}}
+                            </p>
 
-                            </div>
-
-
-                            <div class="d-flex justify-content-between align-items-center text-black">
-                                <p class="second-color text-center">
-                                    <!-- {{ (languageService.languageChanged$ | async) === 'ar' ? cat.name_ar : cat.name }} -->
-                                    {{product.oldPrice}} {{product.currency}}
-                                </p>
-
-                                <p> {{product.newPrice}} {{product.currency}}
-                                </p>
-                            </div>
-
-
-                            <div>
-                                <p class="text-dark fs-small text-end">بلاتينيوم فيكس لاصق بلاط احترافي عالي الجودة،
-                                    مناسب للاستخدام الداخلي والخارجي، يتميز
-                                    بقوة التصاق ممتازة ومقاومة للرطوبة والحرارة، لضمان تثبيت مثالي وطويل الأمد.</p>
-                            </div>
-
+                            <p> {{product.newPrice}} {{product.currency}}
+                            </p>
                         </div>
+
+
+                        <div>
+                            <p class="text-dark fs-small text-end">بلاتينيوم فيكس لاصق بلاط احترافي عالي الجودة،
+                                مناسب للاستخدام الداخلي والخارجي، يتميز
+                                بقوة التصاق ممتازة ومقاومة للرطوبة والحرارة، لضمان تثبيت مثالي وطويل الأمد.</p>
+                        </div>
+
+                    </div>
 
 
 

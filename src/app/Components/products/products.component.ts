@@ -1,5 +1,6 @@
 import { Component, ViewChild } from '@angular/core';
 import { CarouselComponent, OwlOptions } from 'ngx-owl-carousel-o';
+import { ApiService } from 'src/app/Services/api.service';
 
 @Component({
   selector: 'app-products',
@@ -18,86 +19,56 @@ export class ProductsComponent {
     touchDrag: true,
     nav: false,                 // بنستخدم أزرار خارجية
     rtl: true,
-    items:1
+    items: 1
   };
 
 
 
-  categories = [
-    { id: 1, label: 'لواصق' },
-    { id: 2, label: 'عوازل' },
-    { id: 3, label: 'مواد إنشائية' },
-    { id: 4, label: 'منتجات خصوصية' },
-    { id: 5, label: 'إكسسوارات' },
-    { id: 6, label: 'معدات' },
-  ];
+  categories: any;
 
 
 
 
 
-  products = [
-    {
-      name: 'بلاتينيوم فيكس',
-      image: '../../../../assets/random/16b1ca52598339b72e97aa96657cdf8e434815e5.png',
-      newPrice: 100,
-      oldPrice: 120,
-      currency: 'دينار',
-      weight: 20,
-      weightData: 'كيلو'
-    },
-    {
-      name: 'بلاتينيوم فيكس',
-      image: '../../../../assets/random/16b1ca52598339b72e97aa96657cdf8e434815e5.png',
-      newPrice: 100,
-      oldPrice: 120,
-      currency: 'دينار',
-      weight: 20,
-      weightData: 'كيلو'
-    },
-    {
-      name: 'بلاتينيوم فيكس',
-      image: '../../../../assets/random/16b1ca52598339b72e97aa96657cdf8e434815e5.png',
-      newPrice: 100,
-      oldPrice: 120,
-      currency: 'دينار',
-      weight: 20,
-      weightData: 'كيلو'
-    },
+  products :any;
 
-    {
-      name: 'بلاتينيوم فيكس',
-      image: '../../../../assets/random/16b1ca52598339b72e97aa96657cdf8e434815e5.png',
-      newPrice: 100,
-      oldPrice: 120,
-      currency: 'دينار',
-      weight: 20,
-      weightData: 'كيلو'
-    }, {
-      name: 'بلاتينيوم فيكس',
-      image: '../../../../assets/random/16b1ca52598339b72e97aa96657cdf8e434815e5.png',
-      newPrice: 100,
-      oldPrice: 120,
-      currency: 'دينار',
-      weight: 20,
-      weightData: 'كيلو'
-    },
 
-  ];
+  constructor(private api: ApiService) {
 
+  }
+
+  ngOnInit() {
+    this.api.GetAllCategories().subscribe({
+      next: (response) => {
+        this.categories = response;
+        console.log(response);
+        this.getProductsByCategoryId(response[0].id)
+      }
+    })
+  }
 
 
   selectedId = 1;
 
   trackById = (_: number, x: any) => x.id;
 
-  selectCategory(c: { id: number, label: string }) {
-    this.selectedId = c.id;
+  selectCategory(id:number) {
+    this.selectedId = id;
     // لو عايز تربط بفلترة المنتجات:
-    // this.filterByCategory.emit(c.id);
+    // this.filterByCategory.emit(id);
+    this.getProductsByCategoryId(id);
   }
 
 
+
+  getProductsByCategoryId(id: number) {
+    this.api.GetCategoryWithProductsById(id).subscribe({
+      next: (response) => {
+        console.log(response);
+        this.products = response.products;
+      }
+    })
+  }
 
   @ViewChild('catCarousel', { static: false }) catCarousel!: CarouselComponent;
 

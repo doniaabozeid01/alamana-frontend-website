@@ -1,4 +1,4 @@
-<div class="categoriesSwiperCustom  mb-5 px-5">
+<div class="categoriesSwiperCustom mb-5 px-5">
     <h1 class="text-end second-color mb-5">مقترحه لك</h1>
 
     <button class="nav-btn prev-btn" (click)="catCarousel.prev()"><i class="fa-solid fa-arrow-left"></i></button>
@@ -8,22 +8,23 @@
         (dragged)="dragging = false">
 
         <ng-template carouselSlide *ngFor="let cat of categories; trackBy: trackById">
+            
             <div class="category-card text-center p-0 m-4 " (pointerdown)="onPtrDown($event)"
                 (pointermove)="onPtrMove($event)" (pointerup)="onPtrUp()" (pointercancel)="onPtrCancel()"
                 (pointerleave)="onPtrCancel()" (click)="onCardClick(cat.id, $event)">
 
+                <div>
 
-                <div class="   ">
-                    
-                    <div class="moved-content ">
+                    <div class="moved-content">
                         <div class="position-relative">
                             <img [src]="cat.image" [alt]="cat.name" class="" />
+                            
                             <div class="out-btn">
                                 <i class="fa-solid fa-plus"></i>
                             </div>
+                            
                         </div>
                     </div>
-
 
                     <div class="w-100 fixed-content m-0 ">
                         <div class="d-flex justify-content-between align-items-center">
@@ -53,6 +54,7 @@
             </div>
 
         </ng-template>
+        
     </owl-carousel-o>
 
 

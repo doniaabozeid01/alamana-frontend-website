@@ -28,7 +28,7 @@ export class FeaturedProductsComponent {
   trackById = (_: number, cat: any) => cat.id;
 
 
-  categories: any;
+  // categories: any;
   constructor(
     // private api: ApiService,
     private router: Router,
@@ -57,39 +57,39 @@ export class FeaturedProductsComponent {
     // })
 
 
-    this.categories = [
-      {
-        name: 'الأعلى مبيعًا',
-        image: '../../../../assets/categories/163a155bf17de65badc9fee60d656b8133014228.jpg',
-        slogan: 'منتجات أثبتت كفاءتها في كل مشروع'
-      },
-      {
-        name: 'الأعلى مبيعًا',
-        image: '../../../../assets/categories/163a155bf17de65badc9fee60d656b8133014228.jpg',
-        slogan: 'منتجات أثبتت كفاءتها في كل مشروع'
-      },
-      {
-        name: 'الأعلى مبيعًا',
-        image: '../../../../assets/categories/163a155bf17de65badc9fee60d656b8133014228.jpg',
-        slogan: 'منتجات أثبتت كفاءتها في كل مشروع'
-      },
-      {
-        name: 'الأعلى مبيعًا',
-        image: '../../../../assets/categories/163a155bf17de65badc9fee60d656b8133014228.jpg',
-        slogan: 'منتجات أثبتت كفاءتها في كل مشروع'
-      },
+    // this.categories = [
+    //   {
+    //     name: 'الأعلى مبيعًا',
+    //     image: '../../../../assets/categories/163a155bf17de65badc9fee60d656b8133014228.jpg',
+    //     slogan: 'منتجات أثبتت كفاءتها في كل مشروع'
+    //   },
+    //   {
+    //     name: 'الأعلى مبيعًا',
+    //     image: '../../../../assets/categories/163a155bf17de65badc9fee60d656b8133014228.jpg',
+    //     slogan: 'منتجات أثبتت كفاءتها في كل مشروع'
+    //   },
+    //   {
+    //     name: 'الأعلى مبيعًا',
+    //     image: '../../../../assets/categories/163a155bf17de65badc9fee60d656b8133014228.jpg',
+    //     slogan: 'منتجات أثبتت كفاءتها في كل مشروع'
+    //   },
+    //   {
+    //     name: 'الأعلى مبيعًا',
+    //     image: '../../../../assets/categories/163a155bf17de65badc9fee60d656b8133014228.jpg',
+    //     slogan: 'منتجات أثبتت كفاءتها في كل مشروع'
+    //   },
 
-      {
-        name: 'الأعلى مبيعًا',
-        image: '../../../../assets/categories/163a155bf17de65badc9fee60d656b8133014228.jpg',
-        slogan: 'منتجات أثبتت كفاءتها في كل مشروع'
-      },
-      {
-        name: 'الأعلى مبيعًا',
-        image: '../../../../assets/categories/163a155bf17de65badc9fee60d656b8133014228.jpg',
-        slogan: 'منتجات أثبتت كفاءتها في كل مشروع'
-      }
-    ];
+    //   {
+    //     name: 'الأعلى مبيعًا',
+    //     image: '../../../../assets/categories/163a155bf17de65badc9fee60d656b8133014228.jpg',
+    //     slogan: 'منتجات أثبتت كفاءتها في كل مشروع'
+    //   },
+    //   {
+    //     name: 'الأعلى مبيعًا',
+    //     image: '../../../../assets/categories/163a155bf17de65badc9fee60d656b8133014228.jpg',
+    //     slogan: 'منتجات أثبتت كفاءتها في كل مشروع'
+    //   }
+    // ];
 
 
 
