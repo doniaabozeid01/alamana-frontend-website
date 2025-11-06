@@ -27,6 +27,8 @@ import { PaymentsComponent } from './Components/payments/payments.component';
 import { PreviousOrderComponent } from './Components/previous-order/previous-order.component';
 import { SearchComponent } from './Components/search/search.component';
 import { ProductDetailsComponent } from './Components/product-details/product-details.component';
+import { NewProductsComponent } from './Components/HomeSections/new-products/new-products.component';
+import { BestSellersComponent } from './Components/HomeSections/best-sellers/best-sellers.component';
 
 @NgModule({
   declarations: [
@@ -51,7 +53,9 @@ import { ProductDetailsComponent } from './Components/product-details/product-de
     PaymentsComponent,
     PreviousOrderComponent,
     SearchComponent,
-    ProductDetailsComponent
+    ProductDetailsComponent,
+    NewProductsComponent,
+    BestSellersComponent
   ],
   imports: [
     BrowserModule,

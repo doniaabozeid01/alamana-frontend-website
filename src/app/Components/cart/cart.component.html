@@ -1,14 +1,14 @@
 <div class="parent d-md-block d-none" *ngIf="cart?.cartItems as items">
     <h1 *ngIf="items.length > 0" class="text-center main-color">
-        your cart ({{ items.length }} items)
+        السله تحتوي علي ({{ items.length }} منتج)
     </h1>
 
     <div class="cart-header" *ngIf="items.length > 0">
-        <p class="mb-0">cart.item</p>
+        <p class="mb-0">المنتج</p>
         <p class="mb-0"></p>
-        <p class="mb-0">cart.price</p>
-        <p class="mb-0">cart.quantity</p>
-        <p class="mb-0">cart.total</p>
+        <p class="mb-0">السعر</p>
+        <p class="mb-0">الكميه</p>
+        <p class="mb-0">السعر الكلي </p>
     </div>
 
     <div class="cart-items-wrapper color" *ngIf="items.length > 0">
@@ -37,15 +37,15 @@
 
     <div class="ms-auto checkout p-2" *ngIf="items.length > 0">
         <div class="d-flex justify-content-between align-items-center border-bottom py-3">
-            <span class="fs-2 total">cart.subtotal:</span>
             <span class="fs-2 total">
                 {{ getSubtotal() }}
                 <span>{{ items[0]?.currency }}</span>
             </span>
+            <span class="fs-2 total">السعر الكلي:</span>
         </div>
 
         <button (click)="goToCheckout()" class="btn my-3 w-100 main-outline-btn total fs-4 ">
-            checkout
+              إتمام الشراء
         </button>
         
     </div>

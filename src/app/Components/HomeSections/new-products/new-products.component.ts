@@ -2,13 +2,12 @@ import { Component, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { CarouselComponent, OwlOptions } from 'ngx-owl-carousel-o';
 import { ApiService } from 'src/app/Services/api.service';
-
 @Component({
-  selector: 'app-categories',
-  templateUrl: './categories.component.html',
-  styleUrls: ['./categories.component.scss']
+  selector: 'app-new-products',
+  templateUrl: './new-products.component.html',
+  styleUrls: ['./new-products.component.scss']
 })
-export class CategoriesComponent {
+export class NewProductsComponent {
 
   isRtl = document.documentElement.dir === 'rtl';
 
@@ -60,23 +59,19 @@ export class CategoriesComponent {
 
     this.categories = [
       {
-        name: 'لواصق',
+        name: 'بلاتينيوم فيكس',
         imagePath: '../../../../assets/categories/163a155bf17de65badc9fee60d656b8133014228.jpg'
       },
       {
-        name: 'عوازل',
+        name: 'امفيكس',
         imagePath: '../../../../assets/categories/163a155bf17de65badc9fee60d656b8133014228.jpg'
       },
       {
-        name: 'عوازل',
+        name: 'بيسكو بوند',
         imagePath: '../../../../assets/categories/163a155bf17de65badc9fee60d656b8133014228.jpg'
       },
       {
-        name: 'عوازل',
-        imagePath: '../../../../assets/categories/163a155bf17de65badc9fee60d656b8133014228.jpg'
-      },
-      {
-        name: 'عوازل',
+        name: 'بيسكو بوند',
         imagePath: '../../../../assets/categories/163a155bf17de65badc9fee60d656b8133014228.jpg'
       }
     ];

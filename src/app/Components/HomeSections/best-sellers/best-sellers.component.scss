@@ -1,0 +1,87 @@
+
+/* الدائرة نفسها */
+.category-card {
+    position: relative;
+    background: #ffffff;
+    // border: 1px solid black;
+
+    // border-radius: 50%;
+    aspect-ratio: 1 / 1;
+    height: auto;
+    /* يضمن دايرة تمام */
+    width: clamp(100px, 22vw, 300px);
+    /* مقاس مرن: من 160 لـ 320 حسب الشاشة */
+    margin: 10px auto;
+    /* توسيط داخل العمود/السلايد */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    // overflow: hidden;
+    border-radius: 10px;
+
+}
+
+.fixed-content{
+    background-color: rgb(245, 247, 248);
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+
+}
+
+/* الصورة جوا الدائرة */
+.category-card img {
+    width: 100%;
+    height: 100%;
+    max-height: 80%;
+    object-fit: contain;
+    display: block;
+    padding: 10px 0;
+}
+
+/* العنوان تحت الدائرة */
+.category-title {
+    margin-top: 12px;
+    font-weight: 700;
+    text-align: center;
+}
+
+/* لو بتستخدمي Swiper أو سلايدر مشابه */
+.swiper-slide {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+
+
+
+
+
+
+.categoriesSwiperCustom {
+    max-width: 1600px;
+    margin: auto;
+}
+
+
+@media (max-width:768px) {
+    .category-card img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+    }
+
+    .category-card {
+        cursor: pointer;
+        width: clamp(100px, 100vw, 280px);
+
+    }
+
+}
+
+
+// .owl-item {
+//     margin: 0 70px !important;
+// }

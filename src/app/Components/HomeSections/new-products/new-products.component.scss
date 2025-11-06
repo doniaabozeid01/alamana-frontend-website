@@ -1,0 +1,406 @@
+/* تمركز الأسهم خارجية */
+.slider-arrow {
+    position: absolute;
+    top: 60%;
+    transform: translateY(-50%);
+    z-index: 5;
+    width: 30px;
+    height: 30px;
+    border: 0;
+    border-radius: 9999px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: white;
+    color: #000000;
+    box-shadow: 0 0 25px rgba(0, 0, 0, 0.2);
+
+}
+
+.slider-arrow.left {
+    left: 8px;
+}
+
+.slider-arrow.right {
+    right: 8px;
+}
+
+/* الدوتس في أسفل الكاروسيل ومتمركزة */
+:host ::ng-deep .categories-carousel .owl-theme .owl-dots {
+    position: absolute;
+    left: 50%;
+    bottom: 8px;
+    transform: translateX(-50%);
+}
+
+
+
+
+/* الدائرة نفسها */
+.category-card {
+    position: relative;
+    background: #F9D3C0;
+    // border-radius: 50%;
+    aspect-ratio: 1 / 1;
+    /* يضمن دايرة تمام */
+    width: clamp(100px, 22vw, 300px);
+    /* مقاس مرن: من 160 لـ 320 حسب الشاشة */
+    margin: 0 auto;
+    /* توسيط داخل العمود/السلايد */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+
+
+/* الصورة جوا الدائرة */
+.category-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* العنوان تحت الدائرة */
+.category-title {
+    margin-top: 12px;
+    font-weight: 700;
+    text-align: center;
+}
+
+/* لو بتستخدمي Swiper أو سلايدر مشابه */
+.swiper-slide {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+
+
+
+
+
+
+.categoriesSwiperCustom {
+    max-width: 1600px;
+    margin: auto;
+}
+
+
+@media (max-width:768px) {
+    .category-card img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+    }
+
+    .category-card {
+        cursor: pointer;
+        width: clamp(100px, 100vw, 280px);
+
+    }
+
+}
+
+
+.owl-item {
+    margin: 0 70px !important;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* تمركز الأسهم خارجية */
+.slider-arrow {
+    position: absolute;
+    top: 60%;
+    transform: translateY(-50%);
+    z-index: 5;
+    width: 30px;
+    height: 30px;
+    border: 0;
+    border-radius: 9999px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: white;
+    color: #000000;
+    box-shadow: 0 0 25px rgba(0, 0, 0, 0.2);
+
+}
+
+.slider-arrow.left {
+    left: 8px;
+}
+
+.slider-arrow.right {
+    right: 8px;
+}
+
+/* الدوتس في أسفل الكاروسيل ومتمركزة */
+:host ::ng-deep .categories-carousel .owl-theme .owl-dots {
+    position: absolute;
+    left: 50%;
+    bottom: 8px;
+    transform: translateX(-50%);
+}
+
+
+
+
+/* الدائرة نفسها */
+// .category-card {
+//     position: relative;
+//     background: #F9D3C0;
+//     // border-radius: 50%;
+//     aspect-ratio: 1 / 1;
+//     /* يضمن دايرة تمام */
+//     width: clamp(100px, 22vw, 300px);
+//     /* مقاس مرن: من 160 لـ 320 حسب الشاشة */
+//     margin: 0 auto;
+//     /* توسيط داخل العمود/السلايد */
+//     display: flex;
+//     align-items: center;
+//     justify-content: center;
+//     overflow: hidden;
+// }
+
+
+// .product-card {
+//   text-align: center;
+//   transition: 0.3s;
+// }
+
+// .hexagon {
+//   clip-path: polygon(25% 5%, 75% 5%, 100% 50%, 75% 95%, 25% 95%, 0% 50%);
+//   overflow: hidden;
+//   width: 100%;
+//   max-width: 350px;
+//   aspect-ratio: 1/1;
+//   margin: auto;
+// }
+
+// .hexagon img {
+//   width: 100%;
+//   height: 100%;
+//   object-fit: cover;
+//   transition: 0.4s;
+// }
+
+// .product-card:hover img {
+//   transform: scale(1.1);
+// }
+
+// .product-name {
+//   background-color: #1D75B9;
+//   color: white;
+//   padding: 10px;
+//   margin-top: 10px;
+//   border-radius: 4px;
+// }
+
+// .hexagon {
+//   position: relative;
+// }
+// .label {
+//   position: absolute;
+//   bottom: 80px;
+//   left: 50%;
+//   transform: translateX(-50%);
+//   background-color: #8CC549;
+//   color: white;
+//   padding: 8px 20px;
+//   border-radius: 50px;
+//   font-weight: 500;
+//   box-shadow: 0 3px 6px rgba(0,0,0,0.2);
+// }
+
+
+
+
+
+
+
+// /* الصورة جوا الدائرة */
+// .category-card img {
+//     width: 100%;
+//     height: 100%;
+//     object-fit: cover;
+//     display: block;
+// }
+
+// /* العنوان تحت الدائرة */
+// .category-title {
+//     margin-top: 12px;
+//     font-weight: 700;
+//     text-align: center;
+// }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* الحاوية العامة */
+.product-hex {
+  width: clamp(180px, 24vw, 340px);
+  aspect-ratio: 1 / 1;
+  margin-inline: auto;
+}
+
+/* الشكل السداسي + الصورة */
+.hex-img {
+  position: relative;
+  height: 100%;
+  overflow: hidden;
+  clip-path: polygon(25% 5%, 75% 5%, 100% 50%, 75% 95%, 25% 95%, 0% 50%);
+  -webkit-clip-path: polygon(25% 5%, 75% 5%, 100% 50%, 75% 95%, 25% 95%, 0% 50%);
+  transition: transform .35s ease;
+}
+
+.hex-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform .5s ease;
+}
+
+/* تأثير بسيط عند الهوفر */
+.product-hex:hover .hex-img img { transform: scale(1.06); }
+
+/* بادج "جديد" صغيرة في الركن */
+.badge-new {
+  position: absolute;
+  top: 12px;
+  inset-inline-end: 12px;           /* يدعم RTL/LTR */
+  background: #8CC549;
+  color: #fff;
+  padding: .35rem .7rem;
+  border-radius: 999px;
+  font-size: .85rem;
+  font-weight: 700;
+  box-shadow: 0 4px 12px rgba(0,0,0,.15);
+  letter-spacing: .2px;
+}
+
+/* اسم المنتج كبِل طافي */
+.pill-name {
+  position: absolute;
+  bottom: 14px;
+  inset-inline-start: 50%;
+  transform: translateX(-50%);
+  background: rgba(29,117,185,.92); /* أزرق العلامة */
+  color: #fff;
+  padding: .55rem 1.1rem;
+  border-radius: 999px;
+  font-weight: 600;
+  font-size: 1rem;
+  max-width: 85%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  box-shadow: 0 8px 20px rgba(0,0,0,.18);
+}
+
+/* لمسة إضافية عند الهوفر */
+.product-hex:hover .pill-name { transform: translateX(-50%) translateY(-2px); }
+
+
+
+
+
+
+
+
+
+/* لو بتستخدمي Swiper أو سلايدر مشابه */
+.swiper-slide {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+
+
+
+
+
+
+.categoriesSwiperCustom {
+    max-width: 1600px;
+    margin: auto;
+}
+
+
+@media (max-width:768px) {
+    .category-card img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+    }
+
+    .category-card {
+        cursor: pointer;
+        width: clamp(100px, 100vw, 280px);
+
+    }
+
+}
+
+
+.owl-item {
+    margin: 0 70px !important;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

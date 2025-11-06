@@ -9,11 +9,17 @@
     position: relative;
     padding: 28px 16px 22px;
     //   border-radius: 16px;
+    background-image: url('../../../assets/Mask group.png');
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    // color: #000000;
     overflow: hidden;
-    background: #fff;
+    // background: #fff;
     box-shadow: 0 6px 18px rgba(0, 0, 0, .05);
     margin: 12px 0 18px;
 }
+
 
 /* خلفية مزخرفة خفيفة */
 .category-filter .cf-bg {
@@ -55,7 +61,7 @@
     padding: 10px 28px;
     font-weight: 800;
     letter-spacing: .2px;
-    background: var(--chip);
+    background-color: #929292;
     color: #fff;
     box-shadow: 0 6px 16px rgba(0, 0, 0, .12);
     transition: transform .06s ease, filter .2s ease, background .2s ease;
@@ -65,10 +71,14 @@
 }
 
 .chip:hover {
+        background-color: #1E75B7;
+
     filter: brightness(.97);
 }
 
 .chip:active {
+        background-color: #1E75B7;
+
     transform: translateY(1px)
 }
 
@@ -79,12 +89,12 @@
 
 /* chip المفعّلة */
 .chip.active {
-    background: var(--blue);
+    background-color: #1E75B7;
     box-shadow: 0 10px 20px rgba(30, 117, 183, .25);
 }
 
 .chip.active:hover {
-    background: var(--blue-700);
+    background-color: #1c6aa7;
 }
 
 /* مسافات ريسبونسف */
@@ -306,3 +316,10 @@ p {
 // .products{
 //     overflow: scroll;
 // }
+
+
+
+
+.name{
+    
+}

@@ -4,11 +4,11 @@ import { CarouselComponent, OwlOptions } from 'ngx-owl-carousel-o';
 import { ApiService } from 'src/app/Services/api.service';
 
 @Component({
-  selector: 'app-categories',
-  templateUrl: './categories.component.html',
-  styleUrls: ['./categories.component.scss']
+  selector: 'app-best-sellers',
+  templateUrl: './best-sellers.component.html',
+  styleUrls: ['./best-sellers.component.scss']
 })
-export class CategoriesComponent {
+export class BestSellersComponent {
 
   isRtl = document.documentElement.dir === 'rtl';
 
@@ -57,28 +57,53 @@ export class CategoriesComponent {
       }
     })
 
-
     this.categories = [
       {
-        name: 'لواصق',
-        imagePath: '../../../../assets/categories/163a155bf17de65badc9fee60d656b8133014228.jpg'
+        name: 'بلاتينيوم فيكس',
+        image: '../../../../assets/random/16b1ca52598339b72e97aa96657cdf8e434815e5.png',
+        newPrice: 100,
+        oldPrice: 120,
+        currency: 'دينار',
+        weight: 20,
+        weightData: 'كيلو'
       },
       {
-        name: 'عوازل',
-        imagePath: '../../../../assets/categories/163a155bf17de65badc9fee60d656b8133014228.jpg'
+        name: 'بلاتينيوم فيكس',
+        image: '../../../../assets/random/16b1ca52598339b72e97aa96657cdf8e434815e5.png',
+        newPrice: 100,
+        oldPrice: 120,
+        currency: 'دينار',
+        weight: 20,
+        weightData: 'كيلو'
       },
       {
-        name: 'عوازل',
-        imagePath: '../../../../assets/categories/163a155bf17de65badc9fee60d656b8133014228.jpg'
+        name: 'بلاتينيوم فيكس',
+        image: '../../../../assets/random/16b1ca52598339b72e97aa96657cdf8e434815e5.png',
+        newPrice: 100,
+        oldPrice: 120,
+        currency: 'دينار',
+        weight: 20,
+        weightData: 'كيلو'
       },
+
       {
-        name: 'عوازل',
-        imagePath: '../../../../assets/categories/163a155bf17de65badc9fee60d656b8133014228.jpg'
+        name: 'بلاتينيوم فيكس',
+        image: '../../../../assets/random/16b1ca52598339b72e97aa96657cdf8e434815e5.png',
+        newPrice: 100,
+        oldPrice: 120,
+        currency: 'دينار',
+        weight: 20,
+        weightData: 'كيلو'
+      }, {
+        name: 'بلاتينيوم فيكس',
+        image: '../../../../assets/random/16b1ca52598339b72e97aa96657cdf8e434815e5.png',
+        newPrice: 100,
+        oldPrice: 120,
+        currency: 'دينار',
+        weight: 20,
+        weightData: 'كيلو'
       },
-      {
-        name: 'عوازل',
-        imagePath: '../../../../assets/categories/163a155bf17de65badc9fee60d656b8133014228.jpg'
-      }
+
     ];
 
 
