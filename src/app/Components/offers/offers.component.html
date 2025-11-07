@@ -2,7 +2,7 @@
   <div class="promo-card shadow" *ngFor="let p of promos; trackBy: trackById">
     <!-- البانر -->
     <div class="banner">
-      <img class="banner-bg" [src]="p.product" alt="" />
+      <img class="banner-bg" [src]="p.imageUrl" alt="" />
       <!-- <div class="banner-overlay"></div> -->
 
       <div class="banner-content">
@@ -20,7 +20,7 @@
     <!-- صندوق الوصف -->
     <div class="desc">
       <p class="title">{{ p.title }}</p>
-      <p class="text">{{ p.text }}</p>
+      <p class="text">{{ p.description }}</p>
     </div>
   </div>
 </section>

@@ -58,29 +58,34 @@ export class CategoriesComponent {
     })
 
 
-    this.categories = [
-      {
-        name: 'لواصق',
-        imagePath: '../../../../assets/categories/163a155bf17de65badc9fee60d656b8133014228.jpg'
-      },
-      {
-        name: 'عوازل',
-        imagePath: '../../../../assets/categories/163a155bf17de65badc9fee60d656b8133014228.jpg'
-      },
-      {
-        name: 'عوازل',
-        imagePath: '../../../../assets/categories/163a155bf17de65badc9fee60d656b8133014228.jpg'
-      },
-      {
-        name: 'عوازل',
-        imagePath: '../../../../assets/categories/163a155bf17de65badc9fee60d656b8133014228.jpg'
-      },
-      {
-        name: 'عوازل',
-        imagePath: '../../../../assets/categories/163a155bf17de65badc9fee60d656b8133014228.jpg'
-      }
-    ];
+    // this.categories = [
+    //   {
+    //     name: 'لواصق',
+    //     imagePath: '../../../../assets/categories/163a155bf17de65badc9fee60d656b8133014228.jpg'
+    //   },
+    //   {
+    //     name: 'عوازل',
+    //     imagePath: '../../../../assets/categories/163a155bf17de65badc9fee60d656b8133014228.jpg'
+    //   },
+    //   {
+    //     name: 'عوازل',
+    //     imagePath: '../../../../assets/categories/163a155bf17de65badc9fee60d656b8133014228.jpg'
+    //   },
+    //   {
+    //     name: 'عوازل',
+    //     imagePath: '../../../../assets/categories/163a155bf17de65badc9fee60d656b8133014228.jpg'
+    //   },
+    //   {
+    //     name: 'عوازل',
+    //     imagePath: '../../../../assets/categories/163a155bf17de65badc9fee60d656b8133014228.jpg'
+    //   }
+    // ];
 
+
+
+
+
+        // this.categories : any;
 
 
   }

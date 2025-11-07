@@ -11,9 +11,7 @@ export class ApiService {
   baseUrl: string = "https://localhost:7046/api/";
 
 
-  constructor(private httpClient: HttpClient) {
-
-  }
+  constructor(private httpClient: HttpClient) {  }
 
   GetAllCategories(): Observable<any> {
     return this.httpClient.get(`${this.baseUrl}Categories/GetAllCategories`);
@@ -33,57 +31,59 @@ export class ApiService {
 
 
 
-CreateOrder(data: any): Observable < any > {
-  return this.httpClient.post(`${this.baseUrl}Orders/CreateOrder`, data);
-}
+  CreateOrder(data: any): Observable<any> {
+    return this.httpClient.post(`${this.baseUrl}Orders/CreateOrder`, data);
+  }
 
 
 
-GetAllPaymentMethods(): Observable < any > {
-  return this.httpClient.get(`${this.baseUrl}PaymentMethods/GetAllPaymentMethods`);
-}
+  GetAllPaymentMethods(): Observable<any> {
+    return this.httpClient.get(`${this.baseUrl}PaymentMethods/GetAllPaymentMethods`);
+  }
 
-GetAllCountries(): Observable < any > {
-  return this.httpClient.get(`${this.baseUrl}Location/GetAllCountries`);
-}
-
-
-GetGovernoratesByCountryId(CountryId: number): Observable < any > {
-  return this.httpClient.get(`${this.baseUrl}Location/GetGovernoratesByCountryId/${CountryId}`);
-}
+  GetAllCountries(): Observable<any> {
+    return this.httpClient.get(`${this.baseUrl}Location/GetAllCountries`);
+  }
 
 
-GetCitiesByGovernorateId(GovernorateId: number): Observable < any > {
-  return this.httpClient.get(`${this.baseUrl}Location/GetCitiesByGovernorateId/${GovernorateId}`);
-}
-GetDistrictsByCityId(cityId: number): Observable < any > {
-  return this.httpClient.get(`${this.baseUrl}Location/GetDistrictsByCityId/${cityId}`);
-}
+  GetGovernoratesByCountryId(CountryId: number): Observable<any> {
+    return this.httpClient.get(`${this.baseUrl}Location/GetGovernoratesByCountryId/${CountryId}`);
+  }
 
 
-GetCartByUserId(userId: string): Observable < any > {
-  return this.httpClient.get(`${this.baseUrl}Cart/GetCartByUserId/${userId}`);
-}
+  GetCitiesByGovernorateId(GovernorateId: number): Observable<any> {
+    return this.httpClient.get(`${this.baseUrl}Location/GetCitiesByGovernorateId/${GovernorateId}`);
+  }
+  GetDistrictsByCityId(cityId: number): Observable<any> {
+    return this.httpClient.get(`${this.baseUrl}Location/GetDistrictsByCityId/${cityId}`);
+  }
 
 
-GetOrCreateCart(userId: string): Observable < any > {
-  return this.httpClient.get(`${this.baseUrl}Cart/GetOrCreateCart/${userId}`);
-}
+  GetCartByUserId(userId: string): Observable<any> {
+    return this.httpClient.get(`${this.baseUrl}Cart/GetCartByUserId/${userId}`);
+  }
 
 
-
-
-GetOrdersByUserId(userId: string): Observable < any > {
-  return this.httpClient.get(`${this.baseUrl}Cart/GetOrCreateCart/${userId}`);
-}
-
-
-AddCartItem(data: any): Observable < any > {
-  return this.httpClient.post(`${this.baseUrl}CartItems/CartItems/AddCartItem`, data);
-}
+  GetOrCreateCart(userId: string): Observable<any> {
+    return this.httpClient.get(`${this.baseUrl}Cart/GetOrCreateCart/${userId}`);
+  }
 
 
 
+
+  GetOrdersByUserId(userId: string): Observable<any> {
+    return this.httpClient.get(`${this.baseUrl}Cart/GetOrCreateCart/${userId}`);
+  }
+
+
+  AddCartItem(data: any): Observable<any> {
+    return this.httpClient.post(`${this.baseUrl}CartItems/CartItems/AddCartItem`, data);
+  }
+
+
+  GetAllAdvertisements(): Observable<any> {
+    return this.httpClient.get(`${this.baseUrl}Advertisements/GetAllAdvertisements`);
+  }
 
 
 
