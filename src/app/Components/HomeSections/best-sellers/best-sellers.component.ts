@@ -48,7 +48,7 @@ export class BestSellersComponent {
     this.api.GetAllCategories().subscribe({
       next:(res)=>{
         console.log(res);
-        this.categories = res;
+        // this.categories = res;
 
       },
       error:(err)=>{

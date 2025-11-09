@@ -11,6 +11,7 @@ import { ApiService } from 'src/app/Services/api.service';
 export class CategoriesComponent {
 
   isRtl = document.documentElement.dir === 'rtl';
+  
 
   catOptions: OwlOptions = {
     loop: false,
@@ -49,11 +50,9 @@ export class CategoriesComponent {
       next:(res)=>{
         console.log(res);
         this.categories = res;
-
       },
       error:(err)=>{
         console.log(err);
-
       }
     })
 

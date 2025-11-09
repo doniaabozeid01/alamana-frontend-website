@@ -1,5 +1,5 @@
 .video {
-  width: 80%;
+  width: 100%;
   margin: auto;
   max-height: 50vh;
   position: relative;
@@ -12,4 +12,10 @@
   height: 100%;
   object-fit: cover;
   display: block;
+}
+
+
+.parent {
+  width: 85%;
+  margin: auto;
 }

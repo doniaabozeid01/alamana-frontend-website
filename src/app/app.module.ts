@@ -29,6 +29,7 @@ import { SearchComponent } from './Components/search/search.component';
 import { ProductDetailsComponent } from './Components/product-details/product-details.component';
 import { NewProductsComponent } from './Components/HomeSections/new-products/new-products.component';
 import { BestSellersComponent } from './Components/HomeSections/best-sellers/best-sellers.component';
+import { WhoWeAreComponent } from './Components/who-we-are/who-we-are.component';
 
 @NgModule({
   declarations: [
@@ -55,7 +56,8 @@ import { BestSellersComponent } from './Components/HomeSections/best-sellers/bes
     SearchComponent,
     ProductDetailsComponent,
     NewProductsComponent,
-    BestSellersComponent
+    BestSellersComponent,
+    WhoWeAreComponent
   ],
   imports: [
     BrowserModule,

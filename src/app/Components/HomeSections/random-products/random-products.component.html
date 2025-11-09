@@ -1,15 +1,15 @@
-<div class="categoriesSwiperCustom mb-5 px-5">
-    <h1 class="text-end second-color mb-5">مقترحه لك</h1>
+<div class="categoriesSwiperCustom mb-5 justify-content-center  px-md-5">
 
-    <button class="nav-btn prev-btn" (click)="catCarousel.prev()"><i class="fa-solid fa-arrow-left"></i></button>
-    <button class="nav-btn next-btn" (click)="catCarousel.next()"><i class="fa-solid fa-arrow-right"></i></button>
+    <h1 class="text-center second-color mb-5">مقترحه لك</h1>
+
+    <button class="nav-btn prev-btn d-md-flex d-none" (click)="catCarousel.prev()"><i class="fa-solid fa-arrow-left"></i></button>
+    <button class="nav-btn next-btn d-md-flex d-none" (click)="catCarousel.next()"><i class="fa-solid fa-arrow-right"></i></button>
 
     <owl-carousel-o *ngIf="categories?.length" #catCarousel [options]="catOptions" (drag)="dragging = true"
         (dragged)="dragging = false">
 
         <ng-template carouselSlide *ngFor="let cat of categories; trackBy: trackById">
-            
-            <div class="category-card text-center p-0 m-4 " (pointerdown)="onPtrDown($event)"
+            <div class="category-card text-center p-0 bg-danger " (pointerdown)="onPtrDown($event)"
                 (pointermove)="onPtrMove($event)" (pointerup)="onPtrUp()" (pointercancel)="onPtrCancel()"
                 (pointerleave)="onPtrCancel()" (click)="onCardClick(cat.id, $event)">
 
@@ -52,11 +52,8 @@
 
                 
             </div>
-
         </ng-template>
         
     </owl-carousel-o>
-
-
 
 </div>

@@ -11,6 +11,7 @@ import { PaymentsComponent } from './Components/payments/payments.component';
 import { PreviousOrderComponent } from './Components/previous-order/previous-order.component';
 import { SearchComponent } from './Components/search/search.component';
 import { ProductDetailsComponent } from './Components/product-details/product-details.component';
+import { WhoWeAreComponent } from './Components/who-we-are/who-we-are.component';
 
 const routes: Routes = [
   // {path:'login',component:LoginComponent}
@@ -41,6 +42,7 @@ const routes: Routes = [
       { path: 'previousorder', component: PreviousOrderComponent },
       { path: 'search', component: SearchComponent },
       { path: 'product-details', component: ProductDetailsComponent },
+      { path: 'almana-is', component: WhoWeAreComponent },
       // { path: 'advertise', component: AdvertiseCarouselComponent },
       // { path: 'main-categories', component: MainCategoriesComponent },
       // { path: 'rawMaterial-categories', component: RawMaterialCategoriesComponent },

@@ -4,12 +4,13 @@
 
 
 
-@media (max-width:768px){
+@media (max-width:768px) {
     .w-10 {
-    width: 20%;
-}
+        width: 20%;
+    }
 
 }
+
 .auth {
     // background-color: #1E75B7;
     padding: 10px 30px;
@@ -50,14 +51,14 @@
 }
 
 
-.nav-link{
+.nav-link {
     font-size: 20px;
     margin: 0 20px;
 }
 
 
 
-.nav-max-width{
+.nav-max-width {
     width: 1800px;
     padding: 5px 0;
 }
@@ -65,5 +66,25 @@
 
 /* أهم تعديل لتبديل الاتجاه */
 .navbar .container-fluid {
-  flex-direction: row-reverse;
+    flex-direction: row-reverse;
+}
+
+
+
+@media (max-width:768px) {
+    .navbar-nav {
+        display: flex;
+        flex-direction: column-reverse;
+    }
+}
+
+
+@media (max-width:1200px) {
+    a {
+        font-size: 18px !important;
+    }
+
+    .nav-link {
+        text-align: center;
+    }
 }

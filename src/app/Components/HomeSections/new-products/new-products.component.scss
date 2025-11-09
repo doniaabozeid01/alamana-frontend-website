@@ -274,68 +274,75 @@
 
 /* الحاوية العامة */
 .product-hex {
-  width: clamp(180px, 24vw, 340px);
-  aspect-ratio: 1 / 1;
-  margin-inline: auto;
+    width: clamp(180px, 24vw, 340px);
+    aspect-ratio: 1 / 1;
+    margin-inline: auto;
 }
 
 /* الشكل السداسي + الصورة */
 .hex-img {
-  position: relative;
-  height: 100%;
-  overflow: hidden;
-  clip-path: polygon(25% 5%, 75% 5%, 100% 50%, 75% 95%, 25% 95%, 0% 50%);
-  -webkit-clip-path: polygon(25% 5%, 75% 5%, 100% 50%, 75% 95%, 25% 95%, 0% 50%);
-  transition: transform .35s ease;
+    position: relative;
+    height: 100%;
+    overflow: hidden;
+    clip-path: polygon(25% 5%, 75% 5%, 100% 50%, 75% 95%, 25% 95%, 0% 50%);
+    -webkit-clip-path: polygon(25% 5%, 75% 5%, 100% 50%, 75% 95%, 25% 95%, 0% 50%);
+    transition: transform .35s ease;
 }
 
 .hex-img img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-  transition: transform .5s ease;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform .5s ease;
 }
 
 /* تأثير بسيط عند الهوفر */
-.product-hex:hover .hex-img img { transform: scale(1.06); }
+.product-hex:hover .hex-img img {
+    transform: scale(1.06);
+}
 
 /* بادج "جديد" صغيرة في الركن */
 .badge-new {
-  position: absolute;
-  top: 12px;
-  inset-inline-end: 12px;           /* يدعم RTL/LTR */
-  background: #8CC549;
-  color: #fff;
-  padding: .35rem .7rem;
-  border-radius: 999px;
-  font-size: .85rem;
-  font-weight: 700;
-  box-shadow: 0 4px 12px rgba(0,0,0,.15);
-  letter-spacing: .2px;
+    position: absolute;
+    top: 12px;
+    inset-inline-end: 12px;
+    /* يدعم RTL/LTR */
+    background: #8CC549;
+    color: #fff;
+    padding: .35rem .7rem;
+    border-radius: 999px;
+    font-size: .85rem;
+    font-weight: 700;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, .15);
+    letter-spacing: .2px;
 }
 
 /* اسم المنتج كبِل طافي */
 .pill-name {
-  position: absolute;
-  bottom: 14px;
-  inset-inline-start: 50%;
-  transform: translateX(-50%);
-  background: rgba(29,117,185,.92); /* أزرق العلامة */
-  color: #fff;
-  padding: .55rem 1.1rem;
-  border-radius: 999px;
-  font-weight: 600;
-  font-size: 1rem;
-  max-width: 85%;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  box-shadow: 0 8px 20px rgba(0,0,0,.18);
+    position: absolute;
+    bottom: 14px;
+    inset-inline-start: 50%;
+    transform: translateX(-50%);
+    background: rgba(29, 117, 185, .92);
+    /* أزرق العلامة */
+    color: #fff;
+    padding: .55rem 1.1rem;
+    border-radius: 999px;
+    font-weight: 600;
+    font-size: 1rem;
+    max-width: 85%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, .18);
+    transform: translateY(25%);
 }
 
 /* لمسة إضافية عند الهوفر */
-.product-hex:hover .pill-name { transform: translateX(-50%) translateY(-2px); }
+// .product-hex:hover .pill-name {
+//     transform: translateX(-50%) translateY(25%);
+// }
 
 
 
@@ -376,8 +383,25 @@
     .category-card {
         cursor: pointer;
         width: clamp(100px, 100vw, 280px);
-
     }
+
+
+
+    /* الحاوية العامة */
+    .product-hex {
+        width: clamp(180px, 60vw, 340px);
+        aspect-ratio: 1 / 1;
+        margin-inline: auto;
+    }
+
+
+    /* اسم المنتج كبِل طافي */
+    .pill-name {
+        transform: translateX(-10%);
+        transform: translateY(25%);
+    }
+
+
 
 }
 
@@ -385,22 +409,3 @@
 .owl-item {
     margin: 0 70px !important;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

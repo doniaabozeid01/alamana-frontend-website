@@ -1,4 +1,4 @@
-<div class="parent d-md-block d-none" *ngIf="cart?.cartItems as items">
+<div class="parent d-md-block d-none " *ngIf="cart?.cartItems as items">
     <h1 *ngIf="items.length > 0" class="text-center main-color">
         السله تحتوي علي ({{ items.length }} منتج)
     </h1>
@@ -59,7 +59,7 @@
 
 
 
-<div class="cart-page d-md-none d-block" *ngIf="cart?.cartItems as items">
+<div class="cart-page d-md-none d-block px-3" *ngIf="cart?.cartItems as items">
     <h1 *ngIf="items.length > 0" class="text-center main-color">
         yourcart ({{ items.length }} cart.itemcounter)
     </h1>

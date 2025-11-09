@@ -183,15 +183,16 @@
 }
 
 .fs-small {
-  padding-top: 5px;
-  font-size: 12px;
-  
-  /* السطرين فقط مع النقاط */
-  display: -webkit-box;
-  -webkit-line-clamp: 2;     /* عدد السطور */
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-  text-overflow: ellipsis;
+    padding-top: 5px;
+    font-size: 12px;
+
+    /* السطرين فقط مع النقاط */
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    /* عدد السطور */
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 
@@ -211,7 +212,7 @@
 
     img {
         margin: auto;
-        width: 40%!important;
+        width: 40% !important;
     }
 }
 
@@ -231,8 +232,8 @@
 
 .out-btn {
     position: absolute;
-    bottom: 30px;
-    right: 60px;
+    bottom: 0%;
+    right: 30%;
     width: 40px;
     height: 40px;
     z-index: 999999;

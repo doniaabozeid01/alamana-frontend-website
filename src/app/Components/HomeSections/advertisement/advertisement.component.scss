@@ -1,5 +1,5 @@
 .hero-carousel {
-    position: relative;
+    // position: relative;
     width: 100%;
 
     margin: auto;
@@ -17,16 +17,26 @@
 
 
 
+// @media (max-width:768px) {
+//     .img-cover {
+//         width: 100%;
+
+// min-height: 20vh;
+//         // box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+//     }
+
 @media (max-width:768px) {
+
     .img-cover {
         width: 100%;
+        min-height: 18vh;
 
-        min-height: 20vh;
-        // box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
     }
 
-    img {
-        object-fit: cover;
-
+    /* لا تفرضي min-height */
+    .img-cover img {
+        min-height: 18vh;
     }
 }
+
+// }

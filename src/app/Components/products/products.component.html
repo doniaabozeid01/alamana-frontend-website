@@ -3,7 +3,6 @@
 
 
     <div class="category-filter py-3 p-0 m-0">
-        <!-- <div class="cf-bg"></div> -->
 
         <h2 class="cf-title ">تصفّح حسب الفئة</h2>
 
@@ -19,29 +18,30 @@
 
 
 
-    <div class="py-5 products">
+    <div class="py-5 products bg-danger ">
 
-        <div class="row container justify-content-start align-items-center  m-auto">
-            <div class="col-md-3 mb-4 " *ngFor="let product of products">
+        <div class="row justify-content-center align-items-center m-auto ">
+            <div class="col-md-3 mb-4 d-flex justify-content-center " *ngFor="let product of products">
 
                 <div class="category-card m-2 shadow text-center p-0 " routerLink="/product-details">
 
 
                     <div class="moved-content">
-                        <div class="position-relative">
+                        <div class="">
 
                             <owl-carousel-o *ngIf="product.galleryUrls.length" #catCarousel [options]="catOptions">
 
                                 <ng-template carouselSlide *ngFor="let url of product.galleryUrls; trackBy: trackById">
-                                    <div>
-                                        <img [src]="url" />
+                                    <div class="position-relative">
+                                        <img [src]="url"/>
+                                        <div class="out-btn main-bg-color">
+                                            <i class="fa-solid fa-plus"></i>
+                                        </div>
                                     </div>
                                 </ng-template>
                             </owl-carousel-o>
 
-                            <div class="out-btn main-bg-color">
-                                <i class="fa-solid fa-plus"></i>
-                            </div>
+
                         </div>
                     </div>
 
@@ -83,7 +83,6 @@
 
             </div>
         </div>
-
 
     </div>
 
