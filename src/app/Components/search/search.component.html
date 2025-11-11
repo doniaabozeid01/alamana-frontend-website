@@ -17,7 +17,7 @@
                                 <ng-template carouselSlide *ngFor="let img of product.galleryUrls; trackBy: trackById">
                                     <div class="position-relative">
                                         <img [src]="img" class="w-100" />
-                                        <div class="out-btn main-bg-color">
+                                        <div class="out-btn main-bg-color" (click)="addToCart(product, $event)">
                                             <i class="fa-solid fa-plus"></i>
                                         </div>
                                     </div>

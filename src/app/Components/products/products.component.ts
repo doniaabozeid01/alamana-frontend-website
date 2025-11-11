@@ -1,6 +1,8 @@
 import { Component, ViewChild } from '@angular/core';
+import { Router } from '@angular/router';
 import { CarouselComponent, OwlOptions } from 'ngx-owl-carousel-o';
 import { ApiService } from 'src/app/Services/api.service';
+import { AuthService } from 'src/app/Services/Auth/auth.service';
 
 @Component({
   selector: 'app-products',
@@ -9,6 +11,7 @@ import { ApiService } from 'src/app/Services/api.service';
 })
 export class ProductsComponent {
 
+  constructor(private router: Router, private api: ApiService, private auth: AuthService) { }
 
 
 
@@ -22,8 +25,10 @@ export class ProductsComponent {
     items: 1
   };
 
+  cartId!: number;
+
   // مثال: products.component.ts
-  selectedId = 1;
+  selectedId = 0;
 
   categories = [
     { id: 1, name: 'لواصق' },
@@ -149,21 +154,54 @@ export class ProductsComponent {
   // (اختياري) لو محتاج دوال بسيطة
   trackById = (_: number, item: any) => item.id;
 
+  userId!: string;
 
 
-
-  constructor(private api: ApiService) {
-
-  }
 
   ngOnInit() {
+
+
+    const token = localStorage.getItem('token');
+    console.log(token);
+
+    if (token) {
+      this.auth.getUserId().subscribe({
+        next: (response) => {
+          console.log(response);
+
+          this.userId = response.userId;
+
+        },
+        error: (err) => {
+          console.log(err);
+
+        }
+
+      });
+    }
+
+
+
     this.api.GetAllCategories().subscribe({
       next: (response) => {
         this.categories = response;
+        this.selectedId = response[0].id;
         console.log(response);
         this.getProductsByCategoryId(response[0].id)
       }
     })
+
+
+
+
+
+
+
+
+
+
+
+
   }
 
 
@@ -234,5 +272,61 @@ export class ProductsComponent {
       return;
     }
     // this.goToProducts(id);
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  addToCart(data: any, event: MouseEvent) {
+    event.preventDefault();
+    event.stopPropagation();
+
+    const token = localStorage.getItem('token');
+    if (!token) {
+      this.router.navigate(['/auth/login'], {
+        queryParams: { returnUrl: this.router.url }
+      });
+      return;
+    }
+
+    const dataToAdded = {
+      quantity: 1,
+      productId: data.id,
+      userId: this.userId,
+    };
+
+    console.log(dataToAdded);
+
+    this.api.addToCart(dataToAdded).subscribe({
+      next: (res) => {
+        this.cartId = res.id
+        console.log(res);
+
+        // this.toastr.success("Great choice! It's now in your cart.");
+      },
+
+      error: (err) => {
+        // this.toastr.warning(err.error.message);
+
+        console.log(err);
+      }
+    });
+
+
+
   }
 }

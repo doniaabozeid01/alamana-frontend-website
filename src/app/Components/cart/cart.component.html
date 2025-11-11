@@ -18,16 +18,16 @@
                 <h3 class="product-name  w-100">{{ item.name }}</h3>
             </div>
 
-            <p class="mb-0">{{ item.price }} <span>{{ item.currency }}</span></p>
+            <p class="mb-0">{{ item.price }} <span>دينار كويتي</span></p>
 
             <div class="quantity-control">
-                <button (click)="updateQuantity(item, item.quantity - 1)"><span>-</span></button>
+                <button (click)="updateQuantity(item,  -1)"><span>-</span></button>
                 <span class="d-flex align-items-center mt-md-3">{{ item.quantity }}</span>
-                <button (click)="updateQuantity(item, item.quantity + 1)"><span>+</span></button>
+                <button (click)="updateQuantity(item, 1)"><span>+</span></button>
             </div>
 
             <div class="d-flex align-items-center">
-                <p class="mb-0">{{ item.totalPrice }} <span>{{ item.currency }}</span></p>
+                <p class="mb-0">{{ item.totalPrice }} <span>دينار كويتي</span></p>
                 <span class="remove-btn second-bg-color mx-3" (click)="deleteItem(item.id)">
                     <i class="fa-solid fa-xmark mb-0 text-white"></i>
                 </span>
@@ -39,7 +39,7 @@
         <div class="d-flex justify-content-between align-items-center border-bottom py-3">
             <span class="fs-2 total">
                 {{ getSubtotal() }}
-                <span>{{ items[0]?.currency }}</span>
+                <span>دينار كويتي</span>
             </span>
             <span class="fs-2 total">السعر الكلي:</span>
         </div>
@@ -54,14 +54,9 @@
 
 
 
-
-
-
-
-
 <div class="cart-page d-md-none d-block px-3" *ngIf="cart?.cartItems as items">
     <h1 *ngIf="items.length > 0" class="text-center main-color">
-        yourcart ({{ items.length }} cart.itemcounter)
+        السله تحتوي علي ({{ items.length }} منتج)
     </h1>
 
     <div class="wl-list" *ngIf="items.length > 0">
@@ -98,7 +93,7 @@
 
     <div class="ms-auto w-100 p-2" *ngIf="items.length > 0">
         <div class="d-flex justify-content-between align-items-center border-bottom py-3">
-            <span class="fs-2 total">cart.subtotal:</span>
+            <span class="fs-2 total">السعر الكلي:</span>
             <span class="fs-2 total">
                 {{ getSubtotal() }}
                 <span>{{ items[0]?.currency }}</span>
@@ -113,6 +108,6 @@
 
 <!-- حالة السلة الفاضية -->
 <div *ngIf="!(cart?.cartItems?.length) || cart?.cartItems?.length === 0" class="cart-empty text-center mt-0 mb-5">
-    <h2 class="">cart.slogan</h2>
+    <h2 class="">slogan</h2>
     <button class="btn main-outline-btn fs-4" (click)="goToProducts()"><span>Explore Products</span></button>
 </div>

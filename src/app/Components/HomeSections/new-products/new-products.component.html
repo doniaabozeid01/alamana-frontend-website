@@ -11,21 +11,21 @@
 
 
 
-        <owl-carousel-o *ngIf="categories?.length" #catCarousel [options]="catOptions" (drag)="dragging = true"
+    <owl-carousel-o *ngIf="products?.length" #catCarousel [options]="catOptions" (drag)="dragging = true"
         (dragged)="dragging = false">
 
-        <ng-template carouselSlide *ngFor="let cat of categories; trackBy: trackById">
+        <ng-template carouselSlide *ngFor="let prod of products; trackBy: trackById">
             <div class="product-hex text-center" (pointerdown)="onPtrDown($event)" (pointermove)="onPtrMove($event)"
                 (pointerup)="onPtrUp()" (pointercancel)="onPtrCancel()" (pointerleave)="onPtrCancel()"
-                (click)="onCardClick(cat.id, $event)">
+                (click)="onCardClick(prod.id, $event)">
 
-                <div class="hex-img">
-                    <img [src]="cat.imagePath" [alt]="cat.name" />
+                <div class="hex-img ">
+                    <img *ngIf="prod?.galleryUrls?.length" [src]="prod.galleryUrls[0].url" [alt]="prod.name" />
                     <!-- بادج جديد -->
-                    <span class="badge-new" *ngIf="cat.isNew">جديد</span>
+                    <!-- <span class="badge-new" *ngIf="prod.new">جديد</span> -->
                     <!-- اسم المنتج -->
                 </div>
-                <span class="pill-name">{{ cat.name }}</span>      
+                <span class="pill-name">{{ prod.name }}</span>
             </div>
 
 
@@ -42,19 +42,3 @@
     <i class="bi bi-chevron-right"></i>
   </button> -->
 </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

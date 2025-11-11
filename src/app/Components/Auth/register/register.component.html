@@ -1,0 +1,111 @@
+<div class="auth-bg">
+    <!-- <img src="../../../../assets/e6da5ba3bbf0d2618e5ae6f63d348b8752b2cdef.png" class="overlay-text-image w-25" alt="تسجيل حساب جديد" /> -->
+    <!-- <img src="../../../../assets/e6da5ba3bbf0d2618e5ae6f63d348b8752b2cdef.png" class="w-25 m-auto my-3" alt=""> -->
+
+    <div class="card register-card shadow-lg">
+        <h2 class="text-center fw-bolder mb-4">إنشاء حساب</h2>
+
+        <!-- رسالة النجاح -->
+        <div *ngIf="successMessage" class="alert alert-success text-center" role="alert" aria-live="polite">
+            {{ successMessage }}
+        </div>
+
+        <!-- رسالة الخطأ -->
+        <div *ngIf="errorMessage" class="alert alert-danger text-center" role="alert" aria-live="assertive">
+            {{ errorMessage }}
+        </div>
+
+        <form [formGroup]="registerForm" (ngSubmit)="onSubmit()" novalidate>
+            <!-- الاسم الكامل -->
+            <div class="mb-3 text-end">
+                <label class="form-label fw-normal " for="fullName">الاسم الكامل</label>
+                <input id="fullName" type="text" class="form-control " formControlName="fullName"
+                    placeholder="أدخل اسمك الكامل" />
+                <div *ngIf="registerForm.get('fullName')?.touched && registerForm.get('fullName')?.invalid"
+                    class="text-danger small mt-1">
+                    الاسم مطلوب
+                </div>
+            </div>
+
+            <!-- البريد الإلكتروني -->
+            <div class="mb-3 text-end">
+                <label class="form-label fw-normal " for="email">البريد الإلكتروني</label>
+                <input id="email" type="email" class="form-control" formControlName="email"
+                    placeholder="example@gmail.com" />
+                <div *ngIf="registerForm.get('email')?.touched && registerForm.get('email')?.errors as errors"
+                    class="text-danger small mt-1" aria-live="polite">
+                    <div *ngIf="errors['gmailOnly']">يُسمح فقط بحسابات Gmail</div>
+                    <div *ngIf="errors['required']">البريد الإلكتروني مطلوب</div>
+                    <div *ngIf="errors['email']">صيغة البريد الإلكتروني غير صحيحة</div>
+                </div>
+            </div>
+
+            <!-- كلمة المرور -->
+            <div class="mb-3 text-end">
+                <label class="form-label fw-normal " for="password">كلمة المرور</label>
+
+                <div class="position-relative">
+
+                    <button type="button"
+                        class="btn btn-sm btn-outline-secondary position-absolute top-50 end-0 translate-middle-y me-2"
+                        (click)="showPwd = !showPwd" aria-label="تبديل رؤية كلمة المرور">
+                        <span *ngIf="!showPwd">إظهار</span>
+                        <span *ngIf="showPwd">إخفاء</span>
+                    </button>
+
+
+                    <input id="password" [type]="showPwd ? 'text' : 'password'" class="form-control pe-5"
+                        formControlName="password" placeholder="********" aria-describedby="pwdHelp" />
+                    <!-- إظهار/إخفاء كلمة المرور -->
+
+                </div>
+
+                <!-- تنبيه عام -->
+                <div *ngIf="registerForm.get('password')?.touched && registerForm.get('password')?.invalid"
+                    class="text-danger small mt-2">
+                    كلمة المرور لا تطابق الشروط أدناه
+                </div>
+
+                <!-- قائمة الشروط -->
+                <ul id="pwdHelp" class="list-unstyled small mt-2" aria-live="polite">
+                    <li [class.text-success]="rule_hasMinLength" [class.text-muted]="!rule_hasMinLength"
+                        [class.text-decoration-line-through]="rule_hasMinLength">
+                        • لا تقل عن 8 أحرف
+                    </li>
+                    <li [class.text-success]="rule_hasDigit" [class.text-muted]="!rule_hasDigit"
+                        [class.text-decoration-line-through]="rule_hasDigit">
+                        • تحتوي على رقم واحد على الأقل (0–9)
+                    </li>
+                    <li [class.text-success]="rule_hasLower" [class.text-muted]="!rule_hasLower"
+                        [class.text-decoration-line-through]="rule_hasLower">
+                        • تحتوي على حرف صغير واحد على الأقل (a–z)
+                    </li>
+                    <li [class.text-success]="rule_hasUpper" [class.text-muted]="!rule_hasUpper"
+                        [class.text-decoration-line-through]="rule_hasUpper">
+                        • تحتوي على حرف كبير واحد على الأقل (A–Z)
+                    </li>
+                    <li [class.text-success]="rule_hasNonAlnum" [class.text-muted]="!rule_hasNonAlnum"
+                        [class.text-decoration-line-through]="rule_hasNonAlnum">
+                        • تحتوي على رمز واحد على الأقل (! @ # $ % …)
+                    </li>
+                </ul>
+            </div>
+
+            <!-- زر التسجيل -->
+            <button type="submit" class="btn btn-coffee w-100" [disabled]="registerForm.invalid || loading">
+                <span class="text-white fw-normal">
+                    <ng-container *ngIf="!loading; else loadingTpl">تسجيل</ng-container>
+                </span>
+            </button>
+            <ng-template #loadingTpl>جاري التسجيل...</ng-template>
+
+            <!-- رابط تسجيل الدخول -->
+            <div class="text-center mt-3">
+                <span class="mx-1">هل لديك حساب بالفعل؟</span>
+                <a routerLink="/auth/login" class="fw-bold link-light">
+                    <span>تسجيل الدخول</span>
+                </a>
+            </div>
+        </form>
+    </div>
+</div>

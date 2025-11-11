@@ -12,6 +12,7 @@ import { PreviousOrderComponent } from './Components/previous-order/previous-ord
 import { SearchComponent } from './Components/search/search.component';
 import { ProductDetailsComponent } from './Components/product-details/product-details.component';
 import { WhoWeAreComponent } from './Components/who-we-are/who-we-are.component';
+import { RegisterComponent } from './Components/Auth/register/register.component';
 
 const routes: Routes = [
   // {path:'login',component:LoginComponent}
@@ -23,6 +24,7 @@ const routes: Routes = [
     children: [
       { path: '', redirectTo: 'login', pathMatch: 'full' },
       { path: 'login', component: LoginComponent },
+      { path: 'register', component: RegisterComponent },
       // { path: 'register', component: RegisterComponent },
       // { path: 'resetPassword', component: ResetPasswordComponent },
       // { path: 'forgetpassword', component: ForgetPasswordComponent },

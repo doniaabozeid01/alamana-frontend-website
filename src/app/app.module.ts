@@ -15,7 +15,7 @@ import { RandomProductsComponent } from './Components/HomeSections/random-produc
 import { ManyVideosComponent } from './Components/HomeSections/many-videos/many-videos.component';
 import { NavbarComponent } from './Components/navbar/navbar.component';
 import { LoginComponent } from './Components/Auth/login/login.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MainLayoutComponent } from './Components/Layouts/main-layout/main-layout.component';
 import { AuthLayoutComponent } from './Components/Layouts/auth-layout/auth-layout.component';
@@ -30,6 +30,8 @@ import { ProductDetailsComponent } from './Components/product-details/product-de
 import { NewProductsComponent } from './Components/HomeSections/new-products/new-products.component';
 import { BestSellersComponent } from './Components/HomeSections/best-sellers/best-sellers.component';
 import { WhoWeAreComponent } from './Components/who-we-are/who-we-are.component';
+import { RegisterComponent } from './Components/Auth/register/register.component';
+import { AuthInterceptor } from './Interceptors/auth.interceptor';
 
 @NgModule({
   declarations: [
@@ -57,7 +59,8 @@ import { WhoWeAreComponent } from './Components/who-we-are/who-we-are.component'
     ProductDetailsComponent,
     NewProductsComponent,
     BestSellersComponent,
-    WhoWeAreComponent
+    WhoWeAreComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,
@@ -69,7 +72,10 @@ import { WhoWeAreComponent } from './Components/who-we-are/who-we-are.component'
     FormsModule
 
   ],
-  providers: [],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }, // ✅,
+
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

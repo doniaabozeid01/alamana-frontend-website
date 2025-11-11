@@ -1,6 +1,7 @@
 import { Component, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { CarouselComponent, OwlOptions } from 'ngx-owl-carousel-o';
+import { ApiService } from 'src/app/Services/api.service';
 
 @Component({
   selector: 'app-random-products',
@@ -29,9 +30,9 @@ export class RandomProductsComponent {
   trackById = (_: number, cat: any) => cat.id;
 
 
-  categories: any;
+  products: any;
   constructor(
-    // private api: ApiService,
+    private api: ApiService,
     private router: Router,
     // public languageService: LanguageService,
 
@@ -45,20 +46,20 @@ export class RandomProductsComponent {
 
 
   ngOnInit() {
-    // this.api.getAllCategories(this.api.drinks).subscribe({
-    //   next:(res)=>{
-    //     console.log(res);
-    //     this.categories = res;
+    this.api.GetRandomProducts().subscribe({
+      next:(res)=>{
+        console.log(res);
+        this.products = res;
 
-    //   },
-    //   error:(err)=>{
-    //     console.log(err);
+      },
+      error:(err)=>{
+        console.log(err);
 
-    //   }
-    // })
+      }
+    })
 
 
-    this.categories = [
+    this.products = [
       {
         name: 'بلاتينيوم فيكس',
         image: '../../../../assets/random/16b1ca52598339b72e97aa96657cdf8e434815e5.png',

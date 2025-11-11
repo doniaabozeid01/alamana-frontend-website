@@ -18,10 +18,10 @@
 
 
 
-    <div class="py-5 products bg-danger ">
+    <div class="py-5 products ">
 
         <div class="row justify-content-center align-items-center m-auto ">
-            <div class="col-md-3 mb-4 d-flex justify-content-center " *ngFor="let product of products">
+            <div class="col-md-3 col-6 mb-4 d-flex justify-content-center " *ngFor="let product of products">
 
                 <div class="category-card m-2 shadow text-center p-0 " routerLink="/product-details">
 
@@ -34,9 +34,9 @@
                                 <ng-template carouselSlide *ngFor="let url of product.galleryUrls; trackBy: trackById">
                                     <div class="position-relative">
                                         <img [src]="url"/>
-                                        <div class="out-btn main-bg-color">
+                                        <div class="out-btn main-bg-color" (click)="addToCart(product, $event)">
                                             <i class="fa-solid fa-plus"></i>
-                                        </div>
+                                        </div> 
                                     </div>
                                 </ng-template>
                             </owl-carousel-o>

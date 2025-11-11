@@ -28,7 +28,7 @@ export class NewProductsComponent {
   trackById = (_: number, cat: any) => cat.id;
 
 
-  categories: any;
+  products: any;
   constructor(
     private api: ApiService,
     private router: Router,
@@ -44,10 +44,10 @@ export class NewProductsComponent {
 
 
   ngOnInit() {
-    this.api.GetAllCategories().subscribe({
+    this.api.GetNewProducts().subscribe({
       next:(res)=>{
         console.log(res);
-        this.categories = res;
+        this.products = res;
 
       },
       error:(err)=>{
@@ -57,22 +57,22 @@ export class NewProductsComponent {
     })
 
 
-    this.categories = [
+    this.products = [
       {
         name: 'بلاتينيوم فيكس',
-        imagePath: '../../../../assets/categories/163a155bf17de65badc9fee60d656b8133014228.jpg'
+        imagePath: '../../../../assets/products/163a155bf17de65badc9fee60d656b8133014228.jpg'
       },
       {
         name: 'امفيكس',
-        imagePath: '../../../../assets/categories/163a155bf17de65badc9fee60d656b8133014228.jpg'
+        imagePath: '../../../../assets/products/163a155bf17de65badc9fee60d656b8133014228.jpg'
       },
       {
         name: 'بيسكو بوند',
-        imagePath: '../../../../assets/categories/163a155bf17de65badc9fee60d656b8133014228.jpg'
+        imagePath: '../../../../assets/products/163a155bf17de65badc9fee60d656b8133014228.jpg'
       },
       {
         name: 'بيسكو بوند',
-        imagePath: '../../../../assets/categories/163a155bf17de65badc9fee60d656b8133014228.jpg'
+        imagePath: '../../../../assets/products/163a155bf17de65badc9fee60d656b8133014228.jpg'
       }
     ];
 

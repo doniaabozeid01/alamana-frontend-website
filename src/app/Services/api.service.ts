@@ -64,9 +64,9 @@ export class ApiService {
   }
 
 
-  GetOrCreateCart(userId: string): Observable<any> {
-    return this.httpClient.get(`${this.baseUrl}Cart/GetOrCreateCart/${userId}`);
-  }
+  // GetOrCreateCart(userId: string): Observable<any> {
+  //   return this.httpClient.get(`${this.baseUrl}Cart/GetOrCreateCart/${userId}`);
+  // }
 
 
 
@@ -87,4 +87,24 @@ export class ApiService {
 
 
 
+
+  GetNewProducts(): Observable<any> {
+    return this.httpClient.get(`${this.baseUrl}Product/GetNewProducts`);
+  }
+
+
+
+  addToCart(data: any): Observable<any> {
+    return this.httpClient.post(`${this.baseUrl}CartItems/AddCartItem`, data);
+  }
+
+
+  DeleteCartItem(id: number): Observable<any> {
+    return this.httpClient.delete(`${this.baseUrl}CartItems/DeleteCartItem/${id}`);
+  }
+
+
+  GetRandomProducts(): Observable<any> {
+    return this.httpClient.get(`${this.baseUrl}Product/GetRandomProducts`);
+  }
 }

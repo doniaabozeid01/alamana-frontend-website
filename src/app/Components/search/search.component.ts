@@ -1,6 +1,8 @@
 import { Component, ViewChild } from '@angular/core';
+import { Router } from '@angular/router';
 import { CarouselComponent, OwlOptions } from 'ngx-owl-carousel-o';
 import { ApiService } from 'src/app/Services/api.service';
+import { AuthService } from 'src/app/Services/Auth/auth.service';
 
 @Component({
   selector: 'app-search',
@@ -11,6 +13,8 @@ export class SearchComponent {
 
 
   searchTerm: string = '';
+  cartId!: number;
+  userId!: string;
 
 
   catOptions: OwlOptions = {
@@ -27,11 +31,32 @@ export class SearchComponent {
 
 
 
-  constructor(private api: ApiService) {
+  constructor(private router: Router, private api: ApiService, private auth: AuthService) {
 
   }
 
   ngOnInit() {
+
+    const token = localStorage.getItem('token');
+    console.log(token);
+
+    if (token) {
+      this.auth.getUserId().subscribe({
+        next: (response) => {
+          console.log(response);
+
+          this.userId = response.userId;
+
+        },
+        error: (err) => {
+          console.log(err);
+
+        }
+
+      });
+    }
+
+
     this.api.GetAllProducts().subscribe({
       next: (response) => {
         console.log(response);
@@ -117,4 +142,65 @@ export class SearchComponent {
     }
     // this.goToProducts(id);
   }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    addToCart(data: any, event: MouseEvent) {
+    event.preventDefault();
+    event.stopPropagation();
+
+    const token = localStorage.getItem('token');
+    if (!token) {
+      this.router.navigate(['/auth/login'], {
+        queryParams: { returnUrl: this.router.url }
+      });
+      return;
+    }
+
+    const dataToAdded = {
+      quantity: 1,
+      productId: data.id,
+      userId: this.userId,
+    };
+
+    console.log(dataToAdded);
+
+    this.api.addToCart(dataToAdded).subscribe({
+      next: (res) => {
+        this.cartId = res.id
+        console.log(res);
+
+        // this.toastr.success("Great choice! It's now in your cart.");
+      },
+
+      error: (err) => {
+        // this.toastr.warning(err.error.message);
+
+        console.log(err);
+      }
+    });
+
+
+
+  }
+
+
+
+
+
 }
