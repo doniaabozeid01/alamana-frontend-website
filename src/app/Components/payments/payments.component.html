@@ -5,8 +5,6 @@
         <div class="row gy-4">
 
 
-
-            <!-- ملخص الطلب -->
             <div class="col-md-4">
                 <div class="order-summary p-4 bg-light-green rounded-4 ">
                     <h5 class="fw-bold mb-4 text-center second-color fs-2">ملخص الطلب</h5>
@@ -14,19 +12,21 @@
                     <div class="d-flex flex-column gap-3 dataToReview">
                         <div class="border-bottom pb-2" *ngFor="let item of cartItems">
                             <div class="d-flex justify-content-between align-items-center">
-                                <span class="">{{ item.name }}</span>
-                                <span class="">{{item.totalPrice}} <span>{{ item.currency }}</span> </span>
+                                <span class="">{{item.totalPrice}} <span> د.ك</span> </span>
+                                <span class="">{{ item.name}}</span>
                             </div>
-                            <div class="">الكمية: {{item.quantity}}</div>
+                            <div class=" ">الكميه : {{item.quantity}}</div>
                         </div>
                     </div>
 
                     <div class="d-flex justify-content-between fw-bold fs-5 mt-3">
-                        <span class="fs-3">1200.0 <span>{{ cartItems[0]?.currency }}</span> </span>
-                        <span class="fs-3">إجمالي المبلغ</span>
+                        <span class="fs-3">{{totalamount}} <span>د.ك</span> </span>
+                        <span class="fs-3">السعر الكلي</span>
                     </div>
                 </div>
             </div>
+
+
 
 
 
@@ -36,7 +36,7 @@
                 <form [formGroup]="orderForm" (ngSubmit)="submitOrder()">
                     <div class="mb-3 ">
                         <label class="form-label d-flex align-items-center justify-content-end gap-1 ">
-                            الاسم الكامل <span class="text-danger fs-4">*</span>
+                            <span class="text-danger fs-4">*</span>الاسم الكامل 
                             <span
                                 *ngIf="(orderForm.get('fullName')?.touched || submitted) && orderForm.get('fullName')?.hasError('required')"
                                 class="text-danger " style="font-size: 15px;">
@@ -47,8 +47,17 @@
                         <input type="text" formControlName="fullName" class="form-control" />
                     </div>
 
+
+
                     <div class="mb-3 ">
-                        <label class="form-label">رقم الهاتف <span class="text-danger fs-4">*</span>
+                        <label class="form-label">البريد الالكتروني</label>
+                        <input type="text" formControlName="emial" class="form-control" />
+                    </div>
+
+
+
+                    <div class="mb-3 ">
+                        <label class="form-label"><span class="text-danger fs-4">*</span>رقم الهاتف 
                             <span
                                 *ngIf="(orderForm.get('phone')?.touched || submitted) && orderForm.get('phone')?.hasError('required')"
                                 class="text-danger" style="font-size: 15px;">
@@ -59,7 +68,7 @@
                     </div>
 
                     <div class="mb-3 ">
-                        <label class="form-label">الدولة<span class="text-danger fs-4 mx-2">*</span>
+                        <label class="form-label"><span class="text-danger fs-4 mx-2">*</span>الدولة
                             <span
                                 *ngIf="(orderForm.get('countryId')?.touched || submitted) && orderForm.get('countryId')?.hasError('required')"
                                 class="text-danger" style="font-size: 15px;">
@@ -74,7 +83,7 @@
 
                     <div class="mb-3">
                         <label class="form-label">
-                            المحافظة <span class="text-danger fs-4 mx-1">*</span>
+                             <span class="text-danger fs-4 mx-1">*</span>المحافظة
                             <span
                                 *ngIf="(orderForm.get('governorateId')?.touched || submitted) && orderForm.get('governorateId')?.hasError('required')"
                                 class="text-danger" style="font-size: 15px;">
@@ -91,7 +100,7 @@
                     </div>
 
                     <div class="mb-3 ">
-                        <label class="form-label">المدينة <span class="text-danger fs-4 mx-1">*</span>
+                        <label class="form-label"> <span class="text-danger fs-4 mx-1">*</span>المدينة
                             <span
                                 *ngIf="(orderForm.get('cityId')?.touched || submitted) && orderForm.get('cityId')?.hasError('required')"
                                 class="text-danger" style="font-size: 15px;">
@@ -104,7 +113,7 @@
                     </div>
 
                     <div class="mb-3 ">
-                        <label class="form-label">الحي / المنطقة <span class="text-danger fs-4 mx-1">*</span>
+                        <label class="form-label"><span class="text-danger fs-4 mx-1">*</span>الحي / المنطقة 
                             <span
                                 *ngIf="(orderForm.get('districtId')?.touched || submitted) && orderForm.get('districtId')?.hasError('required')"
                                 class="text-danger" style="font-size: 15px;">
@@ -143,7 +152,7 @@
                     </div>
 
                     <div class="mb-3 ">
-                        <label class="form-label">طريقة الدفع<span class="text-danger fs-4 mx-1">*</span>
+                        <label class="form-label"><span class="text-danger fs-4 mx-1">*</span>طريقة الدفع
                             <span
                                 *ngIf="(orderForm.get('paymentMethodId')?.touched || submitted) && orderForm.get('paymentMethodId')?.hasError('required')"
                                 class="text-danger" style="font-size: 15px;">

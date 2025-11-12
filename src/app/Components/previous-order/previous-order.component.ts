@@ -78,14 +78,14 @@ export class PreviousOrderComponent {
   goToProducts() {
     this.route.navigate(["/products"]);
   }
- @HostListener('window:scroll', [])
-  onWindowScroll() {
-    const scrollPosition = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
-    this.showScrollButton = scrollPosition > 300;
-  }
+//  @HostListener('window:scroll', [])
+//   onWindowScroll() {
+//     const scrollPosition = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
+//     this.showScrollButton = scrollPosition > 300;
+//   }
 
-  scrollToTop() {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  }
+  // scrollToTop() {
+  //   window.scrollTo({ top: 0, behavior: 'smooth' });
+  // }
 }
 

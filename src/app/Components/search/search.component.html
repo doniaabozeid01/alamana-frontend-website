@@ -8,15 +8,17 @@
         <div class="row container justify-content-start align-items-center  m-auto">
             <div class="col-md-3  d-flex justify-content-center  mb-4 " *ngFor="let product of products">
 
-                <div class="category-card m-2 shadow text-center p-0 " routerLink="/product-details">
+                <div class="category-card m-2 shadow text-center p-0 " [routerLink]="['/product-details', product.id]">
 
 
                     <div class="moved-content">
                         <div class="">
-                            <owl-carousel-o #catCarousel [options]="catOptions">
-                                <ng-template carouselSlide *ngFor="let img of product.galleryUrls; trackBy: trackById">
+                            <owl-carousel-o *ngIf="imageSlides(product).length > 0" #catCarousel [options]="catOptions">
+
+                                <ng-template carouselSlide
+                                    *ngFor="let media of imageSlides(product); trackBy: trackByIndex">
                                     <div class="position-relative">
-                                        <img [src]="img" class="w-100" />
+                                        <img [src]="media.url" class="w-100" [alt]="product.name" />
                                         <div class="out-btn main-bg-color" (click)="addToCart(product, $event)">
                                             <i class="fa-solid fa-plus"></i>
                                         </div>
@@ -24,6 +26,9 @@
                                 </ng-template>
                             </owl-carousel-o>
 
+                            <!-- فولباك لو مافيش صور -->
+                            <img *ngIf="imageSlides(product).length === 0" src="assets/images/placeholder.png"
+                                class="w-100" [alt]="product?.name" />
 
                         </div>
                     </div>
@@ -31,7 +36,7 @@
 
                     <div class="w-100 fixed-content m-0 ">
                         <div class="d-flex justify-content-between align-items-center">
-                            <p class="text-black">{{product.weight}} {{product.weightData}}</p>
+                            <p class="text-black"> كجم {{product.weight}}</p>
                             <p class="main-color fs-4 second-color text-center">
                                 <!-- {{ (languageService.languageChanged$ | async) === 'ar' ? cat.name_ar : cat.name }} -->
                                 {{product.name}}
@@ -43,10 +48,10 @@
                         <div class="d-flex justify-content-between align-items-center text-black">
                             <p class="second-color text-center">
                                 <!-- {{ (languageService.languageChanged$ | async) === 'ar' ? cat.name_ar : cat.name }} -->
-                                {{product.oldPrice}} {{product.currency}}
+                                {{product.price}} د.ك
                             </p>
 
-                            <p> {{product.newPrice}} {{product.currency}}
+                            <p> {{product.priceAfterDiscount}} د.ك
                             </p>
                         </div>
 

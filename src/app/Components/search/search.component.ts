@@ -27,13 +27,14 @@ export class SearchComponent {
     items: 1
   };
 
-  products:any;
+  products: any;
 
 
 
   constructor(private router: Router, private api: ApiService, private auth: AuthService) {
 
   }
+  
 
   ngOnInit() {
 
@@ -66,6 +67,13 @@ export class SearchComponent {
     })
   }
 
+  // products.component.ts
+  imageSlides(product: any) {
+    return (product?.galleryUrls ?? [])
+      .filter((m: any) => m?.url && (m?.type ?? '').toLowerCase() === 'image');
+  }
+
+  trackByIndex(i: number) { return i; } // أو trackByUrl = (_:number, m:any)=> m.url;
 
 
   // filteredProducts = [...this.products]; 
@@ -88,7 +96,7 @@ export class SearchComponent {
       // this.filteredProducts = [...this.products];
     } else {
       // this.filteredProducts = this.products.filter(p =>
-        // p.name.toLowerCase().includes(term)
+      // p.name.toLowerCase().includes(term)
       // );
     }
   }
@@ -160,7 +168,7 @@ export class SearchComponent {
 
 
 
-    addToCart(data: any, event: MouseEvent) {
+  addToCart(data: any, event: MouseEvent) {
     event.preventDefault();
     event.stopPropagation();
 

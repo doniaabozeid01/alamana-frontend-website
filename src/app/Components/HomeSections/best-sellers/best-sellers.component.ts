@@ -29,7 +29,7 @@ export class BestSellersComponent {
   trackById = (_: number, cat: any) => cat.id;
 
 
-  categories: any;
+  products: any;
   constructor(
     private api: ApiService,
     private router: Router,
@@ -45,10 +45,10 @@ export class BestSellersComponent {
 
 
   ngOnInit() {
-    this.api.GetAllCategories().subscribe({
+    this.api.bestSellers().subscribe({
       next:(res)=>{
         console.log(res);
-        // this.categories = res;
+        this.products = res;
 
       },
       error:(err)=>{
@@ -57,54 +57,7 @@ export class BestSellersComponent {
       }
     })
 
-    this.categories = [
-      {
-        name: 'بلاتينيوم فيكس',
-        image: '../../../../assets/random/16b1ca52598339b72e97aa96657cdf8e434815e5.png',
-        newPrice: 100,
-        oldPrice: 120,
-        currency: 'دينار',
-        weight: 20,
-        weightData: 'كيلو'
-      },
-      {
-        name: 'بلاتينيوم فيكس',
-        image: '../../../../assets/random/16b1ca52598339b72e97aa96657cdf8e434815e5.png',
-        newPrice: 100,
-        oldPrice: 120,
-        currency: 'دينار',
-        weight: 20,
-        weightData: 'كيلو'
-      },
-      {
-        name: 'بلاتينيوم فيكس',
-        image: '../../../../assets/random/16b1ca52598339b72e97aa96657cdf8e434815e5.png',
-        newPrice: 100,
-        oldPrice: 120,
-        currency: 'دينار',
-        weight: 20,
-        weightData: 'كيلو'
-      },
 
-      {
-        name: 'بلاتينيوم فيكس',
-        image: '../../../../assets/random/16b1ca52598339b72e97aa96657cdf8e434815e5.png',
-        newPrice: 100,
-        oldPrice: 120,
-        currency: 'دينار',
-        weight: 20,
-        weightData: 'كيلو'
-      }, {
-        name: 'بلاتينيوم فيكس',
-        image: '../../../../assets/random/16b1ca52598339b72e97aa96657cdf8e434815e5.png',
-        newPrice: 100,
-        oldPrice: 120,
-        currency: 'دينار',
-        weight: 20,
-        weightData: 'كيلو'
-      },
-
-    ];
 
 
 

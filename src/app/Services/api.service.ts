@@ -11,7 +11,7 @@ export class ApiService {
   baseUrl: string = "https://localhost:7046/api/";
 
 
-  constructor(private httpClient: HttpClient) {  }
+  constructor(private httpClient: HttpClient) { }
 
   GetAllCategories(): Observable<any> {
     return this.httpClient.get(`${this.baseUrl}Categories/GetAllCategories`);
@@ -26,6 +26,13 @@ export class ApiService {
 
   GetAllProducts(): Observable<any> {
     return this.httpClient.get(`${this.baseUrl}Product/GetAllProducts`);
+
+  }
+
+
+
+  GetProductById(id: number): Observable<any> {
+    return this.httpClient.get(`${this.baseUrl}Product/GetProductById/${id}`);
 
   }
 
@@ -72,7 +79,7 @@ export class ApiService {
 
 
   GetOrdersByUserId(userId: string): Observable<any> {
-    return this.httpClient.get(`${this.baseUrl}Cart/GetOrCreateCart/${userId}`);
+    return this.httpClient.get(`${this.baseUrl}Orders/GetOrdersByUserId/${userId}`);
   }
 
 
@@ -107,4 +114,13 @@ export class ApiService {
   GetRandomProducts(): Observable<any> {
     return this.httpClient.get(`${this.baseUrl}Product/GetRandomProducts`);
   }
+
+
+  bestSellers(): Observable<any> {
+    return this.httpClient.get(`${this.baseUrl}Product/best-sellers`);
+  }
+
+
+
+
 }

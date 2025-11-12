@@ -17,27 +17,13 @@ export class ProductDetailsComponent {
     touchDrag: true,
     // nav: true,                 // بنستخدم أزرار خارجية
     rtl: true,
-    items:1
-  };
-
-  product = {
-    name: 'بلاتينيوم فيكس',
-    category: {
-      name: 'لاصق بلاط فاخر'
-    },
-    price: 2000,
-    currency: 'جنيه',
-    ingredients: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint expedita corrupti tempore earum voluptas atque, tempora quaerat fugit labore! Dolores quis unde ipsa voluptatem esse modi perspiciatis totam, obcaecati at soluta accusamus beatae iure quidem asperiores, eos corporis quod porro? Voluptates eos ex debitis ipsam eum quaerat dicta quis enim.',
-    images: [
-      'assets/random/16b1ca52598339b72e97aa96657cdf8e434815e5.png',
-      'assets/random/16b1ca52598339b72e97aa96657cdf8e434815e5.png',
-      'assets/random/16b1ca52598339b72e97aa96657cdf8e434815e5.png'
-    ]
+    items: 1
   };
 
 
-
-
+  product: any = null;
+  cartId!: number;
+  usreId!: string;
 
   constructor(
     private api: ApiService,
@@ -47,10 +33,32 @@ export class ProductDetailsComponent {
   ) { }
 
 
+  ngOnInit() {
+    const id = Number(this.route.snapshot.paramMap.get('id'));
+    console.log('Product ID:', id);
 
-  // product: any = null;
-  cartId!: number;
-  usreId!: string;
+    this.api.GetProductById(id).subscribe({
+      next:(response)=>{
+        console.log(response);
+        this.product=response;
+      }
+    })
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
   addToCart(product: any): void {

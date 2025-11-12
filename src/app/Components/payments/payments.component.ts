@@ -1,15 +1,14 @@
-
-
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ApiService } from 'src/app/Services/api.service';
 import { AuthService } from 'src/app/Services/Auth/auth.service';
 
+
 @Component({
-  selector: 'app-payments',
-  templateUrl: './payments.component.html',
-  styleUrls: ['./payments.component.scss']
+  selector: 'app-checkout',
+  templateUrl: './Payments.component.html',
+  styleUrls: ['./Payments.component.scss']
 })
 export class PaymentsComponent {
   loading = false;
@@ -41,6 +40,7 @@ export class PaymentsComponent {
   ngOnInit(): void {
     this.orderForm = this.fb.group({
       fullName: ['', Validators.required],
+      emial: [''],
       phone: ['', Validators.required],
       countryId: [null, Validators.required],
       governorateId: [null, Validators.required],
@@ -53,7 +53,6 @@ export class PaymentsComponent {
       landmark: [''],
       paymentMethodId: [null, Validators.required],
       code: [''],
-      source: [''],
     });
 
     this.loadCountries();
@@ -102,13 +101,15 @@ export class PaymentsComponent {
       next: (res) => {
         this.userId = res.userId;
 
-            this.api.GetCartByUserId(this.userId);
-          }
-      
+
+            this.getCartId(this.userId);
+
+        
+      }
     });
   }
 
-  getCartId(userId: string, branchId: number) {
+  getCartId(userId: string) {
     this.api.GetCartByUserId(userId).subscribe({
       next: (response) => {
         this.cartId = response.id;
@@ -146,13 +147,14 @@ export class PaymentsComponent {
       return;
     }
 
-    // if (!this.cartItems || this.cartItems.length === 0) {
-    //   const emptyCartMsg = 'سلة المشتريات فارغة، أضف منتجات قبل إتمام الطلب.';
-    //     : 'Your cart is empty. Please add items before placing the order.';
-    //   this.toastr.warning(emptyCartMsg, '', { timeOut: 3000 });
-    //   this.loading = false;
-    //   return;
-    // }
+    if (!this.cartItems || this.cartItems.length === 0) {
+      // const emptyCartMsg = this.translate.currentLang === 'ar'
+      //   ? 'سلة المشتريات فارغة، أضف منتجات قبل إتمام الطلب.'
+      //   : 'Your cart is empty. Please add items before placing the order.';
+      // this.toastr.warning(emptyCartMsg, '', { timeOut: 3000 });
+      this.loading = false;
+      return;
+    }
 
     const request = { userId: this.userId, ...this.orderForm.value };
     request.source = 1;
@@ -177,7 +179,10 @@ export class PaymentsComponent {
         }
 
         // ✅ COD (بدون تحويل)
-
+        // const currentLang = this.translate.currentLang || 'en';
+        // const successMessage = currentLang === 'ar'
+        //   ? (res?.messageAr || 'تم تسجيل الطلب بنجاح')
+        //   : (res?.message || 'Order placed successfully');
 
         // this.toastr.success(successMessage, '', { timeOut: 3000 });
         this.router.navigate(['/allorders']);
@@ -197,73 +202,113 @@ export class PaymentsComponent {
 
 
 
-  GetCartItemByCartId() {
-    this.api.GetCartByUserId(this.userId).subscribe({
-      next: (response) => {
-        this.cartItems = response;
-      }
-    });
-  }
+  // GetCartItemByCartId(cartId: number) {
+  //   this.api.GetCartByUserId(cartId).subscribe({
+  //     next: (response) => {
+  //       this.cartItems = response;
+  //     }
+  //   });
+  // }
 
-  
-
-
-
-
-
-
-
-
-
-
-
-
-
-  //      checkDiscountCode() {
+  // checkDiscountCode() {
   //   const codeControl = this.orderForm.get('code');
+
+
+  //   const body = {
+  //     code: codeControl?.value,
+  //     userId: this.userId
+  //   };
 
   //   if (!codeControl || !codeControl.value) {
   //     console.warn('No discount code entered');
   //     return;
   //   }
 
-  //   const body = {
-  //     code: codeControl.value,
-  //     userId: this.userId
-  //   };
-
-  //   console.log(body);
-
-  //   const discountMsg = this.translate.currentLang === 'ar'
-  //     ? 'تهانينا! لقد فزت بالخصم بنجاح.'
-  //     : 'Congratulations! You’ve won the discount!';
-
-
-  //   this.api.checkDiscountValidation(body).subscribe({
+  //   this.api.checkDiscountValidation(codeControl.value).subscribe({
   //     next: (response) => {
   //       console.log(response);
-  //       console.log(response);
-        
-  //       if (response != null && response.success) {
+  //       if (response != null) {
   //         this.discountRatio = response.discountValue;
   //         this.discountError = "";
+  //         this.totalamount = this.totalamount - (this.totalamount * (this.discountRatio / 100));
 
-  //         if (!this.applydiscount) {
-  //           this.toastr.success(discountMsg)
-  //           this.totalamount = this.totalamount - (this.totalamount * (this.discountRatio / 100));
-  //         }
-
-  //         this.applydiscount = true;
-  //       } else {
-  //         this.discountError = response?.message ?? "Invalid Code";
+  //       }
+  //       else {
+  //         this.discountError = "Invalid Code"
   //       }
   //     },
   //     error: (err) => {
   //       console.log(err);
-  //       this.discountError = err.error.message;
+  //       this.discountError = ""
+
   //     }
   //   });
   // }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+       checkDiscountCode() {
+    const codeControl = this.orderForm.get('code');
+
+    if (!codeControl || !codeControl.value) {
+      console.warn('No discount code entered');
+      return;
+    }
+
+    const body = {
+      code: codeControl.value,
+      userId: this.userId
+    };
+
+    console.log(body);
+
+    // const discountMsg = this.translate.currentLang === 'ar'
+    //   ? 'تهانينا! لقد فزت بالخصم بنجاح.'
+    //   : 'Congratulations! You’ve won the discount!';
+
+
+    // this.api.checkDiscountValidation(body).subscribe({
+    //   next: (response) => {
+    //     console.log(response);
+    //     console.log(response);
+        
+    //     if (response != null && response.success) {
+    //       this.discountRatio = response.discountValue;
+    //       this.discountError = "";
+
+    //       if (!this.applydiscount) {
+    //         this.toastr.success(discountMsg)
+    //         this.totalamount = this.totalamount - (this.totalamount * (this.discountRatio / 100));
+    //       }
+
+    //       this.applydiscount = true;
+    //     } else {
+    //       this.discountError = response?.message ?? "Invalid Code";
+    //     }
+    //   },
+    //   error: (err) => {
+    //     console.log(err);
+    //     this.discountError = err.error.message;
+    //   }
+    // });
+  }
 
 
 

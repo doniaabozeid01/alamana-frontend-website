@@ -9,23 +9,28 @@
 
 
 
-    <owl-carousel-o *ngIf="categories?.length" #catCarousel [options]="catOptions" (drag)="dragging = true"
+    <owl-carousel-o *ngIf="products?.length" #catCarousel [options]="catOptions" (drag)="dragging = true"
         (dragged)="dragging = false">
 
-        <ng-template carouselSlide *ngFor="let cat of categories; trackBy: trackById">
+        <ng-template carouselSlide *ngFor="let product of products; trackBy: trackById">
             <div class="category-card shadow text-center d-flex  justify-content-center align-items-center  flex-column p-0 mb-0 pt-3"
                 (pointerdown)="onPtrDown($event)" (pointermove)="onPtrMove($event)" (pointerup)="onPtrUp()"
-                (pointercancel)="onPtrCancel()" (pointerleave)="onPtrCancel()" (click)="onCardClick(cat.id, $event)">
-                <img [src]="cat.image" [alt]="cat.name" class="w-100" />
+                (pointercancel)="onPtrCancel()" (pointerleave)="onPtrCancel()" (click)="onCardClick(product.id, $event)">
+<img
+  *ngIf="product.galleryUrls[0]?.type === 'Image'"
+  [src]="product.galleryUrls[0]?.url"
+  [alt]="product.name"
+  class="w-100"
+/>
 
 
                     <div class="w-100 m-0 fixed-content px-2">
                         <div class="d-flex justify-content-between align-items-center">
                             <p class="main-color fs-4 second-color text-center">
                                 <!-- {{ (languageService.languageChanged$ | async) === 'ar' ? cat.name_ar : cat.name }} -->
-                                {{cat.name}}
+                                {{product.name}}
                             </p>
-                            <p class="text-black">{{cat.weight}} {{cat.weightData}}</p>
+                            <p class="text-black">{{product.weight}} كجم</p>
 
                         </div>
 
@@ -33,10 +38,10 @@
                         <div class="d-flex justify-content-between align-items-center text-black">
                             <p class="second-color text-center">
                                 <!-- {{ (languageService.languageChanged$ | async) === 'ar' ? cat.name_ar : cat.name }} -->
-                                {{cat.oldPrice}} {{cat.currency}}
+                                {{product.price}} د.ك
                             </p>
 
-                            <p> {{cat.newPrice}} {{cat.currency}}
+                            <p> {{product.priceAfterDiscount}} د.ك
                             </p>
                         </div>
 

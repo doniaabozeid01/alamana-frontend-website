@@ -2,8 +2,10 @@
 
     <h1 class="text-center second-color mb-5">مقترحه لك</h1>
 
-    <button class="nav-btn prev-btn d-md-flex d-none" (click)="catCarousel.prev()"><i class="fa-solid fa-arrow-left"></i></button>
-    <button class="nav-btn next-btn d-md-flex d-none" (click)="catCarousel.next()"><i class="fa-solid fa-arrow-right"></i></button>
+    <button class="nav-btn prev-btn d-md-flex d-none" (click)="catCarousel.prev()"><i
+            class="fa-solid fa-arrow-left"></i></button>
+    <button class="nav-btn next-btn d-md-flex d-none" (click)="catCarousel.next()"><i
+            class="fa-solid fa-arrow-right"></i></button>
 
     <owl-carousel-o *ngIf="products?.length" #catCarousel [options]="catOptions" (drag)="dragging = true"
         (dragged)="dragging = false">
@@ -17,12 +19,14 @@
 
                     <div class="moved-content">
                         <div class="position-relative">
-                            <img [src]="prod.image" [alt]="prod.name" class="" />
-                            
+                            <img *ngIf="prod?.galleryUrls?.length > 0" [src]="prod?.galleryUrls[0]?.url"
+                                [alt]="prod.name" class="" />
+                            <img *ngIf="!prod?.galleryUrls?.length" src=""
+                                [alt]="prod.name" />
                             <div class="out-btn">
                                 <i class="fa-solid fa-plus"></i>
                             </div>
-                            
+
                         </div>
                     </div>
 
@@ -33,27 +37,27 @@
                                 {{prod.name}}
                             </p>
 
-                            <p>{{prod.weight}} {{prod.weightData}}</p>
+                            <p>{{prod.weight}} كجم</p>
                         </div>
 
 
                         <div class="d-flex justify-content-between align-items-center">
                             <p class="cat-name second-color text-center">
                                 <!-- {{ (languageService.languageChanged$ | async) === 'ar' ? cat.name_ar : cat.name }} -->
-                                {{prod.oldPrice}} {{prod.currency}}
+                                {{prod.price}} د.ك
                             </p>
 
-                            <p> {{prod.newPrice}} {{prod.currency}}
+                            <p> {{prod.priceAfterDiscount}} د.ك
                             </p>
                         </div>
                     </div>
 
                 </div>
 
-                
+
             </div>
         </ng-template>
-        
+
     </owl-carousel-o>
 
 </div>

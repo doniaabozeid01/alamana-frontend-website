@@ -1,165 +1,111 @@
 .product-details {
-//   display: flex;
-//   background-position: center;
-//   background-size: cover;
   align-items: center;
   justify-content: center;
 
-  .heart-icon {
-    position: absolute;
-    top: 0px;
-    right: 10px;
-    // color: #ff7f20;
-    // border: 2px solid #ff7f20;
-    border-radius: 50%;
-    padding: 10px;
-  }
+  .slide-wrap { width: 100%; }
 
-  .slide-wrap{
+  /* ✅ حاوية الصورة */
+  .image-pane {
     width: 100%;
   }
 
-  img{
-    width: 50%;
-    margin: auto;
+  /* ✅ إطار للصورة: خلفية فاتحة، بوردَر-ريديوس، ظل خفيف */
+  .image-frame {
+    width: 100%;
+    max-height: 70vh;
+    background: #f7f8fa;
+    border-radius: 16px;
+    box-shadow: 0 6px 24px rgba(0,0,0,.06);
+    padding: 20px;                 /* مسافة داخلية حول الصورة */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    /* نحافظ على نسبة أبعاد ثابتة في الديسكتوب */
+    aspect-ratio: 4 / 5;           /* تقدرِ تغيّريها لـ 1/1 لو تحبي مربع */
+    overflow: hidden;
   }
 
-
+  /* ✅ الصورة نفسها: تتمد داخل الإطار بدون قص */
+  .product-img {
+    width: 100%;
+    height: 100%;
+    
+    object-fit: contain;           /* أهم نقطة */
+    display: block;
+    image-rendering: -webkit-optimize-contrast;
+  }
 
   .product-info {
     flex: 1.5;
     padding: 0 40px;
 
-    h1 {
-      font-size: 48px;
-      font-weight: bold;
-      margin-bottom: 10px;
-      // color: #ff7f20;
-    }
+    h1 { font-size: 48px; font-weight: 700; margin-bottom: 10px; }
+    h3 { font-size: 28px; font-weight: 500; margin-bottom: 20px; color: #222; }
 
-    h3 {
-      font-size: 28px;
-      font-weight: 500;
-      margin-bottom: 20px;
-      color: #222;
-    }
-
-    p.description {
-      /* font-size: 16px; */
-      line-height: 1.7;
-      margin-bottom: 40px;
-      color: #333;
-    }
+    p.description { line-height: 1.7; margin-bottom: 40px; color: #333; }
 
     .price-cart {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
+      display: flex; align-items: center; justify-content: space-between;
 
       .add-btn {
-        padding: 8px 15px;
-        // border: 2px solid #ff7f20;
+        padding: 10px 16px;
         border-radius: 12px;
-        // color: #ff7f20;
-        font-weight: bold;
+        font-weight: 700;
         background: transparent;
-        transition: all 0.3s ease;
-        font-size: 25px;
-        /* &:hover {
-          color: #fff;
-        } */
+        transition: .25s ease;
+        font-size: 18px;
+        width: 80%;
       }
     }
   }
 }
 
+/* ✅ تحسينات عامة للرو */
+.row {
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+  max-width: 1500px;
+  margin: auto;
+  box-shadow: 0 0 10px rgba(0,0,0,.08);
+  border-radius: 16px;
+}
 
-
-
-
-
+/* ✅ موبايل */
 @media (max-width: 768px) {
   .product-details {
-    /* background-size: contain; */
-    background-repeat: no-repeat;
     width: 100%;
     margin: auto !important;
     padding: 0;
     margin-top: 2px !important;
   }
 
-  span{
-    font-size: 16px!important;
+  .image-frame {
+    padding: 16px;
+    aspect-ratio: 1 / 1;          /* في الموبايل بنخليه مربع أجمل */
+    border-radius: 14px;
   }
-  .scroll {
-    max-height: none;
-    overflow-y: visible;
-  }
-
-
-  .w-30 {
-    // width: 250px !important;
-  }
-
-  img {
-    // width: 250px;
-    height: auto;
-  }
-
 
   .product-info {
-    margin: 0px 0;
-    padding: 0 10px !important;
+    margin: 0;
+    padding: 0 12px !important;
   }
 
-  .col-md-6 {
-    height: auto !important;
-  }
-
-  button{
-    font-size: 14px;
-  }
+  button { font-size: 14px; }
 }
 
+/* ✅ تابلت */
 @media (max-width: 1200px) {
-  .product-details {
-    /* background-size: contain; */
-    background-repeat: no-repeat;
+  .image-frame {
+    padding: 18px;
+    aspect-ratio: 4 / 5;
   }
-
-  img {
-    width: 280px;
-    height: auto;
-  }
-
-  .product-info {
-    margin: 30px 0;
-  }
+  .product-info { margin: 24px 0; }
 }
 
-.row {
-  margin-left: 0 !important;
-  margin-right: 0 !important;
-  max-width: 1500px;
-  margin: auto;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  /* border: 1px solid red; */
-}
-
-
-
-
-/* زرار بعرض كامل */
+/* ✅ زرار عريض */
 .add-btn {
   width: 80%;
   font-weight: 600;
   color: #fff;
 }
-
-
-
-
-
-
-
-

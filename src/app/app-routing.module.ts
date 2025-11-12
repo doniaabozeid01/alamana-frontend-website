@@ -18,7 +18,7 @@ const routes: Routes = [
   // {path:'login',component:LoginComponent}
 
 
-   {
+  {
     path: 'auth',
     component: AuthLayoutComponent,
     children: [
@@ -40,10 +40,10 @@ const routes: Routes = [
       { path: 'cart', component: CartComponent },
       { path: 'products', component: ProductsComponent },
       { path: 'offers', component: OffersComponent },
-      { path: 'payment', component: PaymentsComponent },
+      { path: 'checkout', component: PaymentsComponent },
       { path: 'previousorder', component: PreviousOrderComponent },
       { path: 'search', component: SearchComponent },
-      { path: 'product-details', component: ProductDetailsComponent },
+      { path: 'product-details/:id', component: ProductDetailsComponent },
       { path: 'almana-is', component: WhoWeAreComponent },
       // { path: 'advertise', component: AdvertiseCarouselComponent },
       // { path: 'main-categories', component: MainCategoriesComponent },

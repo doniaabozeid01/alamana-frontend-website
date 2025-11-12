@@ -30,129 +30,17 @@ export class ProductsComponent {
   // مثال: products.component.ts
   selectedId = 0;
 
-  categories = [
-    { id: 1, name: 'لواصق' },
-    { id: 2, name: 'عوازل' },
-    { id: 3, name: 'مواد إنشائية' },
-    { id: 4, name: 'ملاطات' },
-    { id: 5, name: 'دهانات' },
-    { id: 6, name: 'معالجات رطوبة' },
-    { id: 7, name: 'مواد إصلاح' },
-    { id: 8, name: 'إكسسوارات بلاط' },
-  ];
+  categories: any;
 
-  products = [
-    {
-      id: 101,
-      categoryId: 1,
-      name: 'بلاتينيوم فيكس C2TE',
-      weight: 25, weightData: 'كجم',
-      oldPrice: 2300, newPrice: 2000, currency: 'ج.م',
-      galleryUrls: [
-        'assets/random/16b1ca52598339b72e97aa96657cdf8e434815e5.png',
-      ],
-      isNew: true
-    },
-    {
-      id: 102,
-      categoryId: 1,
-      name: 'بلاتينيوم فيكس فليكس',
-      weight: 20, weightData: 'كجم',
-      oldPrice: 2150, newPrice: 1890, currency: 'ج.م',
-      galleryUrls: [
-        'assets/random/16b1ca52598339b72e97aa96657cdf8e434815e5.png',
-
-      ]
-    },
-    {
-      id: 201,
-      categoryId: 2,
-      name: 'أم فيكس عازل رطوبة',
-      weight: 18, weightData: 'كجم',
-      oldPrice: 2600, newPrice: 2290, currency: 'ج.م',
-      galleryUrls: [
-        'assets/random/16b1ca52598339b72e97aa96657cdf8e434815e5.png',
-
-      ],
-      isNew: true
-    },
-    {
-      id: 202,
-      categoryId: 2,
-      name: 'عازل أكريليك مرن',
-      weight: 20, weightData: 'كجم',
-      oldPrice: 2400, newPrice: 2100, currency: 'ج.م',
-      galleryUrls: [
-        'assets/random/16b1ca52598339b72e97aa96657cdf8e434815e5.png',
-      ]
-    },
-    {
-      id: 301,
-      categoryId: 3,
-      name: 'مونة إصلاح فورية',
-      weight: 25, weightData: 'كجم',
-      oldPrice: 1800, newPrice: 1650, currency: 'ج.م',
-      galleryUrls: [
-        'assets/random/16b1ca52598339b72e97aa96657cdf8e434815e5.png',
-
-      ]
-    },
-    {
-      id: 302,
-      categoryId: 3,
-      name: 'خرسانة جافة عالية القوة',
-      weight: 30, weightData: 'كجم',
-      oldPrice: 3200, newPrice: 2950, currency: 'ج.م',
-      galleryUrls: [
-        'assets/random/16b1ca52598339b72e97aa96657cdf8e434815e5.png',
-      ]
-    },
-    {
-      id: 401,
-      categoryId: 4,
-      name: 'ملاط تسوية أرضيات',
-      weight: 20, weightData: 'كجم',
-      oldPrice: 1700, newPrice: 1490, currency: 'ج.م',
-      galleryUrls: [
-        'assets/random/16b1ca52598339b72e97aa96657cdf8e434815e5.png',
-      ]
-    },
-    {
-      id: 501,
-      categoryId: 5,
-      name: 'دهان أساس إيبوكسي',
-      weight: 5, weightData: 'كجم',
-      oldPrice: 1900, newPrice: 1690, currency: 'ج.م',
-      galleryUrls: [
-        'assets/random/16b1ca52598339b72e97aa96657cdf8e434815e5.png',
-
-      ]
-    },
-    {
-      id: 601,
-      categoryId: 6,
-      name: 'مانع تسرب شقوق',
-      weight: 1, weightData: 'لتر',
-      oldPrice: 450, newPrice: 399, currency: 'ج.م',
-      galleryUrls: [
-        'assets/random/16b1ca52598339b72e97aa96657cdf8e434815e5.png',
-
-      ]
-    },
-    {
-      id: 801,
-      categoryId: 8,
-      name: 'فواصل بلاط + مساطر',
-      weight: 0.5, weightData: 'كجم',
-      oldPrice: 250, newPrice: 199, currency: 'ج.م',
-      galleryUrls: [
-        'assets/random/16b1ca52598339b72e97aa96657cdf8e434815e5.png',
-      ]
-    }
-  ];
+  products: any;
 
   // (اختياري) لو محتاج دوال بسيطة
-  trackById = (_: number, item: any) => item.id;
+  // trackById = (_: number, item: any) => item.id;
+
+
+  trackByIndex(index: number) {
+    return index;
+  }
 
   userId!: string;
 
@@ -219,6 +107,7 @@ export class ProductsComponent {
     this.api.GetCategoryWithProductsById(id).subscribe({
       next: (response) => {
         console.log(response);
+        // console.log(response.products[0].galleryUrls);
         this.products = response.products;
       }
     })

@@ -7,7 +7,7 @@
         <h2 class="cf-title ">تصفّح حسب الفئة</h2>
 
         <div class="chips pb-5" dir="rtl">
-            <button class="chip" *ngFor="let c of categories; trackBy: trackById" [class.active]="c.id === selectedId"
+            <button class="chip" *ngFor="let c of categories; trackBy: trackByIndex" [class.active]="c.id === selectedId"
                 (click)="selectCategory(c.id)" type="button">
                 {{ c.name }}
             </button>
@@ -20,10 +20,10 @@
 
     <div class="py-5 products ">
 
-        <div class="row justify-content-center align-items-center m-auto ">
+        <div class="row container justify-content-center align-items-center m-auto ">
             <div class="col-md-3 col-6 mb-4 d-flex justify-content-center " *ngFor="let product of products">
 
-                <div class="category-card m-2 shadow text-center p-0 " routerLink="/product-details">
+                <div class="category-card m-2 shadow text-center p-0 " [routerLink]="['/product-details', product.id]">
 
 
                     <div class="moved-content">
@@ -31,9 +31,9 @@
 
                             <owl-carousel-o *ngIf="product.galleryUrls.length" #catCarousel [options]="catOptions">
 
-                                <ng-template carouselSlide *ngFor="let url of product.galleryUrls; trackBy: trackById">
+                                <ng-template carouselSlide *ngFor="let media of product.galleryUrls; trackBy: trackByIndex">
                                     <div class="position-relative">
-                                        <img [src]="url"/>
+                                        <img [src]="media.url"      />
                                         <div class="out-btn main-bg-color" (click)="addToCart(product, $event)">
                                             <i class="fa-solid fa-plus"></i>
                                         </div> 
@@ -48,7 +48,7 @@
 
                     <div class="w-100 fixed-content m-0 ">
                         <div class="d-flex justify-content-between align-items-center">
-                            <p class="text-black">{{product.weight}} {{product.weightData}}</p>
+                            <p class="text-black">{{product.weight}} كجم</p>
                             <p class="main-color fs-5 second-color text-center name">
                                 <!-- {{ (languageService.languageChanged$ | async) === 'ar' ? cat.name_ar : cat.name }} -->
                                 {{product.name}}
@@ -60,10 +60,10 @@
                         <div class="d-flex justify-content-between align-items-center text-black">
                             <p class="second-color text-center">
                                 <!-- {{ (languageService.languageChanged$ | async) === 'ar' ? cat.name_ar : cat.name }} -->
-                                {{product.oldPrice}} {{product.currency}}
+                                {{product.price}} د.ك
                             </p>
 
-                            <p> {{product.newPrice}} {{product.currency}}
+                            <p> {{product.priceAfterDiscount}} د.ك
                             </p>
                         </div>
 

@@ -1,57 +1,82 @@
-<div class="product-details container-fluid py-0 py-lg-5 " *ngIf="product as p; else loading">
-    <div class="container"> <!-- ده اللي بيظبط السنتر -->
+<div class="product-details container-fluid py-0 py-lg-5" *ngIf="product as p; else loading">
+    <div class="container">
         <div class="row d-flex justify-content-center align-items-center gx-5 py-4 shadow">
 
-            <!-- ========= Left: Image ========= -->
-            <div class="col-lg-6">
-                <owl-carousel-o #catCarousel [options]="catOptions">
-                    <ng-template carouselSlide *ngFor="let img of product.images">
-                        <img [src]="img" [alt]="product?.name" />
-                    </ng-template>
-                </owl-carousel-o>
-            </div>
+            <!-- ========= Left: Images ========= -->
+<div class="col-lg-6">
+  <div class="image-pane">
+    <owl-carousel-o *ngIf="p?.galleryUrls?.length" [options]="catOptions">
+      <ng-template carouselSlide *ngFor="let media of p.galleryUrls">
+        <div class="image-frame">
 
-            <!-- ========= Right : Options (Size / Ice / Sugar / Extras) ========= -->
+          <!-- ✅ لو النوع صورة -->
+          <img
+            *ngIf="media.type?.toLowerCase() === 'image'"
+            class="product-img"
+            [src]="media.url"
+            [alt]="p?.name"
+          />
+
+          <!-- ✅ لو النوع فيديو -->
+          <video
+            *ngIf="media.type?.toLowerCase() === 'video'"
+            class="product-video"
+            [src]="media.url"
+            controls
+          ></video>
+
+        </div>
+      </ng-template>
+    </owl-carousel-o>
+
+    <!-- ✅ Fallback لو مافيش صور أو فيديو -->
+    <div class="image-frame" *ngIf="!p?.galleryUrls?.length">
+      <img class="product-img" src="assets/images/placeholder.png" [alt]="p?.name" />
+    </div>
+  </div>
+</div>
+
+
+
+            <!-- ========= Right : Details ========= -->
             <div class="col-lg-6 col-md-12 mt-4 mt-lg-0 py-2 text-end px-5">
-
                 <div class="d-flex flex-column justify-content-center">
-                    <h1 class="second-color mb-1 d-none d-md-block">
-                        {{ p?.category?.name }}
-                    </h1>
 
-                    <div class="d-block d-md-none">
+                    <!-- كاتيجوري -->
+                    <h1 class="second-color mb-1">{{ p?.category?.name }}</h1>
 
-                        <div class=" d-flex justify-content-between align-items-center w-100">
-                            <h1 class="second-color mb-0 ">
-                                {{p?.category?.name }}
-                            </h1>
-                        </div>
+                    <!-- اسم المنتج -->
+                    <h2 class="fs-2 main-color mb-2">{{ p?.name }}</h2>
 
+                    <!-- العلامات -->
+                    <div class="d-flex align-items-center justify-content-start gap-2 mb-3">
+                        <span *ngIf="p?.new" class="badge bg-success px-3 py-2 fs-6">جديد</span>
+                        <span *ngIf="p?.discount > 0" class="badge bg-danger px-3 py-2 fs-6">
+                            خصم {{ p?.discount }}%
+                        </span>
                     </div>
 
-                    <h2 class="fs-2 main-color mb-2">
-                        {{ p?.name }}
-                    </h2>
+                    <!-- الوصف -->
+                    <p class="description fs-5 text-muted mb-4">{{ p?.description }}</p>
 
-                    <p class="description fs-5 text-muted mb-4">
-                        {{p?.ingredients }}
-                    </p>
-
+                    <!-- زر إضافة للسلة والسعر -->
                     <div class="d-flex align-items-center gap-3 mt-auto">
-                        <div class="d-flex w-75 gap-2">
-                            <button class="add-btn rounded main-outline-btn px-1 px-lg-4  py-2" (click)="addToCart(p)">
-                                أضف إلى السلة
-                            </button>
+                        <button class="add-btn rounded main-outline-btn px-1 px-lg-4 py-2" (click)="addToCart(p)">
+                            أضف إلى السلة
+                        </button>
+
+                        <div class="d-flex flex-column align-items-end">
+                            <p class="mb-0 fw-bold fs-4 text-orange">
+                                <span class="ms-1">ج.م</span>
+                                {{ p?.priceAfterDiscount }}
+                            </p>
+                            <p *ngIf="p?.discount > 0" class="text-muted text-decoration-line-through mb-0">
+                                {{ p?.price }} ج.م
+                            </p>
                         </div>
-
-                        <p class=" mb-0 me-auto fw-bold fs-4 text-orange d-flex align-items-center">
-                            <span class="ms-1 mx-2">{{ p?.currency }} </span>
-                            <span> {{p?.price }} </span>
-                        </p>
-
                     </div>
-                </div>
 
+                </div>
 
             </div>
         </div>
