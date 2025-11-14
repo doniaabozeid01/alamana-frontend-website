@@ -13,6 +13,11 @@
     overflow: hidden;
     max-height: 45vh;
     // box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+
+
+    img{
+        object-fit: fill;
+    }
 }
 
 

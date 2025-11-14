@@ -14,9 +14,7 @@
     (dragged)="dragging = false">
 
     <ng-template carouselSlide *ngFor="let cat of categories; trackBy: trackById">
-      <div class="category-card text-center d-flex  justify-content-center align-items-center  flex-column p-0 mb-0"
-        (pointerdown)="onPtrDown($event)" (pointermove)="onPtrMove($event)" (pointerup)="onPtrUp()"
-        (pointercancel)="onPtrCancel()" (pointerleave)="onPtrCancel()" (click)="onCardClick(cat.id, $event)">
+      <div class="category-card text-center d-flex  justify-content-center align-items-center  flex-column p-0 mb-0" [routerLink]="['/products', cat.id]">
         <img [src]="cat.imagePath" [alt]="cat.name" class="" />
       </div>
       <p class="cat-name second-color text-center">

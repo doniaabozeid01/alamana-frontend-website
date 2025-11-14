@@ -1,4 +1,4 @@
-<div class="categoriesSwiperCustom mb-5 justify-content-center  px-md-5">
+<div class="categoriesSwiperCustom mb-5 justify-content-center  px-md-5 ">
 
     <h1 class="text-center second-color mb-5">مقترحه لك</h1>
 
@@ -11,9 +11,7 @@
         (dragged)="dragging = false">
 
         <ng-template carouselSlide *ngFor="let prod of products; trackBy: trackById">
-            <div class="category-card text-center p-0 " (pointerdown)="onPtrDown($event)"
-                (pointermove)="onPtrMove($event)" (pointerup)="onPtrUp()" (pointercancel)="onPtrCancel()"
-                (pointerleave)="onPtrCancel()" (click)="onCardClick(prod.id, $event)">
+            <div class="category-card text-center p-0 " [routerLink]="['/product-details', prod.id]">
 
                 <div class="w-100 px-2">
 

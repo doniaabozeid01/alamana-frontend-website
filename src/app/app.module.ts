@@ -32,6 +32,7 @@ import { BestSellersComponent } from './Components/HomeSections/best-sellers/bes
 import { WhoWeAreComponent } from './Components/who-we-are/who-we-are.component';
 import { RegisterComponent } from './Components/Auth/register/register.component';
 import { AuthInterceptor } from './Interceptors/auth.interceptor';
+import { ContactComponent } from './Components/contact/contact.component';
 
 @NgModule({
   declarations: [
@@ -60,7 +61,8 @@ import { AuthInterceptor } from './Interceptors/auth.interceptor';
     NewProductsComponent,
     BestSellersComponent,
     WhoWeAreComponent,
-    RegisterComponent
+    RegisterComponent,
+    ContactComponent
   ],
   imports: [
     BrowserModule,

@@ -13,6 +13,7 @@ import { SearchComponent } from './Components/search/search.component';
 import { ProductDetailsComponent } from './Components/product-details/product-details.component';
 import { WhoWeAreComponent } from './Components/who-we-are/who-we-are.component';
 import { RegisterComponent } from './Components/Auth/register/register.component';
+import { ContactComponent } from './Components/contact/contact.component';
 
 const routes: Routes = [
   // {path:'login',component:LoginComponent}
@@ -39,12 +40,14 @@ const routes: Routes = [
       { path: 'home', component: HomeComponent },
       { path: 'cart', component: CartComponent },
       { path: 'products', component: ProductsComponent },
+      { path: 'products/:categoryId', component: ProductsComponent },
       { path: 'offers', component: OffersComponent },
       { path: 'checkout', component: PaymentsComponent },
       { path: 'previousorder', component: PreviousOrderComponent },
       { path: 'search', component: SearchComponent },
       { path: 'product-details/:id', component: ProductDetailsComponent },
       { path: 'almana-is', component: WhoWeAreComponent },
+      { path: 'contact', component: ContactComponent },
       // { path: 'advertise', component: AdvertiseCarouselComponent },
       // { path: 'main-categories', component: MainCategoriesComponent },
       // { path: 'rawMaterial-categories', component: RawMaterialCategoriesComponent },

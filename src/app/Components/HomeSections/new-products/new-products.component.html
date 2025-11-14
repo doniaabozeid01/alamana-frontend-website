@@ -15,9 +15,7 @@
         (dragged)="dragging = false">
 
         <ng-template carouselSlide *ngFor="let prod of products; trackBy: trackById">
-            <div class="product-hex text-center" (pointerdown)="onPtrDown($event)" (pointermove)="onPtrMove($event)"
-                (pointerup)="onPtrUp()" (pointercancel)="onPtrCancel()" (pointerleave)="onPtrCancel()"
-                (click)="onCardClick(prod.id, $event)">
+            <div class="product-hex text-center" [routerLink]="['/product-details', prod.id]">
 
                 <div class="hex-img ">
                     <img *ngIf="prod?.galleryUrls?.length" [src]="prod.galleryUrls[0].url" [alt]="prod.name" />

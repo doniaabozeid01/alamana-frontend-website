@@ -13,9 +13,7 @@
 
         <ng-template carouselSlide *ngFor="let product of products; trackBy: trackById">
             <div class="category-card shadow text-center d-flex  justify-content-center align-items-center  flex-column p-0 mb-0 pt-3"
-                (pointerdown)="onPtrDown($event)" (pointermove)="onPtrMove($event)" (pointerup)="onPtrUp()"
-                (pointercancel)="onPtrCancel()" (pointerleave)="onPtrCancel()"
-                (click)="onCardClick(product.id, $event)">
+                [routerLink]="['/product-details', product.id]">
                 <!-- <img *ngIf="product.galleryUrls[0]?.type === 'Image'" [src]="product.galleryUrls[0]?.url"
                     [alt]="product.name" class="w-100" /> -->
 

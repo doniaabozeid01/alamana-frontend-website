@@ -1,9 +1,157 @@
-.footer {
-    // background-color: #1E75B7;
-    max-width: 1950px;
-    height: 300px;
+.alamana-footer {
+  direction: rtl;
+  background-color: #1D75B9; // الأزرق بتاع البراند
+  color: #ffffff;
+  padding: 3rem 0 2rem;
+  position: relative;
+  overflow: hidden;
+}
+
+/* خلفية خفيفة لو حابة تضيفي صورة زي التصميم */
+.alamana-footer::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: url('../../../assets/contact/insaat-maliyetleri-bir-yilda-yuzde-23-94-artti\ 1.png') center/cover no-repeat; // لو عندك صورة
+  opacity: 0.05;
+  pointer-events: none;
+  background-position: center;
+  object-fit: fill;
+}
+
+.alamana-footer .container {
+  position: relative;
+  z-index: 1;
+}
+
+.footer-columns {
+  margin-bottom: 2rem;
+}
+
+.footer-title {
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+  font-size: 1.1rem;
+}
+
+.footer-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-list li {
+  margin-bottom: 0.6rem;
+  font-size: 0.95rem;
+  display: flex;
+  align-items: center;
+}
+
+.footer-list i {
+  font-size: 0.9rem;
+}
+
+.footer-divider {
+  height: 1px;
+  background-color: rgba(255, 255, 255, 0.25);
+  margin: 1rem 0 1.5rem;
+}
+
+.footer-website {
+  font-size: 0.95rem;
+  letter-spacing: 0.08em;
+}
+
+// .social-icons a {
+//   display: inline-flex;
+//   align-items: center;
+//   justify-content: center;
+//   width: 38px;
+//   height: 38px;
+//   border-radius: 50%;
+//   border: 1px solid #ffffff;
+//   margin: 0 0.3rem;
+//   color: #ffffff;
+//   font-size: 0.9rem;
+//   transition: all 0.2s ease-in-out;
+// }
+
+// .social-icons a:hover {
+//   background-color: #8CC549;
+//   border-color: #8CC549;
+//   color: #1D75B9;
+// }
+
+/* موبايل */
+@media (max-width: 767.98px) {
+  .alamana-footer {
+    text-align: center;
+  }
+
+  .footer-list li {
+    justify-content: center;
+  }
 }
 
 
 
 
+
+.social-footer {
+  display: flex;
+  gap: 35px;
+  justify-content: center;
+}
+
+.brush-icon {
+  position: relative;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+// .brush-frame {
+//   position: absolute;
+//   width: 100%;
+//   height: 100%;
+//   object-fit: contain;
+//   pointer-events: none;
+// }
+
+.brush-icon i {
+  position: absolute;
+  color: white;         /* لون الأيقونة */
+  font-size: 20px;      /* حجم الأيقونة */
+  z-index: 2;
+}
+
+
+
+.footer-bottom {
+  position: relative;
+}
+
+.footer-website {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+
+// @media (max-width:768px) {
+//     .footer-bottom{
+//   position: sticky;
+
+//         flex-direction: column;
+//     }
+
+
+//     .footer-website {
+//         margin: 50px  0;
+//   position: sticky;
+// //   left: 50%;
+// //   transform: translateX(-50%);
+// }
+// }

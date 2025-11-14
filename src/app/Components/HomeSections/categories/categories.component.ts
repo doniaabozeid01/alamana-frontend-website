@@ -15,7 +15,7 @@ export class CategoriesComponent {
 
   catOptions: OwlOptions = {
     loop: false,
-    dots: false,
+    dots: true,
     mouseDrag: true,
     touchDrag: true,
     nav: false,                 // بنستخدم أزرار خارجية

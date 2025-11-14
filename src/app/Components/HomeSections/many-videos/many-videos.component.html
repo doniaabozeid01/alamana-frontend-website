@@ -11,7 +11,7 @@
                 </video>
 
                 <!-- زر تشغيل وسط الفيديو -->
-                <button class="play-btn main-bg-color" *ngIf="!isPlayingEl(videoEl)"
+                <button class="play-btn " *ngIf="!isPlayingEl(videoEl)"
                     (click)="$event.stopPropagation(); toggleVideo(videoEl)">
                     <i class="fa-solid fa-play"></i>
                 </button>

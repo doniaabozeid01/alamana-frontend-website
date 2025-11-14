@@ -108,40 +108,40 @@ export class FeaturedProductsComponent {
 
   dragging = false;
 
-  private ptrStart?: { x: number; y: number };
-  private moved = false;
-  private readonly DRAG_THRESHOLD = 10; // px
+  // private ptrStart?: { x: number; y: number };
+  // private moved = false;
+  // private readonly DRAG_THRESHOLD = 10; // px
 
-  onPtrDown(e: PointerEvent) {
-    this.ptrStart = { x: e.clientX, y: e.clientY };
-    this.moved = false;
-  }
+  // onPtrDown(e: PointerEvent) {
+  //   this.ptrStart = { x: e.clientX, y: e.clientY };
+  //   this.moved = false;
+  // }
 
-  onPtrMove(e: PointerEvent) {
-    if (!this.ptrStart) return;
-    const dx = Math.abs(e.clientX - this.ptrStart.x);
-    const dy = Math.abs(e.clientY - this.ptrStart.y);
-    if (dx > this.DRAG_THRESHOLD || dy > this.DRAG_THRESHOLD) this.moved = true;
-  }
+  // onPtrMove(e: PointerEvent) {
+  //   if (!this.ptrStart) return;
+  //   const dx = Math.abs(e.clientX - this.ptrStart.x);
+  //   const dy = Math.abs(e.clientY - this.ptrStart.y);
+  //   if (dx > this.DRAG_THRESHOLD || dy > this.DRAG_THRESHOLD) this.moved = true;
+  // }
 
-  onPtrUp() {
-    // بس بنفضّي الحالة
-    this.ptrStart = undefined;
-  }
+  // onPtrUp() {
+  //   // بس بنفضّي الحالة
+  //   this.ptrStart = undefined;
+  // }
 
-  onPtrCancel() {
-    this.ptrStart = undefined;
-    this.moved = false;
-  }
+  // onPtrCancel() {
+  //   this.ptrStart = undefined;
+  //   this.moved = false;
+  // }
 
-  onCardClick(id: number, e: MouseEvent) {
-    // لو كان فيه سحب (من owl) أو تحرّك فوق العتبة → امنع الكليك
-    if (this.dragging || this.moved) {
-      e.preventDefault();
-      e.stopPropagation();
-      return;
-    }
-    this.goToProducts(id);
-  }
+  // onCardClick(id: number, e: MouseEvent) {
+  //   // لو كان فيه سحب (من owl) أو تحرّك فوق العتبة → امنع الكليك
+  //   if (this.dragging || this.moved) {
+  //     e.preventDefault();
+  //     e.stopPropagation();
+  //     return;
+  //   }
+  //   this.goToProducts(id);
+  // }
 
 }

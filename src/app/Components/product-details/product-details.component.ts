@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { OwlOptions } from 'ngx-owl-carousel-o';
 import { ApiService } from 'src/app/Services/api.service';
+import { AuthService } from 'src/app/Services/Auth/auth.service';
 
 @Component({
   selector: 'app-product-details',
@@ -23,10 +24,11 @@ export class ProductDetailsComponent {
 
   product: any = null;
   cartId!: number;
-  usreId!: string;
+  userId!: string;
 
   constructor(
     private api: ApiService,
+    private auth: AuthService,
     private route: ActivatedRoute,
     private router: Router,
 
@@ -34,6 +36,30 @@ export class ProductDetailsComponent {
 
 
   ngOnInit() {
+
+
+        const token = localStorage.getItem('token');
+    console.log(token);
+
+    if (token) {
+      this.auth.getUserId().subscribe({
+        next: (response) => {
+          console.log(response);
+
+          this.userId = response.userId;
+
+        },
+        error: (err) => {
+          console.log(err);
+
+        }
+
+      });
+    }
+
+
+
+
     const id = Number(this.route.snapshot.paramMap.get('id'));
     console.log('Product ID:', id);
 
@@ -66,7 +92,7 @@ export class ProductDetailsComponent {
     const payload = {
       quantity: 1,
       productId: product.id,
-      userId: this.usreId,
+      userId: this.userId,
     };
 
     console.log(payload);
@@ -79,7 +105,7 @@ export class ProductDetailsComponent {
     }
 
     // 4) الاتصال بالـ API
-    this.api.AddCartItem(payload).subscribe({
+    this.api.addToCart(payload).subscribe({
       next: (res) => {
         console.log(res);
       },

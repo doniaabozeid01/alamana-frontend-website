@@ -1,7 +1,7 @@
 .product-details {
   align-items: center;
   justify-content: center;
-
+margin: 0;
   .slide-wrap { width: 100%; }
 
   /* ✅ حاوية الصورة */
@@ -92,6 +92,10 @@
   }
 
   button { font-size: 14px; }
+
+  .container{
+    padding: 0 0 20px 0;
+  }
 }
 
 /* ✅ تابلت */

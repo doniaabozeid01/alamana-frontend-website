@@ -83,9 +83,9 @@ export class ApiService {
   }
 
 
-  AddCartItem(data: any): Observable<any> {
-    return this.httpClient.post(`${this.baseUrl}CartItems/CartItems/AddCartItem`, data);
-  }
+  // AddCartItem(data: any): Observable<any> {
+  //   return this.httpClient.post(`${this.baseUrl}CartItems/CartItems/AddCartItem`, data);
+  // }
 
 
   GetAllAdvertisements(): Observable<any> {
@@ -121,6 +121,9 @@ export class ApiService {
   }
 
 
+  contactUs(data: any): Observable<any> {
+    return this.httpClient.post(`${this.baseUrl}ContactUs`, data);
+  }
 
 
 }

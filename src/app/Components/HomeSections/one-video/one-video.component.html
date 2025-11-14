@@ -1,9 +1,16 @@
 <div class="parent px-1">
 
-  <div class="video my-5 rounded-4 overflow-hidden shadow-lg">
+  <div #videoEl class="video video-wrapper position-relative my-5 rounded-4 overflow-hidden shadow-lg" #wrap
+    (click)="toggleVideo(videoEl)">
+
     <video src="assets/one-video/alamana-test.mp4" autoplay muted loop playsinline class="w-100 h-100 object-fit-cover">
     </video>
-  </div>
 
+
+    <button class="play-btn " *ngIf="!isPlayingEl(videoEl)" (click)="$event.stopPropagation(); toggleVideo(videoEl)">
+      <i class="fa-solid fa-play"></i>
+    </button>
+
+  </div>
 
 </div>
