@@ -1,8 +1,8 @@
 <div class=" categoriesSwiperCustom my-5 position-relative px-2">
 
 
-    <owl-carousel-o *ngIf="videos?.length" #catCarousel [options]="catOptions">
-        <ng-template carouselSlide *ngFor="let video of videos; trackBy: trackById">
+    <owl-carousel-o *ngIf="nonDefaultVideos?.length" #catCarousel [options]="catOptions" >
+        <ng-template carouselSlide *ngFor="let video of nonDefaultVideos; trackBy: trackById">
 
                 <div class="video-wrapper position-relative" *ngIf="video.isDefault === false" #wrap (click)="toggleVideo(videoEl)">
                     <video #videoEl [src]="video.url" muted loop playsinline

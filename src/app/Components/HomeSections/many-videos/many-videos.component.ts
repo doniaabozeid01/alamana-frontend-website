@@ -38,25 +38,31 @@ export class ManyVideosComponent {
   trackById = (_: number, cat: any) => cat.id;
 
   videos: any;
+  nonDefaultVideos: any;
+  defaultVideo: any;
 
-  constructor(private router: Router, private api:ApiService) { }
+  constructor(private router: Router, private api: ApiService) { }
 
   ngOnInit() {
-
     this.api.GetAllVideos().subscribe({
       next: (res) => {
-        console.log(res);
-        
+        console.log('res: ', res);
+
+        // أول حاجة: تأكد إن res عبارة عن array
+        // const list = Array.isArray(res) ? res : (res?.items ?? []);
+
         this.videos = res;
+        this.defaultVideo = this.videos.find((v: any) => v.isDefault === true);
+        this.nonDefaultVideos = this.videos.filter((v: any) => !v.isDefault);
+
+
+        console.log('defaultVideo: ', this.defaultVideo);
+        console.log('nonDefaultVideos: ', this.nonDefaultVideos);
       },
       error: (err) => {
         console.error('Error fetching videos:', err);
       }
     });
-  
-  
-  
-  
   }
 
 
@@ -111,7 +117,7 @@ export class ManyVideosComponent {
   getProgress(v: HTMLVideoElement) {
     const s = this.ensureState(v);
     return s.duration ? Math.min(100, (s.currentTime / s.duration) * 100) : 0;
-    }
+  }
   getBuffered(v: HTMLVideoElement) {
     const s = this.ensureState(v);
     return s.duration ? Math.min(100, (s.bufferedEnd / s.duration) * 100) : 0;

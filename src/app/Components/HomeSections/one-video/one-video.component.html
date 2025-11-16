@@ -3,7 +3,7 @@
   <div #videoEl class="video video-wrapper position-relative my-5 rounded-4 overflow-hidden shadow-lg" #wrap
     (click)="toggleVideo(videoEl)">
 
-    <video src="assets/one-video/alamana-test.mp4" autoplay muted loop playsinline class="w-100 h-100 object-fit-cover">
+    <video [src]="video.url" autoplay muted loop playsinline class="w-100 h-100 object-fit-cover">
     </video>
 
 

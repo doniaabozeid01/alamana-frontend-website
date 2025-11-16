@@ -31,6 +31,8 @@ export class OneVideoComponent {
         console.log(res);
 
         this.video = res.find((v: any) => v.isDefault === true);
+        console.log("video : ",this.video);
+        
       },
       error: (err) => {
         console.error('Error fetching videos:', err);
