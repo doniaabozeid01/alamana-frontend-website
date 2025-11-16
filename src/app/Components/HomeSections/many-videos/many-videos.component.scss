@@ -78,6 +78,7 @@
   background: rgba(0, 0, 0, 0.9);
 }
 
+
 /* شريط التحكم السفلي */
 .controls {
   position: absolute;
@@ -167,4 +168,14 @@
 .fa-solid {
   font-size: 14px;
   color: #fff;
+}
+
+
+
+.owl-carousel {
+  direction: rtl;
+}
+
+.owl-stage {
+  direction: ltr !important; /* مهم جداً */
 }

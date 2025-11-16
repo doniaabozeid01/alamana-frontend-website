@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { ApiService } from 'src/app/Services/api.service';
 import { AuthService } from 'src/app/Services/Auth/auth.service';
 
@@ -10,7 +11,7 @@ import { AuthService } from 'src/app/Services/Auth/auth.service';
 })
 export class CartComponent implements OnInit {
 
-trackById = (_: number, x: any) => x.id;
+  trackById = (_: number, x: any) => x.id;
 
   isRtl = document.documentElement.dir === 'rtl';
   cart: any = null;
@@ -21,7 +22,8 @@ trackById = (_: number, x: any) => x.id;
     // private http: HttpClient,
     private apiService: ApiService,
     private auth: AuthService,
-    private route: Router
+    private route: Router,
+    private toastr: ToastrService
     // , public languageService: LanguageService,
     // private toastr: ToastrService,
     // private seoService: SeoService,
@@ -39,7 +41,7 @@ trackById = (_: number, x: any) => x.id;
       this.auth.getUserId().subscribe({
         next: (res) => {
           console.log(res);
-          
+
           this.userId = typeof res === 'string' ? res : res.userId;
           if (this.userId) {
             console.log("hi");
@@ -48,7 +50,7 @@ trackById = (_: number, x: any) => x.id;
             // const initialBranchId = Number(this.branchService.getCurrentBranch());
             // if (initialBranchId) {
             //   this.branchId = initialBranchId;
-              this.getCart(this.userId);
+            this.getCart(this.userId);
             // }
 
             // this.branchService.currentBranch$.subscribe(branchId => {
@@ -85,7 +87,7 @@ trackById = (_: number, x: any) => x.id;
     }
     else {
       console.log("hi");
-      
+
       // this.route.navigate(['/auth/login'])
     }
 
@@ -130,7 +132,7 @@ trackById = (_: number, x: any) => x.id;
   }
 
   updateQuantity(item: any, quantity: number) {
-console.log(item);
+    console.log(item);
 
     const dataToAdded = {
       quantity: quantity,
@@ -145,13 +147,14 @@ console.log(item);
         // this.cartId = res.id
         console.log(res);
         this.getCart(this.userId)
-
+this.toastr.success('تم تحديث كمية المنتج في السلة بنجاح');
         // this.toastr.success("Great choice! It's now in your cart.");
       },
 
       error: (err) => {
         // this.toastr.warning(err.error.message);
 
+        this.toastr.error('حدث خطأ ما الرجاء المحاوله لاحقاً');
         console.log(err);
       }
     });
@@ -192,7 +195,8 @@ console.log(item);
       next: (res) => {
         console.log(res);
         this.getCart(this.userId)
-        
+
+        this.toastr.success('تم حذف المنتج من السلة بنجاح');
         // this.toastr.success('Product removed from your cart.');
         // (اختياري) لو مش آخر عنصر وعايزة تحدثي الإجماليات من السيرفر:
         // if (!wasLast) this.getCart(this.branchId, this.userId);
@@ -201,6 +205,7 @@ console.log(item);
         // رجّعي الحالة القديمة لو حصل خطأ
         this.cart = prevCart;
         console.error('❌ Error deleting item:', err);
+        this.toastr.error('حدث خطأ ما الرجاء المحاوله لاحقاً');
         // this.toastr.error('Failed to remove item');
       }
     });

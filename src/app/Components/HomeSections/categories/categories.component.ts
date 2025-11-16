@@ -30,6 +30,8 @@ export class CategoriesComponent {
   trackById = (_: number, cat: any) => cat.id;
 
 
+  
+
   categories: any;
   constructor(
     private api: ApiService,

@@ -126,4 +126,17 @@ export class ApiService {
   }
 
 
+
+
+
+
+  // https://localhost:7046/api/Videos/GetAllVideos
+
+
+
+
+    GetAllVideos(): Observable<any> {
+      return this.httpClient.get(`${this.baseUrl}Videos/GetAllVideos`);
+    }
+
 }

@@ -1,6 +1,7 @@
 import { Component, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { CarouselComponent, OwlOptions } from 'ngx-owl-carousel-o';
+import { ToastrService } from 'ngx-toastr';
 import { ApiService } from 'src/app/Services/api.service';
 import { AuthService } from 'src/app/Services/Auth/auth.service';
 
@@ -31,7 +32,7 @@ export class SearchComponent {
 
 
 
-  constructor(private router: Router, private api: ApiService, private auth: AuthService) {
+  constructor(private router: Router, private api: ApiService, private auth: AuthService, private toastr: ToastrService) {
 
   }
   
@@ -192,13 +193,13 @@ export class SearchComponent {
       next: (res) => {
         this.cartId = res.id
         console.log(res);
-
+        this.toastr.success('تم اضافه المنتج الي السله بنجاح');
         // this.toastr.success("Great choice! It's now in your cart.");
       },
 
       error: (err) => {
         // this.toastr.warning(err.error.message);
-
+        this.toastr.error('حدث خطأ ما الرجاء المحاوله لاحقًا');
         console.log(err);
       }
     });

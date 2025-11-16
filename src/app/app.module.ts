@@ -33,6 +33,7 @@ import { WhoWeAreComponent } from './Components/who-we-are/who-we-are.component'
 import { RegisterComponent } from './Components/Auth/register/register.component';
 import { AuthInterceptor } from './Interceptors/auth.interceptor';
 import { ContactComponent } from './Components/contact/contact.component';
+import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
   declarations: [
@@ -69,10 +70,15 @@ import { ContactComponent } from './Components/contact/contact.component';
     AppRoutingModule,
     BrowserAnimationsModule,
     CarouselModule,
-    HttpClientModule
-    , ReactiveFormsModule,   // ✅ مهم
-    FormsModule
-
+    HttpClientModule,
+    ReactiveFormsModule,   // ✅ مهم
+    FormsModule,
+    BrowserAnimationsModule,
+    ToastrModule.forRoot({
+      timeOut: 3000,
+      positionClass: 'toast-top-right',
+      preventDuplicates: true,
+    })
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }, // ✅,

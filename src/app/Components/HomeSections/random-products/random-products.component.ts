@@ -1,7 +1,9 @@
 import { Component, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { CarouselComponent, OwlOptions } from 'ngx-owl-carousel-o';
+import { ToastrService } from 'ngx-toastr';
 import { ApiService } from 'src/app/Services/api.service';
+import { AuthService } from 'src/app/Services/Auth/auth.service';
 
 @Component({
   selector: 'app-random-products',
@@ -9,6 +11,10 @@ import { ApiService } from 'src/app/Services/api.service';
   styleUrls: ['./random-products.component.scss']
 })
 export class RandomProductsComponent {
+  userId!: string;
+
+
+
   isRtl = document.documentElement.dir === 'rtl';
 
   catOptions: OwlOptions = {
@@ -33,7 +39,9 @@ export class RandomProductsComponent {
   products: any;
   constructor(
     private api: ApiService,
+    private auth: AuthService,
     private router: Router,
+    private toastr: ToastrService
     // public languageService: LanguageService,
 
 
@@ -46,119 +54,89 @@ export class RandomProductsComponent {
 
 
   ngOnInit() {
+
+    const token = localStorage.getItem('token');
+    console.log(token);
+
+    if (token) {
+      this.auth.getUserId().subscribe({
+        next: (response) => {
+          console.log(response);
+
+          this.userId = response.userId;
+
+        },
+        error: (err) => {
+          console.log(err);
+
+        }
+
+      });
+    }
+
+
+
+
+
     this.api.GetRandomProducts().subscribe({
-      next:(res)=>{
+      next: (res) => {
         console.log(res);
         this.products = res;
+        // this.toastr.success('تم اضافه المنتج الي السله بنجاح');
 
       },
-      error:(err)=>{
+      error: (err) => {
         console.log(err);
+        // this.toastr.error('حدث خطأ ما الرجاء المحاوله لاحقاً');
 
       }
     })
 
+  }
 
-    this.products = [
-      {
-        name: 'بلاتينيوم فيكس',
-        image: '../../../../assets/random/16b1ca52598339b72e97aa96657cdf8e434815e5.png',
-        newPrice: 100,
-        oldPrice: 120,
-        currency: 'دينار',
-        weight: 20,
-        weightData: 'كيلو'
-      },
-      {
-        name: 'بلاتينيوم فيكس',
-        image: '../../../../assets/random/16b1ca52598339b72e97aa96657cdf8e434815e5.png',
-        newPrice: 100,
-        oldPrice: 120,
-        currency: 'دينار',
-        weight: 20,
-        weightData: 'كيلو'
-      },
-      {
-        name: 'بلاتينيوم فيكس',
-        image: '../../../../assets/random/16b1ca52598339b72e97aa96657cdf8e434815e5.png',
-        newPrice: 100,
-        oldPrice: 120,
-        currency: 'دينار',
-        weight: 20,
-        weightData: 'كيلو'
-      },
+  @ViewChild('catCarousel', { static: false }) catCarousel!: CarouselComponent;
 
-      {
-        name: 'بلاتينيوم فيكس',
-        image: '../../../../assets/random/16b1ca52598339b72e97aa96657cdf8e434815e5.png',
-        newPrice: 100,
-        oldPrice: 120,
-        currency: 'دينار',
-        weight: 20,
-        weightData: 'كيلو'
-      }, {
-        name: 'بلاتينيوم فيكس',
-        image: '../../../../assets/random/16b1ca52598339b72e97aa96657cdf8e434815e5.png',
-        newPrice: 100,
-        oldPrice: 120,
-        currency: 'دينار',
-        weight: 20,
-        weightData: 'كيلو'
+  dragging = false;
+
+
+  addToCart(data: any, event: MouseEvent) {
+    event.preventDefault();
+    event.stopPropagation();
+
+    const token = localStorage.getItem('token');
+    if (!token) {
+      this.router.navigate(['/auth/login'], {
+        queryParams: { returnUrl: this.router.url }
+      });
+      return;
+    }
+
+    const dataToAdded = {
+      quantity: 1,
+      productId: data.id,
+      userId: this.userId,
+    };
+
+    console.log(dataToAdded);
+
+    this.api.addToCart(dataToAdded).subscribe({
+      next: (res) => {
+        // this.cartId = res.id
+        console.log(res);
+        this.toastr.success('تم اضافه المنتج الي السله بنجاح');
+        // this.toastr.success("Great choice! It's now in your cart.");
       },
 
-    ];
+      error: (err) => {
+        // this.toastr.warning(err.error.message);
+        this.toastr.error('حدث خطأ ما الرجاء المحاوله لاحقاً');
+        console.log(err);
+      }
+    });
 
 
 
   }
-  @ViewChild('catCarousel', { static: false }) catCarousel!: CarouselComponent;
 
-
-
-  private ptrMoved = false;
-
-
-
-
-
-
-
-  dragging = false;
-
-  // private ptrStart?: { x: number; y: number };
-  // private moved = false;
-  // private readonly DRAG_THRESHOLD = 10; // px
-
-  // onPtrDown(e: PointerEvent) {
-  //   this.ptrStart = { x: e.clientX, y: e.clientY };
-  //   this.moved = false;
-  // }
-
-  // onPtrMove(e: PointerEvent) {
-  //   if (!this.ptrStart) return;
-  //   const dx = Math.abs(e.clientX - this.ptrStart.x);
-  //   const dy = Math.abs(e.clientY - this.ptrStart.y);
-  //   if (dx > this.DRAG_THRESHOLD || dy > this.DRAG_THRESHOLD) this.moved = true;
-  // }
-
-  // onPtrUp() {
-  //   // بس بنفضّي الحالة
-  //   this.ptrStart = undefined;
-  // }
-
-  // onPtrCancel() {
-  //   this.ptrStart = undefined;
-  //   this.moved = false;
-  // }
-
-  // onCardClick(id: number, e: MouseEvent) {
-  //   // لو كان فيه سحب (من owl) أو تحرّك فوق العتبة → امنع الكليك
-  //   if (this.dragging || this.moved) {
-  //     e.preventDefault();
-  //     e.stopPropagation();
-  //     return;
-  //   }
-  //   this.goToProducts(id);
-  // }
 
 }

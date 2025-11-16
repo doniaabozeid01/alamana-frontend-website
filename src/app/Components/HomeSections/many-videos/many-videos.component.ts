@@ -1,6 +1,7 @@
 import { Component, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { CarouselComponent, OwlOptions } from 'ngx-owl-carousel-o';
+import { ApiService } from 'src/app/Services/api.service';
 
 interface VideoState {
   duration: number;
@@ -36,19 +37,29 @@ export class ManyVideosComponent {
 
   trackById = (_: number, cat: any) => cat.id;
 
-  categories: any;
+  videos: any;
 
-  constructor(private router: Router) { }
+  constructor(private router: Router, private api:ApiService) { }
 
   ngOnInit() {
-    this.categories = [
-      { id: 1, name: 'Milk Tea', image: '...' },
-      { id: 2, name: 'Iced Coffee', image: '...' },
-      { id: 3, name: 'Mojito', image: '...' },
-      { id: 4, name: 'Frappe & Smoothie', image: '...' },
-      { id: 5, name: 'Matcha Classic', image: '...' }
-    ];
+
+    this.api.GetAllVideos().subscribe({
+      next: (res) => {
+        console.log(res);
+        
+        this.videos = res;
+      },
+      error: (err) => {
+        console.error('Error fetching videos:', err);
+      }
+    });
+  
+  
+  
+  
   }
+
+
 
   @ViewChild('catCarousel', { static: false }) catCarousel!: CarouselComponent;
 
@@ -132,26 +143,6 @@ export class ManyVideosComponent {
     return `${m}:${s}`;
   }
 
-  // ----- Drag vs Click guard (مع الـ owl) -----
   dragging = false;
-  // private ptrStart?: { x: number; y: number };
-  // moved = false;
-  // private readonly DRAG_THRESHOLD = 10;
 
-  // onPtrDown(e: PointerEvent) { this.ptrStart = { x: e.clientX, y: e.clientY }; this.moved = false; }
-  // onPtrMove(e: PointerEvent) {
-  //   if (!this.ptrStart) return;
-  //   const dx = Math.abs(e.clientX - this.ptrStart.x);
-  //   const dy = Math.abs(e.clientY - this.ptrStart.y);
-  //   if (dx > this.DRAG_THRESHOLD || dy > this.DRAG_THRESHOLD) this.moved = true;
-  // }
-  // onPtrUp() { this.ptrStart = undefined; }
-  // onPtrCancel() { this.ptrStart = undefined; this.moved = false; }
-
-  // onCardClick(id: number, e: MouseEvent) {
-  //   if (this.dragging || this.moved) { e.preventDefault(); e.stopPropagation(); return; }
-  //   this.goToProducts(id);
-  // }
-
-  
 }

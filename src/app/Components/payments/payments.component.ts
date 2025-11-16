@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { ApiService } from 'src/app/Services/api.service';
 import { AuthService } from 'src/app/Services/Auth/auth.service';
 
@@ -34,7 +35,7 @@ export class PaymentsComponent {
     private api: ApiService,
     private auth: AuthService,
     private router: Router,
-
+    private toastr: ToastrService
   ) { }
 
   ngOnInit(): void {
@@ -102,9 +103,9 @@ export class PaymentsComponent {
         this.userId = res.userId;
 
 
-            this.getCartId(this.userId);
+        this.getCartId(this.userId);
 
-        
+
       }
     });
   }
@@ -172,7 +173,7 @@ export class PaymentsComponent {
           console.log(this.cartItems);
 
           // localStorage.setItem('cart_backup', JSON.stringify(this.cartItems));
-
+          this.toastr.success(' تم إنشاء الطلب بنجاح');
           // أو نافذة جديدة (قد تُمنع كبوب-أب):
           // window.open(res.checkoutUrl, '_blank');
           return;
@@ -189,7 +190,7 @@ export class PaymentsComponent {
       },
       error: (err) => {
         console.log(err);
-
+        this.toastr.error('حدث خطأ أثناء تنفيذ الطلب. الرجاء المحاولة لاحقًا.');
         this.loading = false;
         // const currentLang = this.translate.currentLang || 'en';
         // const errorMessage = currentLang === 'ar'
@@ -264,7 +265,7 @@ export class PaymentsComponent {
 
 
 
-       checkDiscountCode() {
+  checkDiscountCode() {
     const codeControl = this.orderForm.get('code');
 
     if (!codeControl || !codeControl.value) {
@@ -288,7 +289,7 @@ export class PaymentsComponent {
     //   next: (response) => {
     //     console.log(response);
     //     console.log(response);
-        
+
     //     if (response != null && response.success) {
     //       this.discountRatio = response.discountValue;
     //       this.discountError = "";

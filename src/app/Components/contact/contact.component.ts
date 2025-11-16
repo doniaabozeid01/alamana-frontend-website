@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { ApiService } from 'src/app/Services/api.service';
 
 @Component({
@@ -19,6 +20,7 @@ export class ContactComponent {
     private fb: FormBuilder,
     private api: ApiService,
     private router: Router,
+    private toastr: ToastrService
     // private toastr: ToastrService,
     // public languageService: LanguageService,
     // private branchService: BranchService,
@@ -49,11 +51,14 @@ export class ContactComponent {
     this.api.contactUs(this.contactForm.value).subscribe({
       next: () => {
         // this.toastr.success("mail sent successfully");
+        this.toastr.success('تم إرسال رسالتك بنجاح. شكرًا لتواصلك معنا!');
         this.contactForm.reset();
         this.isLoading = false;
+        
       },
       error: (err) => {
         console.error(err);
+        this.toastr.error('حدث خطأ ما أثناء إرسال رسالتك. الرجاء المحاولة لاحقًا.');
         // this.toastr.error("something went wrong");
         this.isLoading = false;
       }

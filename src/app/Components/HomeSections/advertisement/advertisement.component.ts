@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { OwlOptions } from 'ngx-owl-carousel-o';
+import { ApiService } from 'src/app/Services/api.service';
 
 @Component({
   selector: 'app-advertisement',
@@ -30,7 +31,7 @@ export class AdvertisementComponent {
   };
 
 
-  constructor() { }
+  constructor(private api:ApiService) { }
 
   ngOnInit() {
     this.advertisements = [
@@ -47,6 +48,20 @@ export class AdvertisementComponent {
         image: '../../../../assets/advertisement/37d80afb3ea66c625a2fdcf3860ec1522508fb8f.png'
       }
     ];
+
+
+
+
+    // this.advertisements=
+    this.api.GetAllAdvertisements().subscribe({
+      next:(res)=>{
+        console.log(res);
+        this.advertisements = res;
+      },
+      error:(err)=>{
+        console.log(err);
+      }
+    });
   }
 
   trackById = (_: number, item: any) => item.id ?? item.imageUrl;

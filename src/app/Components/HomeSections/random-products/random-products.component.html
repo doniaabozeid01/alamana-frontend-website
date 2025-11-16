@@ -21,7 +21,7 @@
                                 [alt]="prod.name" class="" />
                             <img *ngIf="!prod?.galleryUrls?.length" src="../../../../assets/2 (6).png"
                                 [alt]="prod.name" />
-                            <div class="out-btn">
+                            <div class="out-btn pointer " (click)="addToCart(prod, $event)">
                                 <i class="fa-solid fa-plus"></i>
                             </div>
 

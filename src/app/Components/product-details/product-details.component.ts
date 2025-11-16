@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { OwlOptions } from 'ngx-owl-carousel-o';
+import { ToastrService } from 'ngx-toastr';
 import { ApiService } from 'src/app/Services/api.service';
 import { AuthService } from 'src/app/Services/Auth/auth.service';
 
@@ -31,6 +32,7 @@ export class ProductDetailsComponent {
     private auth: AuthService,
     private route: ActivatedRoute,
     private router: Router,
+    private toastr: ToastrService
 
   ) { }
 
@@ -38,7 +40,7 @@ export class ProductDetailsComponent {
   ngOnInit() {
 
 
-        const token = localStorage.getItem('token');
+    const token = localStorage.getItem('token');
     console.log(token);
 
     if (token) {
@@ -64,9 +66,9 @@ export class ProductDetailsComponent {
     console.log('Product ID:', id);
 
     this.api.GetProductById(id).subscribe({
-      next:(response)=>{
+      next: (response) => {
         console.log(response);
-        this.product=response;
+        this.product = response;
       }
     })
   }
@@ -108,9 +110,11 @@ export class ProductDetailsComponent {
     this.api.addToCart(payload).subscribe({
       next: (res) => {
         console.log(res);
+        this.toastr.success('تم اضافه المنتج الي السله بنجاح');
       },
       error: (err) => {
         console.log(err);
+        this.toastr.error('حدث خطأ ما الرجاء المحاوله لاحقاً');
       }
     });
   }
