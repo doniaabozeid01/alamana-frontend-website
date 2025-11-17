@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { AfterViewInit, Directive, ElementRef, Input, OnDestroy } from '@angular/core';
+import { OwlOptions } from 'ngx-owl-carousel-o';
 
 
 @Component({
@@ -8,6 +9,42 @@ import { AfterViewInit, Directive, ElementRef, Input, OnDestroy } from '@angular
   styleUrls: ['./advertise-slider.component.scss']
 })
 export class AdvertiseSliderComponent implements AfterViewInit, OnDestroy {
+
+
+
+
+
+customOptions: OwlOptions = {
+  loop: true,
+  items: 1,
+  margin: 0,
+  rtl: true,
+  autoplay: true,
+  autoplayTimeout: 4000,
+  autoplayHoverPause: false,
+  dots: false,
+  nav: true,
+  navText: [
+    '<div class="out-slide-btn main-bg-color"><span class="carousel-control-prev-icon"></span></div>',
+    '<div class="out-slide-btn main-bg-color"><span class="carousel-control-next-icon"></span></div>'
+  ]
+};
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   /**
    * اسم الكلاس الذي يحدد إن السلايد Active.
    * - Bootstrap: 'active'
@@ -22,7 +59,7 @@ export class AdvertiseSliderComponent implements AfterViewInit, OnDestroy {
 
   private mo?: MutationObserver;
 
-  constructor(private host: ElementRef<HTMLElement>) {}
+  constructor(private host: ElementRef<HTMLElement>) { }
 
   ngAfterViewInit(): void {
     // تشغيل أولي لو السلايد بدأ Active

@@ -1,5 +1,7 @@
 .auth-bg {
     //   background-image: url("../../../assets/background.png");
+    // background-color: #158ECD;
+
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -8,7 +10,27 @@
     justify-content: center;
     align-items: center;
     flex-direction: column;
+
+  direction: rtl;
+  background-color: #1D75B9; // الأزرق بتاع البراند
+  color: #ffffff;
+  padding: 3rem 0 2rem;
+  position: relative;
+  overflow: hidden;
 }
+
+/* خلفية خفيفة لو حابة تضيفي صورة زي التصميم */
+.auth-bg::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: url('../../../../assets/contact/insaat-maliyetleri-bir-yilda-yuzde-23-94-artti\ 1.png') center/cover no-repeat; // لو عندك صورة
+  opacity: 0.08;
+  pointer-events: none;
+  background-position: center;
+  object-fit: fill;
+}
+
 
 .login-card {
     // border: 2px solid #158ECD;
