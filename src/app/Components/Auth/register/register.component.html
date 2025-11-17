@@ -47,10 +47,10 @@
                 <div class="position-relative">
 
                     <button type="button"
-                        class="btn btn-sm btn-outline-secondary position-absolute top-50 start-0 translate-middle-y ms-2"
+                        class="btn btn-sm  position-absolute top-50 start-0 translate-middle-y ms-2"
                         (click)="showPwd = !showPwd" aria-label="تبديل رؤية كلمة المرور">
-                        <span *ngIf="!showPwd">إظهار</span>
-                        <span *ngIf="showPwd">إخفاء</span>
+                        <span *ngIf="!showPwd"><i class="fa-solid fa-eye"></i></span>
+                        <span *ngIf="showPwd"><i class="fa-solid fa-eye-slash"></i></span>
                     </button>
 
 
